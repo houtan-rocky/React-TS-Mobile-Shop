@@ -7,10 +7,7 @@ export function Navbar() {
         <nav className={classes.nav}>
             <Link to="/" className={classes['site-title']}> فیجیکالا </Link>
 
-            <form className={classes['search-form']}>
-                <input type="search" id="search-box" placeholder="اینجا جستجو کنید..."/>
-                <label htmlFor="search-box" ></label>
-            </form>
+
             <ul>
 
                 <li>

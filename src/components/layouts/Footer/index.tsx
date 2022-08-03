@@ -1,17 +1,17 @@
 import React from "react";
-import "./Footer.scss";
+import classes from "./Footer.module.scss";
 
 function Footer() {
+    console.log(classes)
     return (
-        <div className="main-footer">
-            <div className="container">
+        <div className={classes["main-footer"]}>
+            <div>
 
-                <div className="row">
+                <div>
                     محصولات
                     خدمات
                     ...
                 </div>
-                <hr/>
                 <div className="row">
                     <p className="col-sm">
                         تمام حقوق برای فیجیکالا محفوظ است {new Date().getFullYear()}&copy;
