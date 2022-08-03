@@ -1,5 +1,10 @@
 import React from "react";
 
 export const CartPage: React.FC = () => {
-    return <h1>User Cart Page</h1>
+    return (
+        <h1>
+            <p>سبد خرید</p>
+            <p>CartPage</p>
+        </h1>
+    )
 }

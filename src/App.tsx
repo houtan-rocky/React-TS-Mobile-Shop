@@ -27,10 +27,11 @@ function App() {
                 <Route path='/payment' element={<PaymentPage/>}/>
                 <Route path='/payment-result-fail' element={<PaymentFailPage/>}/>
                 <Route path='/payment-result-success' element={<PaymentSuccessPage/>}/>
-                <Route path='/panel-login' element={<PanelLoginPage/>}/>
-                <Route path='/panel-products' element={<PanelProductsPage/>}/>
-                <Route path='/panel-quantity' element={<PanelQuantityPage/>}/>
-                <Route path='/panel-orders' element={<PanelOrdersPage/>}/>
+                <Route path='/panel/login' element={<PanelLoginPage/>}/>
+                <Route path='/panel' element={<Navigate replace to='/panel/login'/>}/>
+                <Route path='/panel/products' element={<PanelProductsPage/>}/>
+                <Route path='/panel/quantity' element={<PanelQuantityPage/>}/>
+                <Route path='/panel/orders' element={<PanelOrdersPage/>}/>
                 <Route path='/not-found' element={<NotFoundPage/>} />
                 <Route path='*' element={<Navigate replace to="/not-found"/>} />
             </Routes>
