@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './assets/logo.svg';
-import './App.css';
 import {Navigate, Route, Routes} from "react-router-dom";
-import {HomePage} from "./pages/homePage";
-import {ProductsPage} from './pages/productsPage'
-import {SingleProductPage} from "./pages/singleProductPage";
-import {CartPage} from "./pages/cartPage";
-import {Checkout} from "./pages/checkoutPage";
-import {PaymentPage} from "./pages/paymentPage";
-import {PaymentSuccessPage} from "./pages/paymentSuccessPage";
-import { PaymentFailPage} from "./pages/paymentFailPage";
-import {PanelLoginPage} from "./pages/panelLoginPage";
-import {PanelProductsPage} from "./pages/panelProductsPage";
-import {PanelQuantityPage} from "./pages/panelQuantityPage";
-import {PanelOrdersPage} from "./pages/panelOrdersPage";
-import { NotFoundPage} from "./pages/notFoundPage";
+import {HomePage} from "./pages/HomePage";
+import {ProductsPage} from './pages/ProductsPage'
+import {SingleProductPage} from "./pages/SingleProductPage";
+import {CartPage} from "./pages/CartPage";
+import {Checkout} from "./pages/CheckoutPage";
+import {PaymentPage} from "./pages/PaymentPage";
+import {PaymentSuccessPage} from "./pages/PaymentSuccessPage";
+import { PaymentFailPage} from "./pages/PaymentFailPage";
+import {PanelLoginPage} from "./pages/PanelLoginPage";
+import {PanelProductsPage} from "./pages/PanelProductsPage";
+import {PanelQuantityPage} from "./pages/PanelQuantityPage";
+import {PanelOrdersPage} from "./pages/PanelOrdersPage";
+import { NotFoundPage} from "./pages/NotFoundPage";
+import Layout from "./components/layouts/layout";
 
 function App() {
     return (
-        <div>
+        <Layout>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/products' element={<ProductsPage/>}/>
@@ -35,7 +34,7 @@ function App() {
                 <Route path='/not-found' element={<NotFoundPage/>} />
                 <Route path='*' element={<Navigate replace to="/not-found"/>} />
             </Routes>
-        </div>
+        </Layout>
     );
 }
 

@@ -1,0 +1,45 @@
+.header-nav-container {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.header-nav-container .nav-item {
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.header-nav-container .shopname {
+    font-size: 50px;
+    color: palevioletred;
+    font-style: italic;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+.nav-items-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items-left .nav-item {
+    margin-right: 50px;
+}
+
+.nav-items-left .nav-item:not(.shopname) {
+    padding-top: 6px;
+}
+
+.nav-items-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items-right .fa-shopping-cart{
+    color: green;
+    font-size: 35px;
+}

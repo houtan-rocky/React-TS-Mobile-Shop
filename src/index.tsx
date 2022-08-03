@@ -1,7 +1,9 @@
 import React from 'react';
 import App from "./App";
+import './styles/global.scss'
 import {BrowserRouter} from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import Layout from "./components/layouts/layout";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -9,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+                <App/>
         </BrowserRouter>
     </React.StrictMode>
 );
