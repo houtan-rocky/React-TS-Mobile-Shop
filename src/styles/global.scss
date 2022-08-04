@@ -10,10 +10,13 @@
 body {
   font-family: $ubuntu-font;
   color: $text;
+  background-color: #eee;
   // height: 200vh;
 }
 
 main {
+  position: relative;
+  bottom: 200px;
   height: calc(100vh - #{$header-height});
   display: flex;
   justify-content: center;
