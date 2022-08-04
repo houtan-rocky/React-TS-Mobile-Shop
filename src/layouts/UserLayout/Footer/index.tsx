@@ -1,70 +1,116 @@
-import React, {useState} from "react";
-import classes from "./Footer.module.scss";
+import React from 'react'
 
-export const Footer = () => {
-    const [darkMode, setDarkMode] = useState(false)
-    const toggleTheme = () => setDarkMode(!darkMode)
+import {Link} from 'react-router-dom'
 
-    const handleThemeChange = () => {
+import Grid from 'components/ui/Grid'
 
+import logo from 'assets/images/Logo-2.png'
+
+const footerAboutLinks = [
+    {
+        display: "کنسول بازی",
+        path: "/about"
+    },
+    {
+        display: "لوازم جانبی کامپیوتر",
+        path: "/about"
+    },
+    {
+        display: "موبایل",
+        path: "/about"
+    },
+    {
+        display: "لوازم جانبی کنسول",
+        path: "/about"
     }
+]
 
+const footerCustomerLinks = [
+    {
+        display: "تلوزیون",
+        path: "/about"
+    },
+    {
+        display: "سینمای خانگی",
+        path: "/about"
+    },
+    {
+        display: "اسپیکر",
+        path: "/about"
+    }
+]
+const Footer = () => {
     return (
-        <div  className={`${darkMode ? classes.boxDark : classes.box}`}>
-        <button onClick={toggleTheme}>dark/light</button>
-            <div className={classes.Container}>
-                <div className={classes.Row}>
-                    <div className={classes.Column}>
-                        <p className={darkMode? classes.headingDark : classes.heading}>درباره ی ما</p>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">هدف</a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">دیدگاه</a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">نظرات شما</a>
+        <footer className="footer">
+            <div className="container">
+                <Grid
+                    col={4}
+                    mdCol={2}
+                    smCol={1}
+                    gap={10}
+                >
+                    <div>
+                        <div className="footer__title">
+                            تماس با ما
+                        </div>
+                        <div className="footer__content">
+                            <p>
+                                دفتر تهران <strong>۰۲۱۳۳۳۳۲۲۲۲</strong>
+                            </p>                            <p>
+                            دفتر شیراز <strong>۰۲۱۳۳۳۳۲۲۲۲</strong>
+                        </p>                            <p>
+                            دفتر اهواز <strong>۰۲۱۳۳۳۳۲۲۲۲</strong>
+                        </p>
+
+                        </div>
                     </div>
-                    <div className={classes.Column}>
-                        <p className={darkMode? classes.headingDark : classes.heading}>تماس با ما</p>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">اهواز</a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">تهران</a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">شیراز</a>
+                    <div>
+                        <div className="footer__title">
+                            لوازم الکترونیکی
+                        </div>
+                        <div className="footer__content">
+                            {
+                                footerAboutLinks.map((item, index) => (
+                                    <p key={index}>
+                                        <Link to={item.path}>
+                                            {item.display}
+                                        </Link>
+                                    </p>
+                                ))
+                            }
+                        </div>
                     </div>
-                    <div className={classes.Column}>
-                        <p className={darkMode? classes.headingDark : classes.heading}>خدمات</p>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">هدف</a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">دیدگاه</a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">نظرات شما</a>
+                    <div>
+                        <div className="footer__title">
+                            لوازم الکترونیکی
+                        </div>
+                        <div className="footer__content">
+                            {
+                                footerCustomerLinks.map((item, index) => (
+                                    <p key={index}>
+                                        <Link to={item.path}>
+                                            {item.display}
+                                        </Link>
+                                    </p>
+                                ))
+                            }
+                        </div>
                     </div>
-                    <div className={classes.Column}>
-                        <p className={darkMode? classes.headingDark : classes.heading}>شبکه های اجتماعی</p>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">
-                            <i className="fab fa-facebook-f">
-                <span>
-                  فیسبوک
-                </span>
-                            </i>
-                        </a>
-                        <a className={darkMode? classes.footerLinkDark : classes.footerLink} href="#">
-                            <i className="fab fa-instagram">
-                <span>
-                  اینستاگرام
-                </span>
-                            </i>
-                        </a>
-                        <a href="#" className={darkMode? classes.footerLinkDark : classes.footerLink}>
-                            <i className="fab fa-twitter">
-                <span>
-                  توییتر
-                </span>
-                            </i>
-                        </a>
-                        <a href="#" className={darkMode? classes.footerLinkDark : classes.footerLink}>
-                            <i className="fab fa-youtube">
-                <span>
-                  یوتوب
-                </span>
-                            </i>
-                        </a>
+                    <div className="footer__about">
+                        <p>
+                            <Link to="/">
+                                <img src={logo} className="footer__logo" alt=""/>
+                            </Link>
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda blanditiis
+                            consequuntur dolorum enim eveniet omnis repellendus, rerum? Debitis, non.
+                        </p>
                     </div>
-                </div>
+                </Grid>
             </div>
-        </div>
-    );
-};
+        </footer>
+    )
+}
+
+export default Footer

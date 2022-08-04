@@ -1,10 +1,10 @@
 import React from 'react';
 import App from "./App";
-import './styles/global.scss'
+import './styles/main.scss'
 import {BrowserRouter} from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import {Provider} from "react-redux";
-import store from "./store/store";
+import index from "./store";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Provider store={store}>
+            <Provider store={index}>
                 <App/>
             </Provider>
         </BrowserRouter>
