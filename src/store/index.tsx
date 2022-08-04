@@ -10,6 +10,6 @@ const initalState = {
 
 const middleware = [thunk]
 
-const store = createStore(rootReducer, initalState, composeWithDevTools(applyMiddleware(...middleware)))
+const index = createStore(rootReducer, initalState, composeWithDevTools(applyMiddleware(...middleware)))
 
-export default store;
+export default index;

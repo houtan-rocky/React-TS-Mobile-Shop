@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Checkout () {
+export function CheckoutPage () {
     return         <h1>
         <p>خرید</p>
         <p>CheckoutPage</p>
