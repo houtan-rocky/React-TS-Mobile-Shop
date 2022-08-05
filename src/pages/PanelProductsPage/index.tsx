@@ -1,3 +1,3 @@
 export const PanelProductsPage = () => {
-    return <h1>PanelProductsPage</h1>
+    return <main className={'main'}>PanelProductsPage</main>
 }

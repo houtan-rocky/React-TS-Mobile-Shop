@@ -1,8 +1,8 @@
 import React from "react";
 
-export function CheckoutPage () {
-    return         <h1>
+export function CheckoutPage() {
+    return <main className={'main'}>
         <p>خرید</p>
         <p>CheckoutPage</p>
-    </h1>
+    </main>
 }
