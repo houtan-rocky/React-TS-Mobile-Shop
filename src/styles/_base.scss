@@ -85,9 +85,10 @@ img {
 }
 
 .main {
-    margin-top: $header-height;
-    margin-bottom: 2rem;
+    margin-top: $header-height + 60px;
+    margin-bottom: 3rem;
     min-height: 100vh;
+    padding: 0 20px;
 
     @include tablet {
         margin-top: calc(#{$header-tablet-height} + 20px);

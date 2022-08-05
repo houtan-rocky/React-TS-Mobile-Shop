@@ -27,7 +27,6 @@ function ProjectRoutes() {
             <Routes>
                 {/*Public Routes*/}
                 <Route path="/" element={<UserLayout/>}>
-
                     <Route path='/' element={<HomePage/>}/>
                     <Route path='/products' element={<ProductsPage/>}/>
                     <Route path='/products/:id' element={<SingleProductPage/>}/>
@@ -42,12 +41,11 @@ function ProjectRoutes() {
                         <Route path='/payment/result' element={<PaymentFailPage/>}/>
                         <Route path='/*' element={<NotFoundPage/>}/>
                     </Route>
-
                 </Route>
 
 
                 {/*Panel Routes*/}
-                <Route path='/panel' element={<UserLayout/>}>
+                <Route path='/panel' >
                     <Route path='/panel' element={<PanelPage/>}/>
                     <Route path='/panel/login' element={<PanelLoginPage/>}/>
                     <Route path='/panel/products' element={<PanelProductsPage/>}/>

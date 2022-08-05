@@ -5,7 +5,7 @@ import {Link, useLocation} from "react-router-dom";
 
 const mainNav = [
     {
-        display: 'فیجیکالا',
+        display: 'خانه',
         path: '/'
     },
     {
@@ -80,13 +80,15 @@ export const Navbar = () => {
                         <div className="header__menu__item header__menu__right__item">
                             <i className="bx bx-search"></i>
                         </div>
+
+                        <div className="header__menu__item header__menu__right__item">
+                            <i className="bx bx-user"></i>
+                        </div>
+
                         <div className="header__menu__item header__menu__right__item">
                             <Link to="/checkout/cart">
                                 <i className="bx bx-shopping-bag"></i>
                             </Link>
-                        </div>
-                        <div className="header__menu__item header__menu__right__item">
-                            <i className="bx bx-user"></i>
                         </div>
                     </div>
                 </div>

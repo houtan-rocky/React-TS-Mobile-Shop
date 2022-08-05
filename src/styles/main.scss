@@ -1,7 +1,9 @@
+// General Styles
 @import "variables";
 @import "mixins";
 @import "base";
 
+// Components Styles:
 @import "./components/header";
 @import "./components/footer";
 @import "./components/hero-slider";
