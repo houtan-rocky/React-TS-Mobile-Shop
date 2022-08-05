@@ -55,12 +55,14 @@ const Footer = () => {
                         </div>
                         <div className="footer__content">
                             <p>
-                                دفتر تهران <strong>۰۲۱۳۳۳۳۲۲۲۲</strong>
-                            </p>                            <p>
-                            دفتر شیراز <strong>۰۲۱۳۳۳۳۲۲۲۲</strong>
-                        </p>                            <p>
-                            دفتر اهواز <strong>۰۲۱۳۳۳۳۲۲۲۲</strong>
-                        </p>
+                                دفتر تهران <a href={'tel:۰۲۱۳۳۳۳۲۲۲۲'}>۰۲۱۳۳۳۳۲۲۲۲</a>
+                            </p>
+                            <p>
+                                دفتر شیراز <a href={'tel:۰۲۱۳۳۳۳۲۲۲۲'}>۰۲۱۳۳۳۳۲۲۲۲</a>
+                            </p>
+                            <p>
+                                دفتر اهواز <a href={'tel:۰۲۱۳۳۳۳۲۲۲۲'}>۰۲۱۳۳۳۳۲۲۲۲</a>
+                            </p>
 
                         </div>
                     </div>
@@ -103,8 +105,7 @@ const Footer = () => {
                             </Link>
                         </p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda blanditiis
-                            consequuntur dolorum enim eveniet omnis repellendus, rerum? Debitis, non.
+                            فروشگاه اینترنتی فیجیکالا با بیش از یک دهه تجربه٬ بزرگترین فروشگاه آنلاین ایران.
                         </p>
                     </div>
                 </Grid>

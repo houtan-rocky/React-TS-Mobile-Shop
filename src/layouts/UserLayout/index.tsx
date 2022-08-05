@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import {Outlet} from "react-router-dom";
 
 
-const Layout = (props: any) => {
+const Layout = () => {
     return (
         <div>
             <Navbar/>
