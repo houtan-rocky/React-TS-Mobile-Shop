@@ -1,3 +1,3 @@
 export const PanelQuantityPage = () => {
-    return <h1>PanelQuantityPage</h1>
+    return <main className={'main'}>PanelQuantityPage</main>
 }

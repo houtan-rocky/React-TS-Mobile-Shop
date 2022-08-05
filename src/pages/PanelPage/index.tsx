@@ -1,7 +1,7 @@
 import React from "react";
 
 export function PanelPage(props: any) {
-    return <div>
+    return <main className={'main'}>
         Panel
-    </div>;
+    </main>;
 }

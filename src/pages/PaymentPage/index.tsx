@@ -1,5 +1,5 @@
 import React from "react";
 
 export const PaymentPage: React.FC =  () => {
-    return <h1>PaymentPage</h1>
+    return <main className={'main'}>PaymentPage</main>
 }

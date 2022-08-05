@@ -9,34 +9,34 @@ import logo from 'assets/images/Logo-2.png'
 const footerAboutLinks = [
     {
         display: "کنسول بازی",
-        path: "/about"
+        path: "/"
     },
     {
         display: "لوازم جانبی کامپیوتر",
-        path: "/about"
+        path: "/"
     },
     {
         display: "موبایل",
-        path: "/about"
+        path: "/"
     },
     {
         display: "لوازم جانبی کنسول",
-        path: "/about"
+        path: "/"
     }
 ]
 
 const footerCustomerLinks = [
     {
         display: "تلوزیون",
-        path: "/about"
+        path: "/"
     },
     {
         display: "سینمای خانگی",
-        path: "/about"
+        path: "/"
     },
     {
         display: "اسپیکر",
-        path: "/about"
+        path: "/"
     }
 ]
 const Footer = () => {
