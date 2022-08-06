@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import 'assets/boxicons-2.0.7/css/boxicons.css'
+import 'assets/boxicons-2.0.7/css/boxicons.css';
 import logo from 'assets/images/Logo-2.png';
 import {Link, useLocation} from "react-router-dom";
 
