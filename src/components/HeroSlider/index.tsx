@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
+import Button from "../Button";
 
 interface IHeroSlider {
     data: any[];
@@ -47,16 +48,16 @@ const HeroSlider = (props: any) => {
             {
                 props.control ? (
                     <div className="hero-slider__control">
-                        <div className="hero-slider__control__item" onClick={prevSlide}>
-                            <i className="bx bx-chevron-left"></i>
+                        <div className="hero-slider__control__item" onClick={nextSlide}>
+                            <i className="bx bx-chevron-right"></i>
                         </div>
                         <div className="hero-slider__control__item">
                             <div className="index">
                                 {activeSlide + 1}/{data.length}
                             </div>
                         </div>
-                        <div className="hero-slider__control__item" onClick={nextSlide}>
-                            <i className="bx bx-chevron-right"></i>
+                        <div className="hero-slider__control__item" onClick={prevSlide}>
+                            <i className="bx bx-chevron-left"></i>
                         </div>
                     </div>
                 ) : null
@@ -76,10 +77,10 @@ const HeroSliderItem = (props: any) => (
             </div>
             <div className="hero-slider__item__info__btn">
                 <Link to={props.item.path}>
-                    <button
+                    <Button backgroundColor={props.item.color} icon='bx bx-cart' animate={true}
                     >
                         برو به محصول
-                    </button>
+                    </Button>
                 </Link>
             </div>
         </div>
