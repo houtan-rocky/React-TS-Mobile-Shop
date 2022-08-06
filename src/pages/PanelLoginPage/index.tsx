@@ -1,5 +1,8 @@
 import React from "react";
+import Helmet from "../../components/Helmet/Helmet";
 
 export const PanelLoginPage: React.FC = () => {
-    return <main className={'main'}>PanelLoginPage</main>
+    return <Helmet className={'main'} title={'ورود ادمین'}>
+
+    </Helmet>
 }
