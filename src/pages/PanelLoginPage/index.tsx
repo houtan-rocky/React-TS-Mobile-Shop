@@ -1,8 +1,8 @@
 import React from "react";
-import Helmet from "../../components/Helmet/Helmet";
+import Index from "../../components/Helmet";
 
 export const PanelLoginPage: React.FC = () => {
-    return <Helmet className={'main'} title={'ورود ادمین'}>
+    return <Index className={'main'} title={'ورود ادمین'}>
 
-    </Helmet>
+    </Index>
 }

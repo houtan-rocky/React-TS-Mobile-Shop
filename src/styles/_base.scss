@@ -86,7 +86,7 @@ img {
 }
 
 .main {
-    margin-top: $header-height + 60px;
+    margin-top: $header-height + 10px;
     margin-bottom: 3rem;
     min-height: 100vh;
     padding: 0 20px;
@@ -96,7 +96,7 @@ img {
     }
 
     @include mobile {
-        margin-top: calc(#{$header-mobile-height} + 10px);
+        margin-top: calc(#{$header-mobile-height} + 70px);
     }
 }
 

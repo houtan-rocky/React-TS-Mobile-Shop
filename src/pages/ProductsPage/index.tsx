@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "../../components/Helmet/Helmet";
+import Helmet from "../../components/Helmet";
 
 export const ProductsPage: React.FC = () => {
     return (

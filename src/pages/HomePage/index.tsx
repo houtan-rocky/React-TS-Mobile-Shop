@@ -1,11 +1,18 @@
 import React from "react";
-import Helmet from "../../components/Helmet/Helmet";
+import Helmet from "../../components/Helmet";
+import HeroSlider from "../../components/HeroSlider";
+import heroSliderData from "../../assets/fake-data/hero-slider";
 
 export const HomePage: React.FC = () => {
     return (
         <main className={'main'}>
             <Helmet title={'خانه'}>
-                Home
+                {/*hero slider*/}
+                <HeroSlider data={heroSliderData}
+                            control={true}
+                            auto={false}
+                            timeOut={5000}/>
+                {/*end hero slider*/}
             </Helmet>
         </main>
     )

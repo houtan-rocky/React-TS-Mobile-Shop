@@ -1,4 +1,4 @@
-import Helmet from "../../components/Helmet/Helmet";
+import Helmet from "../../components/Helmet";
 
 export const PanelProductsPage = () => {
     return <main className={'main'}>

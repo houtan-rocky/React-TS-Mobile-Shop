@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "../../components/Helmet/Helmet";
+import Helmet from "../../components/Helmet";
 
 export const PaymentSuccessPage: React.FC = () => {
     return <main className={'main'}>
