@@ -1,0 +1,20 @@
+.login-form {
+  @include flex(center, center);
+  height: 100vh;
+
+  &__form {
+    padding: 60px;
+    background-color: #9a1b1b;
+    @include flex(center, center);
+    flex-direction: column;
+  }
+
+  &__input {
+    margin-bottom: 30px;
+    height: 40px;
+  }
+
+  &__btn {
+    border-radius: 15px;
+  }
+}
