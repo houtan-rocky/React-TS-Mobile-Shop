@@ -1,5 +1,5 @@
 import axios, {AxiosRequestConfig} from "axios";
-import { BASE_URL } from "../utils/variables.config";
+import { BASE_URL } from "../configs/variables.config";
 
 class HttpService {
     constructor() {
@@ -11,23 +11,23 @@ class HttpService {
         })
     }
 
-    get(url: string, config: AxiosRequestConfig) {
+    get(url: string, config?: AxiosRequestConfig) {
         return axios.get(url, config);
     }
 
-    post(url: string, data: any, config: AxiosRequestConfig) {
+    post(url: string, data: any, config?: AxiosRequestConfig) {
         return axios.post(url, data, config);
     }
 
-    put(url: string, data: any, config: AxiosRequestConfig) {
+    put(url: string, data: any, config?: AxiosRequestConfig) {
         return axios.put(url, data, config);
     }
 
-    patch(url: string, data: any, config: AxiosRequestConfig) {
+    patch(url: string, data: any, config?: AxiosRequestConfig) {
         return axios.patch(url, data, config);
     }
 
-    delete(url: string, config: AxiosRequestConfig) {
+    delete(url: string, config?: AxiosRequestConfig) {
         return axios.delete(url, config);
     }
 

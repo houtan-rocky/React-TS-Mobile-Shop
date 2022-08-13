@@ -6,6 +6,8 @@ import {handledarkMode} from "../store/actions/darkModeAction";
 
 import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
+import PanelLayout from "../layouts/panelLayout";
+import {PanelLoginPage} from "../pages";
 
 
 function ProjectRoutes() {
@@ -13,10 +15,17 @@ function ProjectRoutes() {
         <BrowserRouter>
             <Routes>
 
-                <Route path={"/panel/*"}>
+                {/*Panel*/}
+
+                {/*Panel Login*/}
+                <Route path='panel/login' element={<PanelLoginPage/>}/>
+
+                {/*Panel Protected Routes*/}
+                <Route path={"/panel/*"} element={<PanelLayout/>}>
                     <Route path={"*"} element={<ProtectedRoutes/>}/>
                 </Route>
 
+                {/*Public Routes*/}
                 <Route path={'/*'} element={<UserLayout/>}>
                     <Route path={"*"} element={<PublicRoutes/>}/>
                 </Route>

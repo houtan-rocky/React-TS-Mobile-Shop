@@ -16,6 +16,7 @@ function PublicRoutes() {
 
     return (
         <Routes>
+
                 <Route path='' element={<HomePage/>}/>
                 <Route path='products' element={<ProductsPage/>}/>
                 <Route path='products/:id' element={<SingleProductPage/>}/>

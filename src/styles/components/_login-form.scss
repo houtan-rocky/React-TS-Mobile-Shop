@@ -1,9 +1,10 @@
 .login-form {
+  color: white;
   @include flex(center, center);
   height: 100vh;
 
   &__form {
-    padding: 60px;
+    padding: 80px;
     background-color: #9a1b1b;
     @include flex(center, center);
     flex-direction: column;

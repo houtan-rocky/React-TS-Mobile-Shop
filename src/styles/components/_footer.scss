@@ -12,6 +12,10 @@
         p {
             margin-bottom: 2rem;
         }
+
+        //@include mobile {
+        //    display: none;
+        //}
     }
 
     &__title {

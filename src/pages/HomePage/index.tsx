@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
                 {/*hero slider*/}
                 <HeroSlider data={heroSliderData}
                             control={true}
-                            auto={false}
+                            auto={true}
                             timeOut={5000}/>
                 {/*end hero slider*/}
             </Helmet>
