@@ -85,7 +85,7 @@ const HeroSliderItem = (props: any) => (
             </div>
         </div>
         <div className="hero-slider__item__image">
-            <div className={`shape bg-${props.item.color}`}></div>
+            {/*<div className={`shape bg-${props.item.color}`}></div>*/}
             <img src={props.item.img} alt=""/>
         </div>
     </div>
