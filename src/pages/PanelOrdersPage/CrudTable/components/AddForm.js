@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CustomInput from "./CustomInput";
+import {addOrder} from "../../../../api/updateOrder";
 
 
 const AddForm = (props) => {
@@ -25,14 +26,11 @@ const AddForm = (props) => {
         event.preventDefault();
         if (!order.first_name || !order.last_name) return;
         props.addUser(order);
+        addOrder(order)
         setOrder(initialFormState);
       }}
     >
       <h2>اضافه کردن سفارش</h2>
-      <div className={"form-group"}>
-        <label htmlFor="">عکس پروفایل</label>
-        <CustomInput type={"file"} name={"image"} value={order.image} onChange={handleInputChange} ></CustomInput>
-      </div>
       <div className="form-group">
         <label>نام کاربر</label>
         <CustomInput
@@ -51,7 +49,7 @@ const AddForm = (props) => {
           name="last_name"
           value={order.last_name}
           onChange={handleInputChange}
-          pattern="^[a-zA-Z]+$"
+          pattern="[آ-ی]"
           required
         />
       </div>

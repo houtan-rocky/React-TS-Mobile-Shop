@@ -3,13 +3,14 @@ import SearchBox from "./SearchBox";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
+import {GetProducts} from "../../../../api/Product.api";
 
-const useSortableData = (users, config = null) => {
+const useSortableData = (products, config = null) => {
   const [sortConfig, setSortConfig] = useState(config);
 
 
-  const sortedUsers = useMemo(() => {
-    let sortableUsers = [...users];
+  const sortedProducts = useMemo(() => {
+    let sortableUsers = [...products];
     if (sortConfig !== null) {
       sortableUsers.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -22,7 +23,7 @@ const useSortableData = (users, config = null) => {
       });
     }
     return sortableUsers;
-  }, [users, sortConfig]);
+  }, [products, sortConfig]);
 
   const requestSort = (key) => {
     let direction = "ascending";
@@ -36,12 +37,12 @@ const useSortableData = (users, config = null) => {
     setSortConfig({ key, direction });
   };
 
-  return { users: sortedUsers, requestSort, sortConfig };
+  return { products: sortedProducts, requestSort, sortConfig };
 };
 
 const DirectoryTable = (props) => {
-  const { users, requestSort, sortConfig } = useSortableData(props.users);
-  const { editUser, deleteUser } = props;
+  const { products, requestSort, sortConfig } = useSortableData(props.products);
+  const { editOrder, deleteOrder } = props;
   const [searchValue, setSearchValue] = useState("");
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -54,16 +55,16 @@ const DirectoryTable = (props) => {
     setSearchValue(value);
   };
 
-  let updateUsers = users.filter((user) => {
-    return Object.keys(user).some((key) =>
-      user[key]
+  let updateProducts = products.filter((product) => {
+    return Object.keys(product).some((key) =>
+      product[key]
         .toString()
         .toLowerCase()
         .includes(searchValue.toString().toLowerCase())
     );
   });
 
-  let updateSuggestion = users.filter((user) => {
+  let updateSuggestion = products.filter((user) => {
     return Object.keys(user).some((key) =>
         user[key]
             .toString()
@@ -79,73 +80,57 @@ const DirectoryTable = (props) => {
         <table>
           <thead>
             <tr>
-              <th>تصویر</th>
               <th>
                 <button
                   type="button"
-                  onClick={() => requestSort("first_name")}
-                  className={getClassNamesFor("first_name")}
+                  onClick={() => requestSort("name")}
+                  className={getClassNamesFor("name")}
                 >
-                  نام کاربر
+                  کالا
                 </button>
               </th>
               <th>
                 <button
                   type="button"
-                  onClick={() => requestSort("last_name")}
-                  className={getClassNamesFor("last_name")}
+                  onClick={() => requestSort("price")}
+                  className={getClassNamesFor("price")}
                 >
-                  نام خانوادگی کاربر
+                  قیمت
                 </button>
               </th>
               <th>
                 <button
                   type="button"
-                  onClick={() => requestSort("username")}
-                  className={getClassNamesFor("username")}
+                  onClick={() => requestSort("quantity")}
+                  className={getClassNamesFor("quantity")}
                 >
-                  مجموع مبلغ
+                  موجودی
                 </button>
               </th>
-              <th>
-                <button
-                  type="button"
-                  onClick={() => requestSort("email")}
-                  className={getClassNamesFor("email")}
-                >
-                  زمان ثبت سفارش
-                </button>
-              </th>
+
+
               <th></th>
             </tr>
           </thead>
-          <br/>
           <tbody>
-            {updateUsers.length > 0 ? (
-              updateUsers.map((user) => (
-                <tr key={user.id}>
-                  <td>
-                    <img
-                      src={user.image}
-                      alt={user.first_name + " " + user.last_name}
-                    />
-                  </td>
-                  <td>{user.first_name}</td>
-                  <td>{user.last_name}</td>
-                  <td>{user.total_bill}</td>
-                  <td>{user.order_registration_date}</td>
+            {updateProducts.length > 0 ? (
+              updateProducts.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.name}</td>
+                  <td>{product.price}</td>
+                  <td>{product.quantity}</td>
                   <td>
                     <IconButton
                       aria-label="edit"
                       onClick={() => {
-                        editUser(user);
+                        editOrder(product);
                       }}
                     >
                       <EditIcon />
                     </IconButton>
                     <IconButton
                       aria-label="delete"
-                      onClick={() => deleteUser(user.id)}
+                      onClick={() => deleteOrder(product.id)}
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -154,7 +139,7 @@ const DirectoryTable = (props) => {
               ))
             ) : (
               <tr>
-                <td colSpan={5}>No Users</td>
+                <td colSpan={5}>No Data</td>
               </tr>
             )}
           </tbody>

@@ -1,9 +1,9 @@
 export const LOGIN = '/auth/login';
 export const REFRESH_TOKEN_URL = '/auth/refresh-token';
 export const REGISTER = '/matters';
-export const GET_PRODUCTS = '/products';
+export const GET_PRODUCTS = 'http://localhost:8000/products';
 export const GET_PRODUCT = '/product';
-export const GET_CATEGORIES = '/category';
-export const GET_ORDERS = '/orders';
+export const GET_CATEGORIES = 'http://localhost:8000/category';
+export const GET_ORDERS = 'http://localhost:8000/orders';
 export const UPLOAD_IMAGE = '/upload';
 export const ADD_NEWSLETTER = '/newsletters';

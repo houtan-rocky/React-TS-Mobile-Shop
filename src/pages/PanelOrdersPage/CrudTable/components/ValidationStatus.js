@@ -5,7 +5,7 @@ function ValidationStatus(props) {
     const getValidationError = (name) => {
         switch (name) {
             case "first_name":
-                return <>نام فقط باید شامل حروف باشد</>;
+                return <>نام فقط باید شامل حروف فارسی باشد</>;
                 break;
             case "last_name":
                 return <>نام خانوادگی فقط باید دارای حروف باشد</>;

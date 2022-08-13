@@ -3,6 +3,7 @@ import SearchBox from "./SearchBox";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 
 const useSortableData = (users, config = null) => {
   const [sortConfig, setSortConfig] = useState(config);
@@ -41,7 +42,7 @@ const useSortableData = (users, config = null) => {
 
 const DirectoryTable = (props) => {
   const { users, requestSort, sortConfig } = useSortableData(props.users);
-  const { editUser, deleteUser } = props;
+  const { editOrder, deleteOrder } = props;
   const [searchValue, setSearchValue] = useState("");
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -79,7 +80,6 @@ const DirectoryTable = (props) => {
         <table>
           <thead>
             <tr>
-              <th>تصویر</th>
               <th>
                 <button
                   type="button"
@@ -101,8 +101,8 @@ const DirectoryTable = (props) => {
               <th>
                 <button
                   type="button"
-                  onClick={() => requestSort("username")}
-                  className={getClassNamesFor("username")}
+                  onClick={() => requestSort("total_bill")}
+                  className={getClassNamesFor("total_bill")}
                 >
                   مجموع مبلغ
                 </button>
@@ -110,10 +110,19 @@ const DirectoryTable = (props) => {
               <th>
                 <button
                   type="button"
-                  onClick={() => requestSort("email")}
-                  className={getClassNamesFor("email")}
+                  onClick={() => requestSort("order_registration_date")}
+                  className={getClassNamesFor("order_registration_date")}
                 >
                   زمان ثبت سفارش
+                </button>
+              </th>
+              <th>
+                <button
+                  type="button"
+                  onClick={() => requestSort("status")}
+                  className={getClassNamesFor("status")}
+                >
+                  وضعیت
                 </button>
               </th>
               <th></th>
@@ -121,39 +130,40 @@ const DirectoryTable = (props) => {
           </thead>
           <tbody>
             {updateUsers.length > 0 ? (
-              updateUsers.map((user) => (
-                <tr key={user.id}>
-                  <td>
-                    <img
-                      src={user.image}
-                      alt={user.first_name + " " + user.last_name}
-                    />
-                  </td>
-                  <td>{user.first_name}</td>
-                  <td>{user.last_name}</td>
-                  <td>{user.total_bill}</td>
-                  <td>{user.order_registration_date}</td>
+              updateUsers.map((order) => (
+                <tr key={order.id}>
+                  <td>{order.first_name}</td>
+                  <td>{order.last_name}</td>
+                  <td>{order.total_bill}</td>
+                  <td>{order.order_registration_date}</td>
+                  <td>{order.status}</td>
                   <td>
                     <IconButton
                       aria-label="edit"
                       onClick={() => {
-                        editUser(user);
+                        editOrder(order);
                       }}
                     >
                       <EditIcon />
                     </IconButton>
                     <IconButton
                       aria-label="delete"
-                      onClick={() => deleteUser(user.id)}
+                      onClick={() => deleteOrder(order.id)}
                     >
                       <DeleteIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => deleteOrder(order.id)}
+                    >
+                      <AssessmentIcon />
                     </IconButton>
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={5}>No Users</td>
+                <td colSpan={5}>No Data</td>
               </tr>
             )}
           </tbody>

@@ -10,7 +10,7 @@ const SearchBox = ({ searchHandler }) => {
       <input
         onChange={handleSearchInputChange}
         type="text"
-        placeholder="Search..."
+        placeholder="جست و جو..."
       />
     </form>
   );

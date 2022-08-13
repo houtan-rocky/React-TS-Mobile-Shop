@@ -5,15 +5,15 @@ function ValidationStatus(props) {
     const getValidationError = (name) => {
         switch (name) {
             case "first_name":
-                return <>نام فقط باید شامل حروف باشد</>;
+                return <>نام فقط باید شامل حروف فارسی باشد</>;
                 break;
             case "last_name":
                 return <>نام خانوادگی فقط باید دارای حروف باشد</>;
                 break;
-            case "username":
+            case "total_bill":
                 return <>نام کاربری فقط می تواند شامل حروف و اعداد باشد</>;
                 break;
-            case "email":
+            case "order_registration_date":
                 return <>تاریخ پذیرفته نیست</>
                 break;
         }

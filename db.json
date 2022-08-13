@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "product-name-en": "Samsung Galaxy Note 20 Ultra",
+      "name": "Samsung Galaxy Note 20 Ultra",
       "product-name-fa": "سامسونگ گلکسی نوت 20 الترا",
       "images": [
         "8dc0edad1fdb2b9339a701a7ccb8217d",
@@ -101,7 +101,7 @@
       "id": 1
     },
     {
-      "product-name-en": "Samsung Galaxy A52",
+      "name": "Samsung Galaxy A52",
       "product-name-fa": "سامسونگ مدل گلکسی A52",
       "images": [
         "e13010ca8026475774e8bf56b9c9096a",
@@ -195,7 +195,7 @@
       "id": 2
     },
     {
-      "product-name-en": "Samsung Galaxy M32",
+      "name": "Samsung Galaxy M32",
       "product-name-fa": "سامسونگ مدل گلکسی M32",
       "images": [
         "a31593b37d6dfff51b1c12e06610ca6a",
@@ -289,7 +289,7 @@
       "id": 3
     },
     {
-      "product-name-en": "Samsung Galaxy A52s",
+      "name": "Samsung Galaxy A52s",
       "product-name-fa": "سامسونگ مدل Galaxy A52s ",
       "images": [
         "8460d998f1b06e68720816f6453d0d27",
@@ -383,7 +383,7 @@
       "id": 4
     },
     {
-      "product-name-en": "Samsung Galaxy S20+",
+      "name": "Samsung Galaxy S20+",
       "product-name-fa": "سامسونگ مدل گلکسی S20 پلاس",
       "images": [
         "f6b66d854e00531268cbfc8403cbfac1",
@@ -477,7 +477,7 @@
       "id": 5
     },
     {
-      "product-name-en": "Samsung Galaxy M22",
+      "name": "Samsung Galaxy M22",
       "product-name-fa": "سامسونگ مدل گلکسی M22",
       "images": [
         "5a4994e6f87ec570088b62789d43a395",
@@ -571,7 +571,7 @@
       "id": 6
     },
     {
-      "product-name-en": "Samsung Galaxy A22",
+      "name": "Samsung Galaxy A22",
       "product-name-fa": "سامسونگ گلکسی A22",
       "images": [
         "27f84c2b40f9885e2d798960f4ce361b",
@@ -665,7 +665,7 @@
       "id": 7
     },
     {
-      "product-name-en": "Xiaomi 11T Pro",
+      "name": "Xiaomi 11T Pro",
       "product-name-fa": "شیائومی مدل 11T Pro 5G",
       "images": [
         "25a21b289fc6de480b3c1e6757ee0400",
@@ -746,7 +746,7 @@
       "id": 8
     },
     {
-      "product-name-en": "Xiaomi Mi 11i - 5G",
+      "name": "Xiaomi Mi 11i - 5G",
       "product-name-fa": "شیائومی Mi 11i - 5G",
       "images": [
         "853edcf1ba1d1a0018fb9f4d4157ef64",
@@ -840,7 +840,7 @@
       "id": 9
     },
     {
-      "product-name-en": "Xioami Mi 11Lite - 4G",
+      "name": "Xioami Mi 11Lite - 4G",
       "product-name-fa": "شیائومی Mi 11 Lite - 4G",
       "images": [
         "22b7c3a624723ae57bfcea7e7de19dbf",
@@ -934,7 +934,7 @@
       "id": 10
     },
     {
-      "product-name-en": "Xiaomi Poco F3 5G",
+      "name": "Xiaomi Poco F3 5G",
       "product-name-fa": "شیائومی مدل Poco F3 5G",
       "images": [
         "fe85309d6ba3a225997b81a5922bfd56",
@@ -1028,7 +1028,7 @@
       "id": 11
     },
     {
-      "product-name-en": "XIAOMI REDMI NOTE 11",
+      "name": "XIAOMI REDMI NOTE 11",
       "product-name-fa": "شیائومی Redmi Note 11",
       "images": [
         "0a1b0a4307a741ce0733a39bd1d00112",
@@ -1122,7 +1122,7 @@
       "id": 12
     },
     {
-      "product-name-en": "Xiaomi Redmi 9A - Dual SIM Mobile Phone",
+      "name": "Xiaomi Redmi 9A - Dual SIM Mobile Phone",
       "product-name-fa": "گوشی موبایل شیائومی مدل Redmi 9A ظرفیت 32 گیگابایت رم 2 گیگابایت",
       "images": [
         "3a6b9195bae08a1cc90164b9b74496f2",
@@ -1215,7 +1215,7 @@
       "id": 13
     },
     {
-      "product-name-en": "Xiaomi Poco C31 32/3GB",
+      "name": "Xiaomi Poco C31 32/3GB",
       "product-name-fa": "گوشی موبایل شیائومی Poco C31 ظرفیت 32/2",
       "images": [
         "9c7c89e488fe2ae3300b786f74b0008b",
@@ -1363,7 +1363,7 @@
       "id": 14
     },
     {
-      "product-name-en": "Huawei nova 8i",
+      "name": "Huawei nova 8i",
       "product-name-fa": "هواوی مدل Nova 8i",
       "images": [
         "2aae41239380a6dfbc315a53293cf180",
@@ -1456,7 +1456,7 @@
       "id": 15
     },
     {
-      "product-name-en": "Huawei nova 8",
+      "name": "Huawei nova 8",
       "product-name-fa": "هواوی مدل Nova 8",
       "images": [
         "ea541ab24c3b29920f67a73b943f2a91",
@@ -1550,7 +1550,7 @@
       "id": 16
     },
     {
-      "product-name-en": "Huawei Y7a",
+      "name": "Huawei Y7a",
       "product-name-fa": "هواوی مدل Y7a",
       "images": [
         "34100d7ccd2e545609eacec1053d7f72",
@@ -1644,7 +1644,7 @@
       "id": 17
     },
     {
-      "product-name-en": "Huawei P50 Pocket",
+      "name": "Huawei P50 Pocket",
       "product-name-fa": "هواوی مدل P50 Pocket",
       "images": [
         "1ede2b31e382bb4e60686021531b506a",
@@ -1739,7 +1739,7 @@
       "id": 18
     },
     {
-      "product-name-en": "Huawei nova 9 Pro",
+      "name": "Huawei nova 9 Pro",
       "product-name-fa": "هواوی مدل Nova 9 Pro",
       "images": [
         "615f3266bdc3edd0a6ad4da87f49eceb",
@@ -1832,7 +1832,7 @@
       "id": 19
     },
     {
-      "product-name-en": "Huawei nova Y60",
+      "name": "Huawei nova Y60",
       "product-name-fa": "هواوی مدل Nova Y60",
       "images": [
         "44da6f93e044c2f739eff81a758edca9"
@@ -1922,7 +1922,7 @@
       "id": 20
     },
     {
-      "product-name-en": "Huawei P50 Pro",
+      "name": "Huawei P50 Pro",
       "product-name-fa": "هواوی مدل P50 Pro ",
       "images": [
         "7f3388226a6de28039799904bb40572e",
@@ -2014,67 +2014,17 @@
       "id": 21
     }
   ],
-  "users": [
-    {
-      "username": "mast9rmind",
-      "firstName": "هوتن",
-      "lastName": "عباسی",
-      "password": "123456789",
-      "email": "abcd@gmail.com",
-      "phone": "09203332212",
-      "address": "خیابان شهید نجات اللهی",
-      "city": "اهواز",
-      "state": "خوزستان",
-      "country": "ایران",
-      "zip": "167453165",
-      "role": "admin",
-      "createdAt": 1843375019984,
-      "id": 1
-    },
-    {
-      "username": "mast9rmind",
-      "firstName": "هوتن",
-      "lastName": "عباسی",
-      "password": "123456789",
-      "email": "abcd@gmail.com",
-      "phone": "09203332212",
-      "address": "خیابان شهید نجات اللهی",
-      "city": "اهواز",
-      "state": "خوزستان",
-      "country": "ایران",
-      "zip": "167453165",
-      "role": "admin",
-      "createdAt": 1843375019984,
-      "id": 1
-    },
-    {
-      "username": "mast9rmind",
-      "firstName": "هوتن",
-      "lastName": "عباسی",
-      "password": "123456789",
-      "email": "abcd@gmail.com",
-      "phone": "09203332212",
-      "address": "خیابان شهید نجات اللهی",
-      "city": "اهواز",
-      "state": "خوزستان",
-      "country": "ایران",
-      "zip": "167453165",
-      "role": "admin",
-      "createdAt": 1843375019984,
-      "id": 1
-    }
-  ],
   "orders": [
     {
       "user-id": 1,
-      "status": "shipped",
-      "first_name": "علی",
-      "last_name": "کسایی",
+      "status": "تحویل شد",
+      "first_name": "نقی",
+      "last_name": "علیزاده",
       "total_bill": 23423423,
       "order_registration_date": "2021-02-07",
       "phone": "09203332212",
-      "address": "خیابان شهید جانکی",
-      "total-price": 11776000,
+      "address": "خیابان آلبوغبیش",
+      "total-price": 19976000,
       "delivery-date": "2021-02-07",
       "products": [
         {
@@ -2092,8 +2042,35 @@
       "id": 1
     },
     {
-      "user-id": 1,
-      "status": "shipped",
+      "user-id": 2,
+      "user-avatar": "",
+      "status": "در حال بررسی",
+      "first_name": "آرمین",
+      "last_name": "ولی زاده",
+      "total_bill": 100000,
+      "order_registration_date": "2021-02-07",
+      "phone": "09333332212",
+      "address": "خیابان آراسته",
+      "total-price": 11776000,
+      "delivery-date": "2020-06-07",
+      "products": [
+        {
+          "productId": 14,
+          "quantity": 1,
+          "colorId": 0
+        }
+      ],
+      "map": {
+        "lat": "35.71528",
+        "lng": "51.41667"
+      },
+      "delivered-at": null,
+      "createdAt": 1646876995101,
+      "id": 2
+    },
+    {
+      "user-id": 3,
+      "status": "تحویل شد",
       "first_name": "علی",
       "last_name": "کسایی",
       "total_bill": 23423423,
@@ -2115,85 +2092,159 @@
       },
       "delivered-at": null,
       "createdAt": 1646876995101,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "first_name": "علی",
+      "last_name": "کیایی",
+      "status": "تحویل شد",
+      "total_bill": 23423423,
+      "order_registration_date": "2021-02-07",
+      "user-id": 25
+    },
+    {
+      "id": 5,
+      "first_name": "اکمل",
+      "last_name": "کبریایی",
+      "status": "تحویل شد",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    },
+    {
+      "id": 6,
+      "first_name": "علی",
+      "last_name": "کریمی",
+      "status": "تحویل شد",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    },
+    {
+      "id": 7,
+      "first_name": "مشعل",
+      "last_name": "کریمی",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07",
+      "status": "در حال بررسی"
+    },
+    {
+      "id": 8,
+      "first_name": "درویش",
+      "last_name": "کریمی",
+      "status": "تحویل شد",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    },
+    {
+      "id": 9,
+      "first_name": "علی",
+      "last_name": "کریمی",
+      "status": "تحویل شد",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    },
+    {
+      "id": 10,
+      "first_name": "حسین",
+      "last_name": "نعیمی",
+      "status": "تحویل شد",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    },
+    {
+      "id": 11,
+      "first_name": "اکمل",
+      "last_name": "حلیمی",
+      "status": "تحویل شد",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    },
+    {
+      "id": 12,
+      "first_name": "باقر",
+      "last_name": "باقری",
+      "status": "در حال بررسی",
+      "total_bill": 12312414,
+      "order_registration_date": "2021-10-07"
+    }
+  ],
+  "category": [
+    {
+      "name-en": "apple",
+      "name-fa": "اپل",
+      "createdAt": 1645019634099,
+      "icon": "fee9e902dfae7810de7d35ba33ec4c75",
       "id": 1
     },
     {
-      "user-id": 1,
-      "status": "shipped",
-      "first_name": "علی",
-      "last_name": "کسایی",
-      "total_bill": 23423423,
-      "order_registration_date": "2021-02-07",
-      "phone": "09203332212",
-      "address": "خیابان شهید جانکی",
-      "total-price": 11776000,
-      "delivery-date": "2021-02-07",
-      "products": [
-        {
-          "productId": 20,
-          "quantity": 2,
-          "colorId": 0
-        }
-      ],
-      "map": {
-        "lat": "35.71528",
-        "lng": "51.41667"
-      },
-      "delivered-at": null,
-      "createdAt": 1646876995101,
-      "id": 1
+      "name-en": "samsung",
+      "name-fa": "سامسونگ",
+      "createdAt": 1645019634099,
+      "icon": "e4e0ddb4beb6042232d3371c52933622",
+      "id": 2
     },
     {
-      "user-id": 1,
-      "status": "shipped",
-      "first_name": "علی",
-      "last_name": "کسایی",
-      "total_bill": 23423423,
-      "order_registration_date": "2021-02-07",
-      "phone": "09203332212",
-      "address": "خیابان شهید جانکی",
-      "total-price": 11776000,
-      "delivery-date": "2021-02-07",
-      "products": [
-        {
-          "productId": 20,
-          "quantity": 2,
-          "colorId": 0
-        }
-      ],
-      "map": {
-        "lat": "35.71528",
-        "lng": "51.41667"
-      },
-      "delivered-at": null,
-      "createdAt": 1646876995101,
-      "id": 1
+      "name-en": "xiaomi",
+      "name-fa": "شیائومی",
+      "createdAt": 1645019634099,
+      "icon": "10fa3f8b1005c533ac28a2d0c692a3c3",
+      "id": 3
     },
     {
-      "user-id": 1,
-      "status": "shipped",
-      "first_name": "علی",
-      "last_name": "کسایی",
-      "total_bill": 23423423,
-      "order_registration_date": "2021-02-07",
-      "phone": "09203332212",
-      "address": "خیابان شهید جانکی",
-      "total-price": 11776000,
-      "delivery-date": "2021-02-07",
-      "products": [
-        {
-          "productId": 20,
-          "quantity": 2,
-          "colorId": 0
-        }
-      ],
-      "map": {
-        "lat": "35.71528",
-        "lng": "51.41667"
-      },
-      "delivered-at": null,
-      "createdAt": 1646876995101,
-      "id": 1
+      "name-en": "nokia",
+      "name-fa": "نوکیا",
+      "createdAt": 1645019634099,
+      "icon": "500c5b985ac1382b877bfbba2d957b85",
+      "id": 4
+    },
+    {
+      "name-en": "huawei",
+      "name-fa": "هواوی",
+      "createdAt": 1645019634099,
+      "icon": "931a7cba8f5a4189df0cdf5949f0547a",
+      "id": 5
+    },
+    {
+      "name-en": "lg",
+      "name-fa": "ال جی",
+      "createdAt": 1645019634099,
+      "icon": "5f64378b18ea20006895dc8dc584bbc8",
+      "id": 6
+    },
+    {
+      "name-en": "gplus",
+      "name-fa": "جی پلاس",
+      "createdAt": 1645019634099,
+      "icon": "6437c7ab807b047176c449bbc68115eb",
+      "id": 7
+    },
+    {
+      "name-en": "Caterpillar",
+      "name-fa": "کاترپیلار",
+      "createdAt": 1645019634099,
+      "icon": "c09aea85c4d295b693c12b26b24dd991",
+      "id": 8
+    },
+    {
+      "name-en": "glx",
+      "name-fa": "جی ال ایکس",
+      "createdAt": 1645019634099,
+      "icon": "1a96203becbe9f4982da4348c657ddba",
+      "id": 9
+    },
+    {
+      "name-en": "blackberry",
+      "name-fa": "بلک بری",
+      "createdAt": 1645019634099,
+      "icon": "0436b4f9e764b1dc33e3b57c3b196ff7",
+      "id": 10
+    },
+    {
+      "name-en": "poco",
+      "name-fa": "پوکو",
+      "icon": "848cadcc5a837e584ef41e1a7ff25ea4",
+      "createdAt": 1645019634099,
+      "id": 11
     }
   ],
   "protection": {

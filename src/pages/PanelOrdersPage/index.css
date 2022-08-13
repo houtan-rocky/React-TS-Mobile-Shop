@@ -25,6 +25,7 @@ table {
   max-width: 900px;
   width: 100%;
   margin: 3rem auto;
+  overflow-x: scroll !important;
 }
 
 table img {
@@ -172,7 +173,7 @@ button {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: #082542;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CustomInput from "./CustomInput";
+import {updateOrder} from "../../../../api/updateOrder";
 
 const EditForm = (props) => {
   const [order, setOrder] = useState(props.currentUser);
@@ -19,6 +20,7 @@ const EditForm = (props) => {
       onSubmit={(event) => {
         event.preventDefault();
         props.updateUser(order.id, order);
+        updateOrder(order.id, order);
       }}
     >
       <div className="form-group">
@@ -29,7 +31,7 @@ const EditForm = (props) => {
           name="first_name"
           value={order.first_name}
           onChange={handleInputChange}
-          pattern="[a-zA-Z^]+$"
+          pattern="[آ-ی^]+$"
           required
         />
       </div>
@@ -40,7 +42,7 @@ const EditForm = (props) => {
           name="last_name"
           value={order.last_name}
           onChange={handleInputChange}
-          pattern="[a-zA-Z^]+$"
+          pattern="[آ-ی^]+$"
           required
         />
       </div>
