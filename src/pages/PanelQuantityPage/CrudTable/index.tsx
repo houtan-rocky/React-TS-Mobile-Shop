@@ -6,6 +6,7 @@ import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
+import Button from "../../../components/Button";
 // import axios from "axios";
 
 const QuantityTable = () => {
@@ -87,9 +88,9 @@ const QuantityTable = () => {
       <Header />
       <div className="page-control">
       <div className="container">
-        <button className="button-add" onClick={toggle}>
-          Add User
-        </button>
+        <Button color={'blue'} onClick={toggle} animate icon={'bx bx-add-to-queue'}>
+          افزودن
+        </Button>
       </div>
       {editing ? (
         <Modal
