@@ -7,7 +7,7 @@ import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
 import Button from "../../../../components/Button";
 import {getOrders} from "../../../../api/getOrder.api";
-import {GetProducts} from "../../../../api/Product.api";
+import {GetProducts} from "../../../../api/product";
 // import axios from "axios";
 
 const ProductsTable = () => {

@@ -7,7 +7,7 @@ import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
 import Button from "../../../../components/Button";
 import {getOrders} from "../../../../api/getOrder.api";
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 // import axios from "axios";
 
 const ProductsTable = () => {
@@ -42,7 +42,8 @@ const ProductsTable = () => {
             )
             .then((data) => {
                 setOrders(data);
-            });
+            })
+            .catch((err) => console.log(err));
     }
 
 
@@ -106,10 +107,10 @@ const ProductsTable = () => {
                     defaultValue="تحویل شده"
                     name="radio-buttons-group"
                 >
-                    <FormControlLabel value="shipped" control={<Radio />} label="تحویل شده" />
+                    <FormControlLabel value="shipped" control={<Radio/>} label="تحویل شده"/>
                     {/* eslint-disable-next-line react/jsx-no-undef */}
-                    <FormControlLabel value="pending" control={<Radio />} label="در حال بررسی" />
-                    <FormControlLabel value="rejected" control={<Radio />} label="رد شده" />
+                    <FormControlLabel value="pending" control={<Radio/>} label="در حال بررسی"/>
+                    <FormControlLabel value="rejected" control={<Radio/>} label="رد شده"/>
                 </RadioGroup>
             </FormControl>
             <div className="page-control">

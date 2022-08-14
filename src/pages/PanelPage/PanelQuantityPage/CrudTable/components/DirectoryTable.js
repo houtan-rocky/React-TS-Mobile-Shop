@@ -3,7 +3,7 @@ import SearchBox from "./SearchBox";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
-import {GetProducts} from "../../../../../api/Product.api";
+import {GetProducts} from "../../../../../api/product";
 
 const useSortableData = (products, config = null) => {
   const [sortConfig, setSortConfig] = useState(config);

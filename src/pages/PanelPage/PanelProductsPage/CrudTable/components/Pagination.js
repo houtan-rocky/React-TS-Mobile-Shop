@@ -33,7 +33,7 @@ const Pagination = ({usersPerPage, totalUsers, paginate, setCurrentPage}) => {
                 <i className={'bx bx-arrow-from-left'} onClick={handleRightArrow}></i>
                 {pageNumbers.map((number) => (
                     <li key={number} className="page-item">
-                        <a onClick={() => paginate(number)} href="src/pages/PanelPage/PanelProductsPage/CrudTable/components/Pagination#" className="page-link">
+                        <a onClick={() => paginate(number)} href="#" className="page-link">
                             {number}
                         </a>
                     </li>
