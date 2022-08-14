@@ -19,9 +19,9 @@ export async function getOrder(id: string) {
     }
 }
 
-export async function deleteOrder(id: string) {
+export async function searchOrder(searchPhrase: string) {
     try {
-        const response = await http.get(`${GET_ORDERS}/${id}`);
+        const response = await http.get(`${GET_ORDERS}?q=${searchPhrase}`);
         return response;
     } catch (e) {
         return Promise.reject(e);

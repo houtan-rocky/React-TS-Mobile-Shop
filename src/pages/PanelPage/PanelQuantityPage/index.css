@@ -20,13 +20,23 @@ header {
 header h1 {
   margin: 0;
 }
-
 table {
-  max-width: 900px;
-  width: 100%;
   margin: 3rem auto;
-  overflow-x: scroll !important;
 }
+
+/*table {*/
+/*  display: block;*/
+/*  overflow-x: auto;*/
+/*  white-space: nowrap;*/
+/*}*/
+/*table tbody {*/
+/*  display: table;*/
+/*  width: 100%;*/
+/*}*/
+/*table thead {*/
+/*  display: table;*/
+/*  width: 100%;*/
+/*}*/
 
 table img {
   border-radius: 50%;

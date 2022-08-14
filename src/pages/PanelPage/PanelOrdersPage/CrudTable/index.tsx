@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import DirectoryTable from "./components/DirectoryTable";
+import OrdersTable from "./components/OrdersTable";
 import AddForm from "./components/AddForm";
 import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
-import Button from "../../../components/Button";
-import {getOrders} from "../../../api/getOrder.api";
+import Button from "../../../../components/Button";
+import {getOrders} from "../../../../api/getOrder.api";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 // import axios from "axios";
 
@@ -45,13 +45,10 @@ const ProductsTable = () => {
             });
     }
 
-    function deleteOrder() {
-
-    }
 
     useEffect(() => {
         fetchOrders();
-    }, [orders]);
+    }, []);
 
 
     // incrementing ids + adding placeholder image manually
@@ -96,6 +93,9 @@ const ProductsTable = () => {
     // change page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+
+    console.count('panel-orders')
+
     // @ts-ignore
     return (
         <React.Fragment>
@@ -135,7 +135,7 @@ const ProductsTable = () => {
                         />}
                     />
                 )}
-                <DirectoryTable
+                <OrdersTable
                     users={currentUsers}
                     editOrder={editUser}
                     deleteOrder={deleteUser}

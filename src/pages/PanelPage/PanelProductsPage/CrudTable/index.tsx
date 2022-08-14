@@ -5,9 +5,9 @@ import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
-import Button from "../../../components/Button";
-import {getOrders} from "../../../api/getOrder.api";
-import {GetProducts} from "../../../api/Product.api";
+import Button from "../../../../components/Button";
+import {getOrders} from "../../../../api/getOrder.api";
+import {GetProducts} from "../../../../api/Product.api";
 // import axios from "axios";
 
 const ProductsTable = () => {
@@ -33,7 +33,8 @@ const ProductsTable = () => {
                     name: product.name,
                     price: product.price.amount,
                     image: product.image,
-                    quantity: product.count
+                    quantity: product.count,
+                    categoryId: product['category-id']
                 }))
             )
             .then((data) => {

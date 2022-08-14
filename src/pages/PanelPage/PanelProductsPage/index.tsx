@@ -1,4 +1,4 @@
-import Helmet from "../../components/Helmet";
+import Helmet from "../../../components/Helmet";
 import ProductsTable from "./CrudTable";
 import './index.css'
 

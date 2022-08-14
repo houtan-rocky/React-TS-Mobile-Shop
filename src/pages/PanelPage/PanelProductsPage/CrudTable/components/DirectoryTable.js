@@ -3,8 +3,8 @@ import SearchBox from "./SearchBox";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
-import {GetProducts} from "../../../../api/Product.api";
-import {GetCategories, GetCategory} from "../../../../api/getCategory.api";
+import {GetProducts} from "../../../../../api/Product.api";
+import {GetCategories, GetCategory} from "../../../../../api/getCategory.api";
 
 const useSortableData = (products, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
@@ -126,7 +126,7 @@ const DirectoryTable = (props) => {
                         updateProducts.map((product) => (
                             <tr key={product.id}>
                                 <td>{product.name}</td>
-                                <td>{product.categoryId}</td>
+                                <td>{categories[product.categoryId-1].category}</td>
                                 <td>
                                     <IconButton
                                         aria-label="edit"

@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "../../components/Helmet";
+import Helmet from "../../../components/Helmet";
 import './index.css'
 import OrdersTable from "./CrudTable";
 import {Route, Routes} from "react-router-dom";
