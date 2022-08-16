@@ -10,7 +10,7 @@ function Section(props: any) {
 
 export function SectionTitle(props: any) {
     return (
-        <div className={'section'}>
+        <div className={'section__title'}>
             {props.children}
         </div>
     );

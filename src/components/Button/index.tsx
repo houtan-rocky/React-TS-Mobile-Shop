@@ -5,7 +5,7 @@ interface IButtonProps {
     icon: string;
     animate: boolean;
     onClick: () => void;
-    children: any;
+    children: React.ReactNode;
 }
 
 

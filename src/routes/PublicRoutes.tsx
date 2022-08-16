@@ -7,7 +7,7 @@ import {
     HomePage, NotFoundPage, PaymentFailPage,
     PaymentPage,
     PaymentSuccessPage,
-    ProductsPage,
+    CatalogPage,
     SingleProductPage
 } from "../pages";
 
@@ -18,7 +18,7 @@ function PublicRoutes() {
         <Routes>
 
                 <Route path='' element={<HomePage/>}/>
-                <Route path='products' element={<ProductsPage/>}/>
+                <Route path='products' element={<CatalogPage/>}/>
                 <Route path='products/:id' element={<SingleProductPage/>}/>
                 <Route path='checkout/cart' element={<CartPage/>}/>
                 <Route path='checkout/finalize' element={<CheckoutPage/>}/>

@@ -1,6 +1,6 @@
 export {Navigate, Route, Routes} from "react-router-dom";
 export {HomePage} from "pages/HomePage";
-export {ProductsPage} from 'pages/ProductsPage'
+export {CatalogPage} from 'pages/CatalogPage'
 export {SingleProductPage} from "pages/SingleProductPage";
 export {CartPage} from "pages/CartPage";
 export {CheckoutPage} from "pages/CheckoutPage";

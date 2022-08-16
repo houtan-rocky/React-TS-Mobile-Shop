@@ -19,6 +19,20 @@ export async function GetProduct(id: string) {
     }
 }
 
+export async function GetRandomProducts(products: any[], count: number) {
+    try {
+        const response = await http.get(GET_PRODUCTS);
+        const products = response.data;
+        const max = products.length - count
+        const min = 0
+        const start = Math.floor(Math.random() * (max - min) + min)
+        return products.slice(start, start + count)
+    } catch (e) {
+        return Promise.reject(e);
+    }
+
+}
+
 export async function AddProduct(data: string) {
     try {
         const response = await http.post(GET_PRODUCTS, data);
@@ -67,4 +81,12 @@ export async function ProductsPagination(categorieId: string, page:string, pageS
     } catch (e) {
         return Promise.reject(e);
     }
+}
+
+
+export const getRandomProducts = (products: Object[], count: number) => {
+    const max = products.length - count
+    const min = 0
+    const start = Math.floor(Math.random() * (max - min) + min)
+    return products.slice(start, start + count)
 }
