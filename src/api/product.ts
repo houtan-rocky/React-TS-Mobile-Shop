@@ -84,7 +84,7 @@ export async function ProductsPagination(categorieId: string, page:string, pageS
 }
 
 
-export const getRandomProducts = (products: Object[], count: number) => {
+export const getRandomProducts = (products: any[], count: number) => {
     const max = products.length - count
     const min = 0
     const start = Math.floor(Math.random() * (max - min) + min)
