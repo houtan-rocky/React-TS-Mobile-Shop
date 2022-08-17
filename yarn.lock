@@ -2077,6 +2077,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/grecaptcha@^3.0.4":
+  "integrity" "sha512-7l1Y8DTGXkx/r4pwU1nMVAR+yD/QC+MCHKXAyEX/7JZhwcN1IED09aZ9vCjjkcGdhSQiu/eJqcXInpl6eEEEwg=="
+  "resolved" "https://registry.npmjs.org/@types/grecaptcha/-/grecaptcha-3.0.4.tgz"
+  "version" "3.0.4"
+
 "@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
   "integrity" "sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA=="
   "resolved" "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz"

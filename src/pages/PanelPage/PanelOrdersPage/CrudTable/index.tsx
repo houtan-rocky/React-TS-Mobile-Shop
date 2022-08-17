@@ -97,22 +97,12 @@ const ProductsTable = () => {
 
     console.count('panel-orders')
 
+
+
     // @ts-ignore
     return (
         <React.Fragment>
-            <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">فیلتر سفارشات</FormLabel>
-                <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="تحویل شده"
-                    name="radio-buttons-group"
-                >
-                    <FormControlLabel value="shipped" control={<Radio/>} label="تحویل شده"/>
-                    {/* eslint-disable-next-line react/jsx-no-undef */}
-                    <FormControlLabel value="pending" control={<Radio/>} label="در حال بررسی"/>
-                    <FormControlLabel value="rejected" control={<Radio/>} label="رد شده"/>
-                </RadioGroup>
-            </FormControl>
+
             <div className="page-control">
 
                 {editing ? (
@@ -137,7 +127,7 @@ const ProductsTable = () => {
                     />
                 )}
                 <OrdersTable
-                    users={currentUsers}
+                    orders={currentUsers}
                     editOrder={editUser}
                     deleteOrder={deleteUser}
                 />

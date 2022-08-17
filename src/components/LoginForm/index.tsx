@@ -26,7 +26,7 @@ function LoginForm() {
 
     const onRecaptchaChange = (value: any) => {
         console.log(value)
-        setIsCaptchaVerified(true)
+        value ? setIsCaptchaVerified(true): setIsCaptchaVerified(false);
     }
 
     const onFormSubmit = (event: React.SyntheticEvent) => {
@@ -45,14 +45,18 @@ function LoginForm() {
                         <CustomInput className={'login-form__input'} type="text" name={'username'}
                                      placeholder={'نام کاربری'}
                                      required={false} value={loginInfo.username} pattern={'^(?!\\s*$).+'}
-                                     onChange={handleInputChange} doValidation={validateInput}/>
+                                     onChange={handleInputChange} doValidation={validateInput}
+                                     dir={'ltr'}
+                        />
                     </div>
                     <div className="form-group">
-                        <label>رمز ورود</label>
-                        <CustomInput className={'login-form__input'} type="text" name={'password'}
-                                     placeholder={'رمز ورود'}
+                        <label>رمز عبور</label>
+                        <CustomInput className={'login-form__input'} type="password" name={'password'}
+                                     placeholder={'رمز عبور'}
                                      required={false} value={loginInfo.password} pattern={'^(?!\\s*$).+'}
-                                     onChange={handleInputChange} doValidation={validateInput}/>
+                                     onChange={handleInputChange} doValidation={validateInput}
+                                     dir={'ltr'}
+                        />
                     </div>
                     <LoadingButton loading={isUserVerified} size={'medium'} color={'error'}
                                    className={'login-form__btn'} type={"submit"} variant="contained"

@@ -5,13 +5,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import {searchOrder} from "../../../../../api/getOrder.api";
+import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 
-const useSortableData = (users, config = null) => {
+const useSortableData = (orders, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
 
 
     const sortedUsers = useMemo(() => {
-        let sortableUsers = [...users];
+        let sortableUsers = [...orders];
         if (sortConfig !== null) {
             sortableUsers.sort((a, b) => {
                 if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -24,7 +25,7 @@ const useSortableData = (users, config = null) => {
             });
         }
         return sortableUsers;
-    }, [users, sortConfig]);
+    }, [orders, sortConfig]);
 
     const requestSort = (key) => {
         let direction = "ascending";
@@ -42,10 +43,11 @@ const useSortableData = (users, config = null) => {
 };
 
 const OrdersTable = (props) => {
-    let {orders, requestSort, sortConfig} = useSortableData(props.users);
+    let {orders, requestSort, sortConfig} = useSortableData( props.orders);
+    const [updateOrders, setUpdateOrders] = useState(orders)
     const {editOrder, deleteOrder} = props;
     const [searchValue, setSearchValue] = useState("");
-    const [updateOrders, setUpdateOrders] = useState(orders)
+
 
 
     useEffect(() => {
@@ -68,10 +70,6 @@ const OrdersTable = (props) => {
         }
     }, [searchValue, orders])
 
-    // useEffect(() => {
-    //     console.log('mock')
-    //     setUpdateOrders(orders);
-    // }, [orders])
 
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
@@ -85,9 +83,29 @@ const OrdersTable = (props) => {
     };
 
 
+    const onRadioChange = (event) => {
+        const value = event.target.value
+        setSearchValue(value)
+        console.log(value)
+    }
+
     return (
         <>
             <div className="container">
+                <FormControl>
+                    <FormLabel id="demo-radio-buttons-group-label">فیلتر سفارشات</FormLabel>
+                    <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="تحویل شده"
+                        name="radio-buttons-group"
+                        onChange={onRadioChange}
+                    >
+                        <FormControlLabel value="shipped" control={<Radio/>} label="تحویل شده"/>
+                        {/* eslint-disable-next-line react/jsx-no-undef */}
+                        <FormControlLabel value="pending" control={<Radio/>} label="در حال بررسی"/>
+                        <FormControlLabel value="rejected" control={<Radio/>} label="رد شده"/>
+                    </RadioGroup>
+                </FormControl>
                 <SearchBox searchHandler={searchHandler}/>
                 <table>
                     <thead>

@@ -63,12 +63,16 @@ export const Header = (props: any) => {
                     </div>
 
                     <div className="header__menu__right">
-                        <div className="header__menu__item header__menu__right__item">
-                            <i className="bx bx-search"></i>
-                        </div>
+                        <Link to={'/search'}>
+                            <div className="header__menu__item header__menu__right__item">
+                                <i className="bx bx-search"></i>
+                            </div>
+                        </Link>
 
                         <div className="header__menu__item header__menu__right__item">
-                            <i className="bx bx-user"></i>
+                            <Link to={'/user/login'}>
+                                <i className="bx bx-user"></i>
+                            </Link>
                         </div>
 
                         <div className="header__menu__item header__menu__right__item">

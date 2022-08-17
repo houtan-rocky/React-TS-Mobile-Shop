@@ -10,6 +10,7 @@ interface ICustomInputProps {
     className: any
     placeholder: string
     doValidation: boolean
+    dir: string;
     onChange: (event: Event, inputValue: string) => void
 }
 
@@ -68,7 +69,7 @@ function CustomInput(props: ICustomInputProps) {
     return (
         <React.Fragment>
             <input type={props.type} name={props.name} {...props.name !== 'image' && ({value: `${props.value}`})}
-                   onChange={handleInputChange} pattern={props.pattern} required={props.required}/>
+                   onChange={handleInputChange} pattern={props.pattern} required={props.required} dir={props.dir}/>
     {/*// @ts-ignore*/}
             <ValidationStatus name={props.name} value={inputValue} pattern={props.pattern} doValidation={props.doValidation}/>
         </React.Fragment>

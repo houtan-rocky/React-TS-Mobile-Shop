@@ -15,7 +15,7 @@ function ValidationStatus(props: IValidateStatusProps) {
                 return <>نام کاربری نباید خالی باشد</>;
                 break;
             case "password":
-                return <>رمز ورود نباید خالی باشد</>;
+                return <>رمز عبور نباید خالی باشد</>;
                 break;
         }
     }
