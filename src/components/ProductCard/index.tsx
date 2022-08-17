@@ -10,7 +10,7 @@ interface IProductCardProps {
     name: string
     price: number
     slug: string
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 

@@ -10,7 +10,7 @@ import productData from "../../assets/fake-data/products";
 import ProductCard from "../../components/ProductCard";
 import {Link} from "react-router-dom";
 import banner from 'assets/images/banner.png'
-import {GetProducts, getRandomProducts} from "../../api/product";
+import {GetProducts, showRandomProducts} from "../../api/product";
 
 export const HomePage: React.FC = () => {
     const [products, setProducts] = useState([]);
@@ -51,7 +51,7 @@ export const HomePage: React.FC = () => {
                     <SectionBody>
                         <Grid col={4} mdCol={2} smCol={1} gap={20}>
                             {
-                                getRandomProducts(products, 4).map((item: any, index) => (
+                                showRandomProducts(products, 4).map((item: any, index) => (
                                     <ProductCard key={index} img01={item.thumbnail} img02={item.images[1]} name={item['product-name-fa']}
                                                  price={item.price.amount} slug={item.id}>
 
@@ -71,7 +71,7 @@ export const HomePage: React.FC = () => {
                     <SectionBody>
                         <Grid col={4} mdCol={2} smCol={1} gap={20}>
                             {
-                                getRandomProducts(products, 8).map((item: any, index) => (
+                                showRandomProducts(products, 8).map((item: any, index) => (
                                     <ProductCard key={index} img01={item.thumbnail} img02={item.images[1]} name={item['product-name-fa']}
                                                  price={item.price.amount} slug={item.slug}>
 
