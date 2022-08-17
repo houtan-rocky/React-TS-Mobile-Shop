@@ -69,13 +69,13 @@ export async function FilterProductByCategories(categorieId: string) {
     }
 }
 
-export async function ProductsPagination(categorieId: string, page:string, pageSize:string, sortDate: string) {
+export async function ProductsPagination(categoryId: string, page:string, pageSize:string, sortDate: string) {
     try {
-        if(categorieId == "all") {
+        if(categoryId == "all") {
             const response = await http.get(GET_PRODUCTS + '?_page=' + page + '&_limit=' + pageSize + "&_sort=createdAt&_order=" + sortDate);
             return response;
         } else {
-            const response = await http.get(GET_PRODUCTS + '?category-id=' + categorieId + '&_page=' + page + '&_limit=' + pageSize + "&_sort=createdAt&_order=" + sortDate);
+            const response = await http.get(GET_PRODUCTS + '?category-id=' + categoryId + '&_page=' + page + '&_limit=' + pageSize + "&_sort=createdAt&_order=" + sortDate);
             return response;
         }
     } catch (e) {

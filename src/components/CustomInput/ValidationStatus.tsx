@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 
 interface IValidateStatusProps {
     name: string;
-    value: string | undefined;
+    value: string;
     pattern: string;
+    doValidation: boolean;
 }
 
 function ValidationStatus(props: IValidateStatusProps) {
@@ -11,16 +12,10 @@ function ValidationStatus(props: IValidateStatusProps) {
     const getValidationError = (name: string) => {
         switch (name) {
             case "username":
-                return <>نام کاربری از فرمت پیروی نمیکند</>;
+                return <>نام کاربری نباید خالی باشد</>;
                 break;
             case "password":
-                return <>نام کاربری از فرمت پیروی نمیکند</>;
-                break;
-            case "total_bill":
-                return <>نام کاربری فقط می تواند شامل حروف و اعداد باشد</>;
-                break;
-            case "order_registration_date":
-                return <>تاریخ پذیرفته نیست</>
+                return <>رمز ورود نباید خالی باشد</>;
                 break;
         }
     }
@@ -33,22 +28,22 @@ function ValidationStatus(props: IValidateStatusProps) {
         console.log(doesMatch)
 
         console.log(pattern)
-        if (!doesMatch) {
+        if (!value) {
             return getValidationError(name);
         } else {
-            return "صحیح ✓"
+            return "فرمت صحیح ✓"
         }
     }
 
 
     const getClassNamesForWarning = () => {
-        return validateInput(props.name, props.value as string) === "صحیح ✓" ? "input-valid" : "input-invalid";
+        return validateInput(props.name, props.value as string) === "فرمت صحیح ✓" ? "input-valid" : "input-invalid";
     }
 
 
 
     return (
-        <div className={getClassNamesForWarning()}> {props.value && validateInput(props.name, props.value)} </div>
+        <div className={getClassNamesForWarning()}> {props.doValidation && validateInput(props.name, props.value)} </div>
     );
 }
 

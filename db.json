@@ -2020,7 +2020,8 @@
       "id": 1,
       "first_name": "علی",
       "last_name": "علیزاده",
-      "total_bill": 12312414,
+      "full_name": "علی علیزاده",
+      "total_bill": 353453453,
       "order_registration_date": "2021-08-07",
       "status": "در حال بررسی"
     },
@@ -2028,6 +2029,7 @@
       "id": 2,
       "first_name": "کمال",
       "last_name": "جمشیدی",
+      "full_name": "کمال جمشیدی",
       "status": "در حال بررسی",
       "total_bill": 12312414,
       "order_registration_date": "2021-04-07"
@@ -2036,112 +2038,126 @@
       "id": 3,
       "first_name": "کورش",
       "last_name": "کمالی",
+      "full_name": "کورش کمائی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 345345345,
       "order_registration_date": "2021-04-07"
     },
     {
       "id": 4,
       "first_name": "هومان",
       "last_name": "کبریایی",
+      "full_name": "هومان کبریایی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 45745745457,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 5,
-      "first_name": "اکمل",
+      "first_name": "حمید",
       "last_name": "کبریایی",
+      "full_name": "حمید کبریائی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 457345632,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 6,
       "first_name": "علی",
       "last_name": "کریمی",
+      "full_name": "علی کریمی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 3452346534,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 7,
       "first_name": "علیرضا",
       "last_name": "انسان",
+      "full_name": "علیرضا انسان",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 3463463535,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 8,
       "first_name": "درویش",
       "last_name": "کریمی",
+      "full_name": "درویش کریمی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 3246346336,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 9,
       "first_name": "علی",
       "last_name": "کریمی",
+      "full_name": "علی کریمی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 3453465345,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 10,
       "first_name": "حسین",
       "last_name": "نعیمی",
+      "full_name": "حسین نعیمی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 32634556,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 11,
       "first_name": "اکمل",
       "last_name": "حلیمی",
+      "full_name": "اکمل حلیمی",
       "status": "تحویل شد",
-      "total_bill": 12312414,
+      "total_bill": 567567567,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 12,
       "first_name": "باقر",
       "last_name": "باقری",
+      "full_name": "باقر باقری",
       "status": "در حال بررسی",
-      "total_bill": 12312414,
+      "total_bill": 364654564,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 13,
       "first_name": "هوتن",
       "last_name": "راکی",
+      "full_name": "هوتن راکی",
       "status": "در حال بررسی",
-      "total_bill": 12312414,
+      "total_bill": 45646366556,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 14,
       "first_name": "آرش",
       "last_name": "طهماسبی",
+      "full_name": "آرش طهماسبی",
       "status": "در حال بررسی",
-      "total_bill": 12312414,
+      "total_bill": 45656356345,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 15,
       "first_name": "آوین",
       "last_name": "ماجدی",
+      "full_name": "آوین ماجدی",
       "status": "در حال بررسی",
-      "total_bill": 12312414,
+      "total_bill": 4363456456636,
       "order_registration_date": "2021-10-07"
     },
     {
       "id": 16,
       "first_name": "آندیا",
       "last_name": "طالب",
+      "full_name": "آندیا طالب",
       "status": "در حال بررسی",
-      "total_bill": 12312414,
+      "total_bill": 567457567,
       "order_registration_date": "2021-10-07"
     }
   ],
