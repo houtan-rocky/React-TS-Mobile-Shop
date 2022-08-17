@@ -1,14 +1,20 @@
 import React, {useState} from 'react';
 
-function ValidationStatus(props) {
+interface IValidateStatusProps {
+    name: string;
+    value: string | undefined;
+    pattern: string;
+}
 
-    const getValidationError = (name) => {
+function ValidationStatus(props: IValidateStatusProps) {
+
+    const getValidationError = (name: string) => {
         switch (name) {
-            case "first_name":
-                return <>نام فقط باید شامل حروف فارسی باشد</>;
+            case "username":
+                return <>نام کاربری از فرمت پیروی نمیکند</>;
                 break;
-            case "last_name":
-                return <>نام خانوادگی فقط باید دارای حروف باشد</>;
+            case "password":
+                return <>نام کاربری از فرمت پیروی نمیکند</>;
                 break;
             case "total_bill":
                 return <>نام کاربری فقط می تواند شامل حروف و اعداد باشد</>;
@@ -20,10 +26,13 @@ function ValidationStatus(props) {
     }
 
 
-    const validateInput = (name, value) => {
+    const validateInput = (name: string, value: string) => {
+        console.log(name, value)
         const pattern = new RegExp(props.pattern);
         const doesMatch = pattern.test(value);
+        console.log(doesMatch)
 
+        console.log(pattern)
         if (!doesMatch) {
             return getValidationError(name);
         } else {
@@ -33,8 +42,9 @@ function ValidationStatus(props) {
 
 
     const getClassNamesForWarning = () => {
-        return validateInput(props.name, props.value) === "صحیح ✓" ? "input-valid" : "input-invalid";
+        return validateInput(props.name, props.value as string) === "صحیح ✓" ? "input-valid" : "input-invalid";
     }
+
 
 
     return (

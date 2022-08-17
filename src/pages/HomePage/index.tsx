@@ -86,7 +86,7 @@ export const HomePage: React.FC = () => {
             {/*    banner */}
                 <Section>
                     <SectionBody>
-                        <Link to={'/products'}>
+                        <Link to={'/products'} style={{objectFit: "scale-down"}}>
                             <img src={banner} alt=""/>
                         </Link>
                     </SectionBody>

@@ -90,7 +90,11 @@ const ProductsTable = () => {
     return (
         <React.Fragment>
             <div className="page-control">
-
+                <div className="container">
+                    <Button onClick={toggle}>
+                        اضافه کردن محصول
+                    </Button>
+                </div>
                 {editing ? (
                     <Modal
                         isShowing={isShowing}

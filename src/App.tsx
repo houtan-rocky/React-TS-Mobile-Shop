@@ -6,6 +6,7 @@ import {handledarkMode} from "store/actions/darkModeAction";
 import ProjectRoutes from "./routes";
 
 function App() {
+    console.count('App run')
     return (
         <ProjectRoutes/>
     );

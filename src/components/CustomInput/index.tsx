@@ -1,8 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import ValidationStatus from "../../../../../components/CustomInput/ValidationStatus";
+import React, { useState} from 'react';
+import ValidationStatus from "./ValidationStatus";
 
-function CustomInput(props) {
-    const [inputValue, inputValueSetter] = useState();
+interface ICustomInputProps {
+    name: string
+    type: string
+    pattern: string
+    value: string
+    required?: boolean
+    className: any
+    placeholder: string
+    onChange: (event: Event, inputValue: string) => void
+}
+
+function CustomInput(props: ICustomInputProps) {
+    const [inputValue, setInputValue] = useState<string>();
 
 
     // const encodeImageFileAsURL = (file) => {
@@ -27,7 +38,7 @@ function CustomInput(props) {
     // }, [imgURL])
 
 
-    function encodeImageFileAsURL(element, cb) {
+    function encodeImageFileAsURL(element: any, cb: any) {
         var file = element.files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
@@ -36,19 +47,19 @@ function CustomInput(props) {
         reader.readAsDataURL(file);
     }
 
-    const handleInputChange = async (event) => {
+    const handleInputChange = async (event :any) => {
         if (event.target.name === "image") {
             var imgURL = "";
-            await encodeImageFileAsURL(event.target, (result) => {
+            await encodeImageFileAsURL(event.target, (result: any) => {
                 imgURL = result;
                 props.onChange(event, result);
-                inputValueSetter(imgURL);
+                setInputValue(imgURL);
             })
             return;
         }
         const target = event.target;
         const {value} = target;
-        inputValueSetter(value);
+        setInputValue(value);
         props.onChange(event, value);
     };
 

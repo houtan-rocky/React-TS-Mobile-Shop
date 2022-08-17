@@ -32,7 +32,7 @@ const AddForm = (props) => {
     >
       <h2>اضافه کردن سفارش</h2>
       <div className="form-group">
-        <label>نام کاربر</label>
+        <label>نام محصول</label>
         <CustomInput
           type="text"
           name="first_name"
