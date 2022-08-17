@@ -6,7 +6,8 @@ interface ICheckBoxProps {
     onChange: (current: any) => void;
 }
 
-function CheckBox(props: ICheckBoxProps) {
+const CheckBox = (props: ICheckBoxProps) => {
+
     const inputRef = React.useRef(null)
 
     const onChange = () => {
@@ -15,15 +16,16 @@ function CheckBox(props: ICheckBoxProps) {
         }
     }
 
-
     return (
-        <label className={'custom-checkbox'}>
+        <label className="custom-checkbox">
             <input type="checkbox" ref={inputRef} onChange={onChange} checked={props.checked}/>
             <span className="custom-checkbox__checkmark">
                 <i className="bx bx-check"></i>
             </span>
+            {props.label}
         </label>
-    );
+    )
 }
+
 
 export default CheckBox;
