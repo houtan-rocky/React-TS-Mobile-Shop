@@ -1,7 +1,7 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { useRoutes} from "react-router-dom";
 import UserLayout from "../layouts/UserLayout";
-import {handledarkMode} from "../store/actions/darkModeAction";
+
 
 
 import PublicRoutes from "./PublicRoutes";
@@ -11,27 +11,37 @@ import {PanelLoginPage} from "../pages";
 
 
 function ProjectRoutes() {
+    const allRoutes = useRoutes([
+        {
+            path: 'panel/login',
+            element: <PanelLoginPage/>,
+            children: [
+                {}
+            ]
+        },
+        {
+            path: '/panel/*',
+            element: <PanelLayout/>,
+            children: [
+                {
+                    path: '*',
+                    element: <ProtectedRoutes/>
+                }
+            ]
+        },
+        {
+            path: '/*',
+            element: <UserLayout/>,
+            children: [
+                {
+                    path: '*',
+                    element: <PublicRoutes/>
+                }
+            ]
+        }
+    ])
     return (
-        <BrowserRouter>
-            <Routes>
-
-                {/*Panel*/}
-
-                {/*Panel Login*/}
-                <Route path='panel/login' element={<PanelLoginPage/>}/>
-
-                {/*Panel Protected Routes*/}
-                <Route path={"/panel/*"} element={<PanelLayout/>}>
-                    <Route path={"*"} element={<ProtectedRoutes/>}/>
-                </Route>
-
-                {/*Public Routes*/}
-                <Route path={'/*'} element={<UserLayout/>}>
-                    <Route path={"*"} element={<PublicRoutes/>}/>
-                </Route>
-
-            </Routes>
-        </BrowserRouter>
+        allRoutes
     );
 }
 
