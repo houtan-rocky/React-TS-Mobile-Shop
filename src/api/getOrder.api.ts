@@ -3,7 +3,7 @@ import http from 'services/http.services';
 
 export async function getOrders() {
     try {
-        const response = await http.get(GET_ORDERS);
+        const response = await http.get(GET_ORDERS + '?q=');
         return response;
     } catch (e) {
         return Promise.reject(e);
