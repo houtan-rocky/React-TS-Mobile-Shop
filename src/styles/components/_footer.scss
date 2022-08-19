@@ -1,0 +1,32 @@
+.footer {
+    background-color: $main-bg;
+    padding: 70px 0;
+    box-shadow: $box-shadow;
+    font-size: 1.1rem;
+
+    &__logo {
+        height: 38px;
+    }
+
+    &__about {
+        p {
+            margin-bottom: 2rem;
+        }
+
+        //@include mobile {
+        //    display: none;
+        //}
+    }
+
+    &__title {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    &__content {
+        p {
+            margin-bottom: 1.25rem;
+        }
+    }
+}

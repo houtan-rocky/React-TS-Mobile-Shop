@@ -1,0 +1,17 @@
+// General Styles
+@import "variables";
+@import "mixins";
+@import "base";
+
+// Components Styles:
+@import "./components/header";
+@import "./components/footer";
+@import "./components/hero-slider";
+@import "./components/button";
+@import "./components/section";
+@import "./components/policy-card";
+@import "./components/product-card";
+@import "./components/login-form";
+@import "./components/panel-sidebar";
+@import './components/custom-checkbox';
+@import "./components/catalog";
