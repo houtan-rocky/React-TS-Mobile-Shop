@@ -1,5 +1,4 @@
 import React from "react";
-import {ArrowBack, ArrowForward} from "@mui/icons-material";
 
 const Pagination = ({usersPerPage, totalUsers, paginate, setCurrentPage}) => {
     const pageNumbers = [];

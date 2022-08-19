@@ -1,6 +1,6 @@
 import React from 'react';
-import {Route, RouteMatch, Routes} from "react-router-dom";
-import UserLayout from "../layouts/UserLayout";
+import { useRoutes} from "react-router-dom";
+
 import {
     CartPage,
     CheckoutPage,
@@ -8,29 +8,60 @@ import {
     PaymentPage,
     PaymentSuccessPage,
     CatalogPage,
-    SingleProductPage
+    SingleProductPage,
 } from "../pages";
 
 
 function PublicRoutes() {
+    const publicRoutes = useRoutes([
+        {
+            path: '',
+            element: <HomePage/>,
+        },
+        {
+            path: 'products',
+            element: <CatalogPage/>,
+        },
+        {
+            path: 'products/:id',
+            element: <SingleProductPage/>,
+        },
+        {
+            path: 'checkout/cart',
+            element: <CartPage/>,
+        },
+        {
+            path: 'checkout/finalize',
+            element: <CheckoutPage/>,
+        },
+        {
+            path: 'payment',
+            element: <PaymentPage/>,
+        },
+        {
+            path: 'payment',
+            element: '',
+            children: [
+                {
+                    path: 'success',
+                    element: <PaymentSuccessPage/>,
+                },
+                {
+                    path: 'fail',
+                    element: <PaymentFailPage/>,
+                },
+            ]
+        },
+        {
+            path: '*',
+            element: <NotFoundPage/>,
+        },
+
+    ])
+
 
     return (
-        <Routes>
-
-                <Route path='' element={<HomePage/>}/>
-                <Route path='products' element={<CatalogPage/>}/>
-                <Route path='products/:id' element={<SingleProductPage/>}/>
-                <Route path='checkout/cart' element={<CartPage/>}/>
-                <Route path='checkout/finalize' element={<CheckoutPage/>}/>
-
-
-                <Route path='payment' element={<PaymentPage/>}/>
-                <Route path={'payment'}>
-                    <Route path='success' element={<PaymentSuccessPage/>}/>
-                    <Route path='fail' element={<PaymentFailPage/>}/>
-                </Route>
-                <Route path='*' element={<NotFoundPage/>}/>
-        </Routes>
+        publicRoutes
     );
 }
 

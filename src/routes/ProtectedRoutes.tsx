@@ -1,15 +1,34 @@
 import React from 'react';
-import {Route, Routes} from "react-router-dom";
-import {NotFoundPage, PanelLoginPage, PanelOrdersPage, PanelPage, PanelProductsPage, PanelQuantityPage} from "../pages";
+import { useRoutes} from "react-router-dom";
+import {NotFoundPage, PanelOrdersPage, PanelProductsPage, PanelQuantityPage} from "../pages";
+
+
+
+
 
 function ProtectedRoutes() {
+    const protectedRoutes = useRoutes([
+        {
+            path: 'products',
+            element: <PanelProductsPage/>,
+        },
+        {
+            path: 'quantity',
+            element: <PanelQuantityPage/>,
+        },
+        {
+            path: 'orders',
+            element: <PanelOrdersPage/>,
+        },
+        {
+            path: '*',
+            element: <NotFoundPage/>,
+        }
+    ])
+
+
     return (
-        <Routes>
-            <Route path='products' element={<PanelProductsPage/>}/>
-            <Route path='quantity' element={<PanelQuantityPage/>}/>
-            <Route path='orders' element={<PanelOrdersPage/>}/>
-            <Route path='*' element={<NotFoundPage/>}/>
-        </Routes>
+        protectedRoutes
     );
 }
 
