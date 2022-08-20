@@ -30,7 +30,7 @@ const ProductsTable = () => {
             .then((response) =>
                 response.data.map((product: any) => ({
                     id: product.id,
-                    name: product.name,
+                    name: product['product-name-en'],
                     price: product.price.amount,
                     image: product.image,
                     quantity: product.count,

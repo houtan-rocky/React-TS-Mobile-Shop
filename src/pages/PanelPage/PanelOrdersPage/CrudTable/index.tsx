@@ -30,14 +30,13 @@ const ProductsTable = () => {
     function fetchOrders() {
         getOrders()
             .then((response) =>
-                response.data.map((order: any) => ({
-                    id: order.id,
-                    first_name: order.first_name,
-                    last_name: order.last_name,
-                    total_bill: order.total_bill,
-                    order_registration_date: order.order_registration_date,
-                    status: order.status,
-                    image: order.user_avatar,
+                response.data.map((product: any) => ({
+                    id: product.id,
+                    first_name: product.name,
+                    last_name: product.family,
+                    total_bill: product['total-price'],
+                    order_registration_date: product.createdAt,
+                    status: product.status,
                 }))
             )
             .then((data) => {

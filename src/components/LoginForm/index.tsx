@@ -5,6 +5,7 @@ import {LoadingButton} from '@mui/lab';
 
 import CustomInput from "../CustomInput";
 import ReCAPTCHA from "react-google-recaptcha";
+import {Navigate} from "react-router-dom";
 
 
 function LoginForm() {
@@ -17,6 +18,7 @@ function LoginForm() {
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
     const [isUserVerified, setIsUserVerified] = useState(false);
     const [validateInput, setValidateInput] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleInputChange = (event: any, inputValue: string) => {
         const {name} = event.target;
@@ -26,14 +28,17 @@ function LoginForm() {
 
     const onRecaptchaChange = (value: any) => {
         console.log(value)
-        value ? setIsCaptchaVerified(true): setIsCaptchaVerified(false);
+        value ? setIsCaptchaVerified(true) : setIsCaptchaVerified(false);
     }
 
     const onFormSubmit = (event: React.SyntheticEvent) => {
         setValidateInput(true);
         event.preventDefault()
-        setIsUserVerified(true);
-        setTimeout(() => setIsUserVerified(false), 2000)
+        setIsLoading(true)
+        setTimeout(() => {
+            setIsUserVerified(true)
+            setIsLoading(false);
+        }, 2000)
     }
 
     return (
@@ -58,11 +63,12 @@ function LoginForm() {
                                      dir={'ltr'}
                         />
                     </div>
-                    <LoadingButton loading={isUserVerified} size={'medium'} color={'error'}
-                                   className={'login-form__btn'} type={"submit"} variant="contained"
-                                   disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
-                        ورود به پروفایل
-                    </LoadingButton>
+                        <LoadingButton loading={isLoading} size={'medium'} color={'error'}
+                                       className={'login-form__btn'} type={"submit"} variant="contained"
+                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
+                            ورود به پروفایل
+                        </LoadingButton>
+                    { isUserVerified &&  <Navigate to={'/panel/orders'}/>}
                     <Link color={'success'} href={'/'} underline={'hover'}>
                         بازگشت
                     </Link>
