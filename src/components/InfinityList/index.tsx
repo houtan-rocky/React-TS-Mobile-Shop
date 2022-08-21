@@ -64,7 +64,7 @@ const InfinityList = (props: any) => {
                             key={index}
                             img01={item.thumbnail}
                             img02={item.images[1]}
-                            name={item.name}
+                            name={item['product-name-fa']}
                             price={Number(item.price.amount)}
                             slug={item.id}
                         />
