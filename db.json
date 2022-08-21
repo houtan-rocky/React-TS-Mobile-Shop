@@ -1996,7 +1996,7 @@
       "count": 33,
       "createdAt": 1646309260157,
       "updatedAt": 1643373068134,
-      "category-id": 5,
+      "category-id": "5",
       "comments": [
         {
           "id": 1,
@@ -2020,77 +2020,70 @@
       "name-fa": "اپل",
       "createdAt": 1645019634099,
       "icon": "fee9e902dfae7810de7d35ba33ec4c75",
-      "id": 1
+      "id": "1"
     },
     {
       "name-en": "samsung",
       "name-fa": "سامسونگ",
       "createdAt": 1645019634099,
       "icon": "e4e0ddb4beb6042232d3371c52933622",
-      "id": 2
+      "id": "2"
     },
     {
       "name-en": "xiaomi",
       "name-fa": "شیائومی",
       "createdAt": 1645019634099,
       "icon": "10fa3f8b1005c533ac28a2d0c692a3c3",
-      "id": 3
+      "id": "3"
     },
     {
       "name-en": "nokia",
       "name-fa": "نوکیا",
       "createdAt": 1645019634099,
       "icon": "500c5b985ac1382b877bfbba2d957b85",
-      "id": 4
+      "id": "4"
     },
     {
       "name-en": "huawei",
       "name-fa": "هواوی",
       "createdAt": 1645019634099,
       "icon": "931a7cba8f5a4189df0cdf5949f0547a",
-      "id": 5
+      "id": "5"
     },
     {
       "name-en": "lg",
       "name-fa": "ال جی",
       "createdAt": 1645019634099,
       "icon": "5f64378b18ea20006895dc8dc584bbc8",
-      "id": 6
+      "id": "6"
     },
     {
       "name-en": "gplus",
       "name-fa": "جی پلاس",
       "createdAt": 1645019634099,
       "icon": "6437c7ab807b047176c449bbc68115eb",
-      "id": 7
+      "id": "7"
     },
     {
       "name-en": "Caterpillar",
       "name-fa": "کاترپیلار",
       "createdAt": 1645019634099,
       "icon": "c09aea85c4d295b693c12b26b24dd991",
-      "id": 8
+      "id": "8"
     },
     {
       "name-en": "glx",
       "name-fa": "جی ال ایکس",
       "createdAt": 1645019634099,
       "icon": "1a96203becbe9f4982da4348c657ddba",
-      "id": 9
+      "id": "9"
     },
     {
       "name-en": "blackberry",
       "name-fa": "بلک بری",
       "createdAt": 1645019634099,
       "icon": "0436b4f9e764b1dc33e3b57c3b196ff7",
-      "id": 10
-    },
-    {
-      "name-en": "poco",
-      "name-fa": "پوکو",
-      "icon": "848cadcc5a837e584ef41e1a7ff25ea4",
-      "createdAt": 1645019634099,
-      "id": 11
+      "id": "10"
     }
   ],
   "users": [
