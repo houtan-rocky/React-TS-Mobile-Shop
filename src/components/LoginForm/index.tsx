@@ -88,7 +88,7 @@ function LoginForm() {
                         <label>نام کاربری</label>
                         <CustomInput className={'login-form__input'} type="text" name={'username'}
                                      placeholder={'نام کاربری'}
-                                     required={false} value={loginInfo.username} pattern={'^(?!\\s*$).+'}
+                                     required={false} value={loginInfo.username} pattern={'([a-zA-Z])\\w+'}
                                      onChange={handleInputChange} doValidation={validateInput}
                                      dir={'ltr'}
                         />
