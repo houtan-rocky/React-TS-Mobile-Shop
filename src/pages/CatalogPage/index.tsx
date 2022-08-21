@@ -74,12 +74,12 @@ export const CatalogPage: React.FC = () => {
             let temp = productList
 
             if (filter.category.length > 0) {
-                temp = temp.filter(e => filter.category.includes(e['category-id']))
+                temp = temp.filter(e => filter.category.includes(e.category_id))
             }
 
             if (filter.color.length > 0) {
                 temp = temp.filter(product => {
-                    const check = product.colors.find((colorObj: any) => filter.color.includes(colorObj['color-name-en']))
+                    const check = product.colors.find((colorObj: any) => filter.color.includes(colorObj.colorـnameـen))
                     return check !== undefined
                 })
             }

@@ -1,8 +1,8 @@
 import React from "react";
 import Helmet from "../../../components/Helmet";
-import './index.css'
+import '../index.css'
 import OrdersTable from "../components/panelTable";
-import {getOrders} from "../../../api/getOrder.api";
+import {getOrders, searchOrder} from "../../../api/getOrder.api";
 
 export const PanelOrdersPage: React.FC = () => {
     const tableHeads = [
@@ -32,7 +32,7 @@ export const PanelOrdersPage: React.FC = () => {
 
     return <main className={'main'}>
         <Helmet title={'مدیریت سفارشات'}>
-            <OrdersTable getTableItems={getOrders} tableHeads={tableHeads}/>
+            <OrdersTable getTableItems={getOrders} tableHeads={tableHeads} filter={true} searchTableItems={searchOrder}/>
         </Helmet>
     </main>
 }

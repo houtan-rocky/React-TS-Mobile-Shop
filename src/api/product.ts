@@ -1,4 +1,4 @@
-import {GET_PRODUCTS} from 'configs/url.config';
+import {GET_ORDERS, GET_PRODUCTS} from 'configs/url.config';
 import http from 'services/http.services';
 
 export async function GetProducts() {
@@ -92,5 +92,14 @@ export const showRandomProducts = (products: any[], count?: number) => {
         const min = 0
         const start = Math.floor(Math.random() * (max - min) + min)
         return products.slice(start, start + count)
+    }
+}
+
+export async function searchProduct(searchPhrase: string) {
+    try {
+        const response = await http.get(`${GET_PRODUCTS}?q=${searchPhrase}`);
+        return response;
+    } catch (e) {
+        return Promise.reject(e);
     }
 }

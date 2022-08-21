@@ -2,7 +2,7 @@
 import React from "react";
 import Helmet from "../../../components/Helmet";
 import PanelTable from "../components/panelTable";
-import {GetProducts} from "../../../api/product";
+import {GetProducts, searchProduct} from "../../../api/product";
 
 export const PanelQuantityPage = () => {
     const tableHeads = [
@@ -23,7 +23,7 @@ export const PanelQuantityPage = () => {
 
     return <main className={'main'}>
                 <Helmet title={'مدیریت تعداد و قیمت'}>
-        <PanelTable getTableItems={GetProducts} tableHeads={tableHeads}/>
+        <PanelTable getTableItems={GetProducts} tableHeads={tableHeads} searchTableItems={searchProduct}/>
                 </Helmet>
     </main>
 }

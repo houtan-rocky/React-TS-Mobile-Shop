@@ -39,12 +39,12 @@ const useSortableData = (orders, config = null) => {
         setSortConfig({key, direction});
     };
 
-    return {orders: sortedUsers, requestSort, sortConfig};
+    return {tableItems: sortedUsers, requestSort, sortConfig};
 };
 
 const DirectoryTable = (props) => {
-    let {orders, requestSort, sortConfig} = useSortableData(props.tableItems);
-    const [updateTableItems, setUpdateTableItems] = useState(orders)
+    let {tableItems, requestSort, sortConfig} = useSortableData(props.tableItems);
+    const [updateTableItems, setUpdateTableItems] = useState(tableItems)
     const {editOrder, deleteOrder} = props;
     const [searchValue, setSearchValue] = useState("");
 
@@ -52,22 +52,24 @@ const DirectoryTable = (props) => {
     useEffect(() => {
         let updateFlag = true
         console.log('filter')
-        var timeoutId = setTimeout(() => searchOrder(searchValue).then((data) => {
+        var timeoutId = setTimeout(() => props.searchTableItems(searchValue).then((data) => {
                 if (searchValue) {
                     updateFlag = true;
-                    orders = (data.data)
-                    console.log(orders)
-                    setUpdateTableItems(orders)
+                    tableItems = (data.data)
+                    setUpdateTableItems(tableItems)
                 }
             }), 400
         )
-        if (updateFlag)
-            setUpdateTableItems(orders)
+        if (updateFlag){
+
+            setUpdateTableItems(tableItems)
+
+        }
 
         return () => {
             clearTimeout(timeoutId);
         }
-    }, [searchValue, orders])
+    }, [searchValue, tableItems])
 
 
     const getClassNamesFor = (name) => {
@@ -85,7 +87,6 @@ const DirectoryTable = (props) => {
     const onRadioChange = (event) => {
         const value = event.target.value
         setSearchValue(value)
-        console.log(value)
     }
 
     function objectGet(obj, path) { return new Function('_', 'return _.' + path)(obj); };
@@ -94,20 +95,23 @@ const DirectoryTable = (props) => {
     return (
         <>
             <div className="container">
-                <FormControl>
-                    <FormLabel id="demo-radio-buttons-group-label">فیلتر سفارشات</FormLabel>
-                    <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
-                        defaultValue="تحویل شده"
-                        name="radio-buttons-group"
-                        onChange={onRadioChange}
-                    >
-                        <FormControlLabel value="shipped" control={<Radio/>} label="تحویل شده"/>
-                        {/* eslint-disable-next-line react/jsx-no-undef */}
-                        <FormControlLabel value="pending" control={<Radio/>} label="در حال بررسی"/>
-                        <FormControlLabel value="rejected" control={<Radio/>} label="رد شده"/>
-                    </RadioGroup>
-                </FormControl>
+                {
+                    props.filter &&
+                    <FormControl>
+                        <FormLabel id="demo-radio-buttons-group-label">فیلتر سفارشات</FormLabel>
+                        <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            defaultValue="تحویل شده"
+                            name="radio-buttons-group"
+                            onChange={onRadioChange}
+                        >
+                            <FormControlLabel value="shipped" control={<Radio/>} label="تحویل شده"/>
+                            {/* eslint-disable-next-line react/jsx-no-undef */}
+                            <FormControlLabel value="pending" control={<Radio/>} label="در حال بررسی"/>
+                            <FormControlLabel value="rejected" control={<Radio/>} label="رد شده"/>
+                        </RadioGroup>
+                    </FormControl>
+                }
                 <SearchBox searchHandler={searchHandler}/>
                 <table>
                     <thead>
@@ -134,7 +138,7 @@ const DirectoryTable = (props) => {
                         updateTableItems.map((tableItem) => (
                             <tr key={tableItem.id}>
                                 {
-                                    props.tableHeader.map((headerItem) => <td>{tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
+                                    props.tableHeader.map((headerItem) =>  <td key={headerItem.id}>{tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
                                 }
                                 <td>
                                     <IconButton

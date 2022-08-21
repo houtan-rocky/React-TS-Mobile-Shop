@@ -99,7 +99,7 @@ const ProductsTable = (props: any) => {
                         content={
                             <EditForm
                                 currentUser={currentTableItem}
-                                updateUser={updateTableItem}
+                                updateTableItem={updateTableItem}
                             />
                         }
                     />
@@ -117,6 +117,8 @@ const ProductsTable = (props: any) => {
                     tableItems={currentTableItems}
                     editOrder={editTableItem}
                     deleteOrder={deleteTableItem}
+                    filter={props.filter}
+                    searchTableItems={props.searchTableItems}
                 />
                 <Pagination
                     usersPerPage={ordersPerPage}
