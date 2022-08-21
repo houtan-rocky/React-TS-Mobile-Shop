@@ -18,45 +18,48 @@ export const CatalogPage: React.FC = () => {
     }
 
 
-    const [products, setProducts] = useState<string[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
     const [categories, setCategories] = useState([])
     const [filter, setFilter] = useState<any>(initFilter)
-    const productList = showRandomProducts(products, products.length)
+    const [productList, setProductList] = useState<any[]>([])
 
 
     useEffect(() => {
-        GetProducts().then((data => setProducts(data.data)))
+        GetProducts().then((data => {
+            setProductList(data.data)
+            setProducts(data.data)
+        }))
         GetCategories().then((data => setCategories(data.data)))
     }, [])
 
 
 
-    const filterSelect = (type: string, checked: boolean, item: any) => {
+    const filterSelect = (type: string, checked: boolean, categoryItem: any) => {
         if (checked) {
             switch(type) {
                 case "CATEGORY":
-                    setFilter({...filter, category: [...filter.category, item.id]})
+                    setFilter({...filter, category: [...filter.category, categoryItem.id]})
                     break
                 case "COLOR":
-                    setFilter({...filter, color: [...filter.color, item.color]})
+                    setFilter({...filter, color: [...filter.color, categoryItem.color]})
                     break
                 case "SIZE":
-                    setFilter({...filter, size: [...filter.size, item.size]})
+                    setFilter({...filter, size: [...filter.size, categoryItem.size]})
                     break
                 default:
             }
         } else {
             switch(type) {
                 case "CATEGORY":
-                    const newCategory = filter.category.filter((e: any) => e !== item.categorySlug)
+                    const newCategory = filter.category.filter((e: any) => e !== categoryItem.id)
                     setFilter({...filter, category: newCategory})
                     break
                 case "COLOR":
-                    const newColor = filter.color.filter((e: any) => e !== item.color)
+                    const newColor = filter.color.filter((e: any) => e !== categoryItem.color)
                     setFilter({...filter, color: newColor})
                     break
                 case "SIZE":
-                    const newSize = filter.size.filter((e: any) => e !== item.size)
+                    const newSize = filter.size.filter((e: any) => e !== categoryItem.size)
                     setFilter({...filter, size: newSize})
                     break
                 default:
@@ -69,15 +72,14 @@ export const CatalogPage: React.FC = () => {
     const updateProducts = useCallback(
         () => {
             let temp = productList
-            console.table(temp)
 
             if (filter.category.length > 0) {
                 temp = temp.filter(e => filter.category.includes(e['category-id']))
             }
 
             if (filter.color.length > 0) {
-                temp = temp.filter(e => {
-                    const check = e.colors.find((color: any) => filter.color.includes(color))
+                temp = temp.filter(product => {
+                    const check = product.colors.find((colorObj: any) => filter.color.includes(colorObj['color-name-en']))
                     return check !== undefined
                 })
             }
@@ -96,7 +98,7 @@ export const CatalogPage: React.FC = () => {
 
     useEffect(() => {
         updateProducts()
-    }, [])
+    }, [filter])
 
     const filterRef = useRef<HTMLDivElement>(null)
 
@@ -118,12 +120,12 @@ export const CatalogPage: React.FC = () => {
                         </div>
                         <div className="catalog__filter__widget__content">
                             {
-                                showRandomProducts(categories,categories.length).map((item, index) => (
+                                showRandomProducts(categories,categories.length).map((categoryItem, index) => (
                                     <div key={index} className="catalog__filter__widget__content__item">
                                         <CheckBox
-                                            label={item['name-fa']}
-                                            onChange={(input) => filterSelect("CATEGORY", input.checked, item)}
-                                            checked={filter.category.includes(item['name-fa'])}
+                                            label={categoryItem['name-fa']}
+                                            onChange={(input) => filterSelect("CATEGORY", input.checked, categoryItem)}
+                                            checked={filter.category.includes(categoryItem.id)}
                                         />
                                     </div>
                                 ))
