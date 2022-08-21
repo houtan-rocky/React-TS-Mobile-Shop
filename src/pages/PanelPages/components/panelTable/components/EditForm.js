@@ -3,24 +3,24 @@ import CustomInput from "./CustomInput";
 import {updateOrder} from "../../../../../api/updateOrder";
 
 const EditForm = (props) => {
-  const [order, setOrder] = useState(props.currentUser);
+  const [tableItem, setTableItem] = useState(props.currentUser);
 
   useEffect(() => {
-    setOrder(props.currentUser);
+    setTableItem(props.currentUser);
   }, [props]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    setOrder({ ...order, [name]: value });
+    setTableItem({ ...tableItem, [name]: value });
   };
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        props.updateUser(order.id, order);
-        updateOrder(order.id, order);
+        props.updateTableItem(tableItem.id, tableItem);
+        updateOrder(tableItem.id, tableItem);
       }}
     >
       <div className="form-group">
@@ -29,7 +29,7 @@ const EditForm = (props) => {
         <CustomInput
           type="text"
           name="first_name"
-          value={order.first_name}
+          value={tableItem.first_name}
           onChange={handleInputChange}
           pattern="[آ-ی^]+$"
           required
@@ -40,7 +40,7 @@ const EditForm = (props) => {
         <CustomInput
           type="text"
           name="last_name"
-          value={order.last_name}
+          value={tableItem.last_name}
           onChange={handleInputChange}
           pattern="[آ-ی^]+$"
           required
@@ -51,7 +51,7 @@ const EditForm = (props) => {
         <CustomInput
           type="number"
           name="total_bill"
-          value={order.total_bill}
+          value={tableItem.total_bill}
           onChange={handleInputChange}
           pattern="[a-zA-Z0-9-]+$"
           required
@@ -62,7 +62,7 @@ const EditForm = (props) => {
         <CustomInput
           type="date"
           name="order_registration_date"
-          value={order.order_registration_date}
+          value={tableItem.order_registration_date}
           onChange={handleInputChange}
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required

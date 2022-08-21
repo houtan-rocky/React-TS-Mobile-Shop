@@ -1,4 +1,4 @@
-import { GET_CATEGORIES } from 'configs/url.config';
+import {GET_CATEGORIES, GET_ORDERS} from 'configs/url.config';
 import http from 'services/http.services';
 
 export async function GetCategory(id: string) {
@@ -18,3 +18,4 @@ export async function GetCategories() {
         return Promise.reject(e);
     }
 }
+

@@ -17,7 +17,7 @@ export const PATHS = {
     LOGIN: 'panel/login',
 
     PANEL: '/panel',
-    PANEL_ORDERS: '/panel/orders',
+    PANEL_ORDERS: '/panel/listItems',
     PANEL_PRODUCTS: '/panel/product',
     PANEL_QUANTITY: '/panel/quantity',
     PANEL_CATEGORY: '/panel/category',

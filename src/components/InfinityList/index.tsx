@@ -6,7 +6,7 @@ import ProductCard from "../ProductCard";
 
 const InfinityList = (props: any) => {
 
-    const perLoad = 6 // items each load
+    const perLoad = 6 // listItems each load
 
     const listRef = useRef<HTMLDivElement>(null)
 

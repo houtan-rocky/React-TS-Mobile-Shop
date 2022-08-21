@@ -22,12 +22,9 @@ function ValidationStatus(props: IValidateStatusProps) {
 
 
     const validateInput = (name: string, value: string) => {
-        console.log(name, value)
         const pattern = new RegExp(props.pattern);
         const doesMatch = pattern.test(value);
-        console.log(doesMatch)
 
-        console.log(pattern)
         if (!value) {
             return getValidationError(name);
         } else {
