@@ -1,4 +1,4 @@
-import { GET_PRODUCTS } from 'configs/url.config';
+import {GET_PRODUCTS} from 'configs/url.config';
 import http from 'services/http.services';
 
 export async function GetProducts() {
@@ -69,9 +69,9 @@ export async function FilterProductByCategories(categorieId: string) {
     }
 }
 
-export async function ProductsPagination(categoryId: string, page:string, pageSize:string, sortDate: string) {
+export async function ProductsPagination(categoryId: string, page: string, pageSize: string, sortDate: string) {
     try {
-        if(categoryId == "all") {
+        if (categoryId == "all") {
             const response = await http.get(GET_PRODUCTS + '?_page=' + page + '&_limit=' + pageSize + "&_sort=createdAt&_order=" + sortDate);
             return response;
         } else {
@@ -84,9 +84,13 @@ export async function ProductsPagination(categoryId: string, page:string, pageSi
 }
 
 
-export const showRandomProducts = (products: any[], count: number) => {
-    const max = products.length - count
-    const min = 0
-    const start = Math.floor(Math.random() * (max - min) + min)
-    return products.slice(start, start + count)
+export const showRandomProducts = (products: any[], count?: number) => {
+    if (count === undefined) {
+        return products.slice()
+    } else {
+        const max = products.length - count
+        const min = 0
+        const start = Math.floor(Math.random() * (max - min) + min)
+        return products.slice(start, start + count)
+    }
 }

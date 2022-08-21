@@ -1,27 +1,31 @@
 const colors = [
     {
         display: "سفید",
-        color: "white"
+        color: "White"
     },
     {
         display: "صورتی",
-        color: "pink"
+        color: "Pink"
     },
     {
         display: "سیاه",
-        color: "black"
+        color: "Black"
     },
     {
         display: "زرد",
-        color: "yellow"
+        color: "Yellow"
     },
     {
         display: "نارنجی",
-        color: "orange"
+        color: "Orange"
     },
     {
         display: "آبی",
-        color: "blue"
+        color: "Blue"
+    },
+    {
+        display: "جیگری",
+        color: "Jigari"
     }
 ]
 
