@@ -38,7 +38,7 @@
     "backend:dev": "nodemon server --port 3001",
     "custom-start": "env-cmd -f ./src/environment/.env.development env-cmd -f ./src/environment/.env.local react-scripts start",
     "backend:prod": "nodemon server",
-    "concurrently": "concurrently \"npm start\" \"node ./server.js\""
+    "concurrently": "concurrently \"npm start\" \"nodemon ./server.js\""
   },
   "eslintConfig": {
     "extends": [

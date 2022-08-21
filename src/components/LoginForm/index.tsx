@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 // import Button from "../Button";
 import {Button, Link} from "@mui/material";
 import {LoadingButton} from '@mui/lab';
+import {Login} from 'api/userLogin.api';
 
 import CustomInput from "../../pages/PanelPages/components/panelTable/components/CustomInput";
 import ReCAPTCHA from "react-google-recaptcha";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
+import swal from "sweetalert";
 
 
 function LoginForm() {
@@ -20,6 +22,8 @@ function LoginForm() {
     const [validateInput, setValidateInput] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    const Navigate = useNavigate();
+
     const handleInputChange = (event: any, inputValue: string) => {
         const {name} = event.target;
 
@@ -31,14 +35,49 @@ function LoginForm() {
         value ? setIsCaptchaVerified(true) : setIsCaptchaVerified(false);
     }
 
-    const onFormSubmit = (event: React.SyntheticEvent) => {
+    const onFormSubmit = async (event: React.SyntheticEvent) => {
         setValidateInput(true);
-        event.preventDefault()
-        setIsLoading(true)
-        setTimeout(() => {
-            setIsUserVerified(true)
-            setIsLoading(false);
-        }, 2000)
+        event.preventDefault();
+
+        // @ts-ignore
+        const form = new FormData(event.target);
+        const data = Object.fromEntries(form);
+
+
+        if (true) {
+
+            try {
+                const response = await Login(data);
+
+                // customDispatch(setUserDataWhenLogin(response));
+
+                if (response.token) {
+                    swal({
+                        title: "ورود موفقت آمیز",
+                        text: "تا ثانیه ای دیگر به پنل کاربری هدایت خواهید شد ...",
+                        icon: "success",
+                        timer: 2500,
+                    });
+                    setTimeout(() => {
+                        Navigate("/panel/orders");
+                    }, 2500);
+                }
+            } catch (e: any) {
+                console.log(e);
+                e.response.status == 400 ? swal('خطا', "کاربر مورد نظر یافت نشد", 'error') : swal('خطا', "خطایی رخ داده است", 'error');
+            }
+        }
+
+        // setIsLoading(true)
+        // setTimeout(() => {
+        //     setIsUserVerified(true)
+        //     setIsLoading(false);
+        // }, 2000)
+    }
+
+
+    const loginUser = async (event: any) => {
+
     }
 
     return (
@@ -63,12 +102,11 @@ function LoginForm() {
                                      dir={'ltr'}
                         />
                     </div>
-                        <LoadingButton loading={isLoading} size={'medium'} color={'error'}
-                                       className={'login-form__btn'} type={"submit"} variant="contained"
-                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
-                            ورود به پروفایل
-                        </LoadingButton>
-                    { isUserVerified &&  <Navigate to={'/panel/listItems'}/>}
+                    <LoadingButton loading={isLoading} size={'medium'} color={'error'}
+                                   className={'login-form__btn'} type={"submit"} variant="contained"
+                                   disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
+                        ورود به پروفایل
+                    </LoadingButton>
                     <Link color={'success'} href={'/'} underline={'hover'}>
                         بازگشت
                     </Link>

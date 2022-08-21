@@ -2109,82 +2109,322 @@
   ],
   "users": [
     {
-      "username": "mre01",
-      "firstName": "محمد رضا",
-      "lastName": "ابراهیمی",
-      "password": "123456789",
-      "email": "mre.dev01@gmail.com",
+      "username": "mastermind",
+      "firstName": "هوتن",
+      "lastName": "عباسی",
+      "password": "mastermind",
+      "email": "mast9rmind@gmail.com",
+      "phone": "09331116459",
+      "address": "خیابان اروند",
+      "city": "اهواز",
+      "state": "اهواز",
+      "country": "ایران",
+      "zip": "624423125",
+      "role": "admin",
+      "createdAt": 1523375019984,
+      "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "هومن",
+      "last_name": "عباسی",
       "phone": "09913440342",
       "address": "خیابان شهید رودکی",
-      "city": "اصفهان",
-      "state": "اصفهان",
-      "country": "ایران",
-      "zip": "817453165",
-      "role": "admin",
-      "createdAt": 1643375019984,
+      "total_bill": 22776000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 20,
+          "quantity": 2,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "35.71528",
+        "lng": "51.41667"
+      },
+      "delivered-at": null,
+      "order_registration_date": "2022-08-02",
       "id": 1
     },
     {
-      "username": "mamad",
-      "firstName": "محمدعلی",
-      "lastName": "رضایی",
-      "password": "123456",
-      "email": "mohammadali01@gmail.com",
-      "phone": "0921920056",
-      "address": "خیابان شهید برزخ",
-      "city": "شیراز",
-      "state": "فارس",
-      "country": "ایران",
-      "zip": "817111165",
-      "role": "user",
-      "createdAt": 1645020032716,
+      "user-id": 2,
+      "status": "shipped",
+      "first_name": "علی اکبر",
+      "last_name": "پور نقاش",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 11776000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 20,
+          "quantity": 2,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "35.71528",
+        "lng": "51.41667"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1546876995101,
       "id": 2
     },
     {
-      "username": "mohseni",
-      "firstName": "رضا",
-      "lastName": "محسنی",
-      "password": "123456",
-      "email": "mohammadali012@gmail.com",
-      "phone": "0921920057",
-      "address": "خیابان شهید برزخ",
-      "city": "شیراز",
-      "state": "فارس",
-      "country": "ایران",
-      "zip": "817111165",
-      "role": "user",
-      "createdAt": 1645171673786,
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "شهرام",
+      "last_name": "اسماعیلی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 11776000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 20,
+          "quantity": 2,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "35.71528",
+        "lng": "51.41667"
+      },
+      "delivered-at": null,
+      "order_registration_date": "2022-08-17",
       "id": 3
     },
     {
-      "username": "mhosseini",
-      "password1": "Reza@123456789",
-      "password2": "Reza@123456789",
-      "firstName": "محمد علی",
-      "lastName": "حسینی",
-      "email": "mhoseineni@gmail.cmo",
-      "phone": "09913440343",
-      "state": "اصفهان",
-      "city": "اصفهان",
-      "address": "سه راه سیمین ، خ سهروردی ، ک 5 ، ک شهید مظفر باقریان ، بن بست نوبهار ، پ 116 ، طبقه همکف",
-      "postalCode": "8176954887",
-      "createdAt": 1645191505172,
+      "user-id": 1,
+      "status": "pending",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 11776000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 20,
+          "quantity": 2,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "35.71528",
+        "lng": "51.41667"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646876995101,
       "id": 4
     },
     {
-      "username": "mre012",
-      "password1": "Reza@13811375",
-      "password2": "Reza@13811375",
-      "firstName": "محمد",
-      "lastName": "ابراهیمی",
-      "email": "gdfgfdg@dff.com",
-      "phone": "09913440345",
-      "state": "اصفهان",
-      "city": "انارک",
-      "address": "تستتتتتتتتتتتتتت",
-      "postalCode": "7817695488",
-      "createdAt": 1645461324868,
+      "user-id": 1,
+      "status": "pending",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 11776000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 20,
+          "quantity": 2,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "35.71528",
+        "lng": "51.41667"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646876995101,
       "id": 5
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 6
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 7
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 8
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 9
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 10
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 11
+    },
+    {
+      "user-id": 1,
+      "status": "shipped",
+      "first_name": "محمد رضا",
+      "last_name": "ابراهیمی",
+      "phone": "09913440342",
+      "address": "خیابان شهید رودکی",
+      "total_bill": 6999000,
+      "delivery-date": "1400/12/19",
+      "products": [
+        {
+          "productId": 15,
+          "quantity": 1,
+          "colorId": 0,
+          "GarntyId": 0
+        }
+      ],
+      "map": {
+        "lat": "0",
+        "lng": "0"
+      },
+      "delivered-at": null,
+      "order_registration_date": 1646900171395,
+      "id": 12
     }
   ],
   "tableItems": [
@@ -2532,6 +2772,7 @@
     "products.post": true,
     "products.put": false,
     "orders.post": true,
+    "orders.get": true,
     "upload": true,
     "upload.get": false,
     "products": "admin",
