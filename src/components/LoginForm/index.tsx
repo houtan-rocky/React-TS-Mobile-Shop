@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Button, Link} from "@mui/material";
 import {LoadingButton} from '@mui/lab';
 
-import CustomInput from "../CustomInput";
+import CustomInput from "../../pages/PanelPages/components/panelTable/components/CustomInput";
 import ReCAPTCHA from "react-google-recaptcha";
 import {Navigate} from "react-router-dom";
 
@@ -68,7 +68,7 @@ function LoginForm() {
                                        disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
                             ورود به پروفایل
                         </LoadingButton>
-                    { isUserVerified &&  <Navigate to={'/panel/orders'}/>}
+                    { isUserVerified &&  <Navigate to={'/panel/listItems'}/>}
                     <Link color={'success'} href={'/'} underline={'hover'}>
                         بازگشت
                     </Link>

@@ -4,9 +4,11 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
 import {GetProducts} from "../../../../../api/product";
+import Button from "../../../../../components/Button";
 
 const useSortableData = (products, config = null) => {
   const [sortConfig, setSortConfig] = useState(config);
+
 
 
   const sortedProducts = useMemo(() => {
@@ -41,7 +43,8 @@ const useSortableData = (products, config = null) => {
 };
 
 const DirectoryTable = (props) => {
-  const { products, requestSort, sortConfig } = useSortableData(props.products);
+  let { products, requestSort, sortConfig } = useSortableData(props.products);
+  const [editedProducts, setEditedProducts] = useState([]);
   const { editOrder, deleteOrder } = props;
   const [searchValue, setSearchValue] = useState("");
   const getClassNamesFor = (name) => {
@@ -73,9 +76,56 @@ const DirectoryTable = (props) => {
     );
   });
 
+
+    function getSiblings (elem) {
+        return Array.from(elem.parentNode.children).filter(function (sibling) {
+            return sibling !== elem;
+        });
+    }
+
+  const handleTDClick = e => {
+    e.preventDefault();
+    e.target.contentEditable = true;
+
+  };
+
+    const handleTDChange = e => {
+      const name = e.target.getAttribute('data-name');
+      console.log(name)
+      const value = e.target.value;
+      console.log(getSiblings(e.target)[0].textContent)
+      let productId = getSiblings(e.target)[0].textContent;
+      console.log(products)
+      setEditedProducts((prevEditedProducts) => {
+        return [...prevEditedProducts,{}]
+      })
+
+      products = products.map((product) => {
+        if (product.id === productId) {
+          return {
+            ...product,
+            [name]: value,
+          }
+        } else {
+          return product
+        }
+      })
+      console.log(products)
+    }
+
+  const handleRefreshButtonClick = () => {
+
+    console.log('hi')
+  }
+
   return (
     <>
       <div className="container">
+        <div className="container" onClick={handleRefreshButtonClick}>
+          <Button>
+            تازه کردن
+          </Button>
+        </div>
         <SearchBox searchHandler={searchHandler} />
         <table>
           <thead>
@@ -116,25 +166,11 @@ const DirectoryTable = (props) => {
             {updateProducts.length > 0 ? (
               updateProducts.map((product) => (
                 <tr key={product.id}>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.quantity}</td>
-                  <td>
-                    <IconButton
-                      aria-label="edit"
-                      onClick={() => {
-                        editOrder(product);
-                      }}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => deleteOrder(product.id)}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </td>
+                  <td hidden>{product.id}</td>
+                  <td >{product.name}</td>
+                  <td data-name={'price'} onClick={handleTDClick} onBlur={handleTDChange}>{product.price}</td>
+                  <td data-name={'quantity'} onClick={handleTDClick} onBlur={handleTDChange}>{product.quantity}</td>
+
                 </tr>
               ))
             ) : (

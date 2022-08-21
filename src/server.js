@@ -120,7 +120,7 @@ server.use((req, res, next) => {
     }
 
 
-    if (req.url === '/orders') {
+    if (req.url === '/listItems') {
         const {username, email, phone} = req.body;
         req.user = (DB.users || {}).find(u => u.username == username);
         if (req.user) return res.status(409).send('UserName already exists!');

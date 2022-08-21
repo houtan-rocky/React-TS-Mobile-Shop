@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import OrdersTable from "./components/OrdersTable";
+import DirectoryTable from "./components/DirectoryTable";
 import AddForm from "./components/AddForm";
 import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
@@ -7,101 +7,87 @@ import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
 import Button from "../../../../components/Button";
 import {getOrders} from "../../../../api/getOrder.api";
-import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {GetProducts} from "../../../../api/product";
 // import axios from "axios";
 
 const ProductsTable = () => {
-    const [orders, setOrders] = useState([]);
+    const [products, setProducts] = useState([]);
     const [editing, setEditing] = useState(false);
     const initialFormState = {
         id: null,
-        first_name: "",
-        last_name: "",
-        total_bill: "",
-        order_registration_date: "",
+        name: "",
+        price: "",
+        quantity: "",
         image: "",
-        status: ""
     };
-    const [currentOrder, setCurrentOrder] = useState(initialFormState);
+    const [currentOrder, setCurrentProduct] = useState(initialFormState);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [ordersPerPage] = useState(10);
     const {isShowing, toggle} = useModal();
 
-    function fetchOrders() {
-        getOrders()
+    function fetchProducts() {
+        GetProducts()
             .then((response) =>
                 response.data.map((product: any) => ({
+                    ...product,
                     id: product.id,
-                    first_name: product.name,
-                    last_name: product.family,
-                    total_bill: product['total-price'],
-                    order_registration_date: product.createdAt,
-                    status: product.status,
+                    name: product['product-name-fa'],
+                    price: product.price.amount,
+                    image: product.image,
+                    quantity: product.count
                 }))
             )
             .then((data) => {
-                setOrders(data);
-            })
-            .catch((err) => console.log(err));
+                setProducts(data);
+            });
     }
 
-
     useEffect(() => {
-        fetchOrders();
+        fetchProducts();
     }, []);
 
 
     // incrementing ids + adding placeholder image manually
     // TODO: update id and image handling when tying this to a database
-    const addUser = (user: any) => {
+    const addProduct = (user: any) => {
         toggle();
-        user.id = orders.length + Math.random();
+        user.id = products.length + Math.random();
         console.log(user)
         // @ts-ignore
-        setOrders([user, ...orders]);
+        setProducts([user, ...products]);
     };
 
-    const editUser = (user: any) => {
+    const editProduct = (product: any) => {
         setEditing(true);
         toggle();
-        setCurrentOrder({
-            id: user.id,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            total_bill: user.total_bill,
-            order_registration_date: user.order_registration_date,
-            image: user.image,
-            status: user.status
-        });
+        setCurrentProduct((prevProduct) => ({
+            ...prevProduct,
+            price: product.price.amount,
+            quantity: product.count,
+        }));
     };
 
     const updateUser = (id: string, updatedUser: any) => {
         setEditing(false);
         // @ts-ignore
-        setOrders(orders.map((user: any) => (user.id === id ? updatedUser : user)));
+        setProducts(products.map((user: any) => (user.id === id ? updatedUser : user)));
         toggle();
     };
 
     const deleteUser = (id: string) => {
-        setOrders(orders.filter((user: any) => user.id !== id));
+        setProducts(products.filter((user: any) => user.id !== id));
     };
 
     // pagination
     const indexOfLastUser = currentPage * ordersPerPage;
     const indexOfFirstUser = indexOfLastUser - ordersPerPage;
-    const currentUsers = orders.slice(indexOfFirstUser, indexOfLastUser);
+    const currentProducts = products.slice(indexOfFirstUser, indexOfLastUser);
     // change page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-
-    console.count('panel-orders')
-
-
-
-    // @ts-ignore
+    console.count('quantity-table')
     return (
         <React.Fragment>
-
             <div className="page-control">
 
                 {editing ? (
@@ -121,18 +107,18 @@ const ProductsTable = () => {
                         isShowing={isShowing}
                         hide={toggle}
                         setEditing={setEditing}
-                        content={<AddForm addUser={addUser}
+                        content={<AddForm addUser={addProduct}
                         />}
                     />
                 )}
-                <OrdersTable
-                    orders={currentUsers}
-                    editOrder={editUser}
-                    deleteOrder={deleteUser}
+                <DirectoryTable
+                    products={currentProducts}
+                    editUser={editProduct}
+                    deleteUser={deleteUser}
                 />
                 <Pagination
                     usersPerPage={ordersPerPage}
-                    totalUsers={orders.length}
+                    totalUsers={products.length}
                     paginate={paginate}
                     setCurrentPage={setCurrentPage}
                 />

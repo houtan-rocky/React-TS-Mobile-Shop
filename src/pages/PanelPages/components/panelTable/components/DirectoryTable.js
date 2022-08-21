@@ -42,12 +42,11 @@ const useSortableData = (orders, config = null) => {
     return {orders: sortedUsers, requestSort, sortConfig};
 };
 
-const OrdersTable = (props) => {
-    let {orders, requestSort, sortConfig} = useSortableData( props.orders);
-    const [updateOrders, setUpdateOrders] = useState(orders)
+const DirectoryTable = (props) => {
+    let {orders, requestSort, sortConfig} = useSortableData(props.tableItems);
+    const [updateTableItems, setUpdateTableItems] = useState(orders)
     const {editOrder, deleteOrder} = props;
     const [searchValue, setSearchValue] = useState("");
-
 
 
     useEffect(() => {
@@ -57,13 +56,13 @@ const OrdersTable = (props) => {
                 if (searchValue) {
                     updateFlag = true;
                     orders = (data.data)
-
-                    setUpdateOrders(orders)
+                    console.log(orders)
+                    setUpdateTableItems(orders)
                 }
             }), 400
         )
         if (updateFlag)
-            setUpdateOrders(orders)
+            setUpdateTableItems(orders)
 
         return () => {
             clearTimeout(timeoutId);
@@ -89,6 +88,9 @@ const OrdersTable = (props) => {
         console.log(value)
     }
 
+    function objectGet(obj, path) { return new Function('_', 'return _.' + path)(obj); };
+
+
     return (
         <>
             <div className="container">
@@ -110,81 +112,48 @@ const OrdersTable = (props) => {
                 <table>
                     <thead>
                     <tr>
-                        <th>
-                            <button
-                                type="button"
-                                onClick={() => requestSort("first_name")}
-                                className={getClassNamesFor("first_name")}
-                            >
-                                نام کاربر
-                            </button>
-                        </th>
-                        <th>
-                            <button
-                                type="button"
-                                onClick={() => requestSort("last_name")}
-                                className={getClassNamesFor("last_name")}
-                            >
-                                نام خانوادگی کاربر
-                            </button>
-                        </th>
-                        <th>
-                            <button
-                                type="button"
-                                onClick={() => requestSort("total_bill")}
-                                className={getClassNamesFor("total_bill")}
-                            >
-                                مجموع مبلغ
-                            </button>
-                        </th>
-                        <th>
-                            <button
-                                type="button"
-                                onClick={() => requestSort("order_registration_date")}
-                                className={getClassNamesFor("order_registration_date")}
-                            >
-                                زمان ثبت سفارش
-                            </button>
-                        </th>
-                        <th>
-                            <button
-                                type="button"
-                                onClick={() => requestSort("status")}
-                                className={getClassNamesFor("status")}
-                            >
-                                وضعیت
-                            </button>
-                        </th>
-                        <th>عملیات</th>
+                        {
+                            props.tableHeader.map((headerItem) => {
+                                return (
+                                    <th key={headerItem.id}>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort(headerItem.name)}
+                                            className={getClassNamesFor(headerItem.name)}
+                                        >
+                                            {headerItem.display}
+                                        </button>
+                                    </th>
+                                )
+                            })
+                        }
                     </tr>
                     </thead>
                     <tbody>
-                    {updateOrders.length > 0 ? (
-                        updateOrders.map((order) => (
-                            <tr key={order.id}>
-                                <td>{order.first_name}</td>
-                                <td>{order.last_name}</td>
-                                <td>{order.total_bill}</td>
-                                <td>{order.order_registration_date}</td>
-                                <td>{order.status}</td>
+                    {updateTableItems.length > 0 ? (
+                        updateTableItems.map((tableItem) => (
+                            <tr key={tableItem.id}>
+                                {
+                                    props.tableHeader.map((headerItem) => <td>{tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
+                                }
                                 <td>
                                     <IconButton
                                         aria-label="edit"
                                         onClick={() => {
-                                            editOrder(order);
+                                            editOrder(tableItem);
                                         }}
                                     >
                                         <EditIcon/>
                                     </IconButton>
                                     <IconButton
                                         aria-label="delete"
-                                        onClick={() => deleteOrder(order.id)}
+                                        onClick={() => deleteOrder(tableItem.id)}
                                     >
                                         <DeleteIcon/>
                                     </IconButton>
                                     <IconButton
                                         aria-label="delete"
-                                        onClick={() => deleteOrder(order.id)}
+                                        onClick={() => deleteOrder(tableItem.id)}
                                     >
                                         <AssessmentIcon/>
                                     </IconButton>
@@ -193,7 +162,7 @@ const OrdersTable = (props) => {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan={5}>No Data</td>
+                            <td colSpan={5}>داده ای وجود ندارد</td>
                         </tr>
                     )}
                     </tbody>
@@ -203,4 +172,4 @@ const OrdersTable = (props) => {
     );
 };
 
-export default OrdersTable;
+export default DirectoryTable;
