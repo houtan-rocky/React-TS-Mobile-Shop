@@ -43,8 +43,13 @@ export async function AddProduct(data: string) {
 }
 
 export async function DeleteProducts(id: string) {
+    let config = {
+        headers: {
+            token: localStorage.getItem("ACCESS_TOKEN"),
+        },
+    }
     try {
-        const response = await http.delete(GET_PRODUCTS + '/' + id);
+        const response = await http.delete(GET_PRODUCTS + '/' + id, config);
         return response;
     } catch (e) {
         return Promise.reject(e);

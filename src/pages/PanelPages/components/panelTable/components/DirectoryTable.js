@@ -140,28 +140,31 @@ const DirectoryTable = (props) => {
                                 {
                                     props.tableHeader.map((headerItem) =>  <td key={headerItem.id}>{tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
                                 }
-                                <td>
-                                    <IconButton
-                                        aria-label="edit"
-                                        onClick={() => {
-                                            editOrder(tableItem);
-                                        }}
-                                    >
-                                        <EditIcon/>
-                                    </IconButton>
-                                    <IconButton
-                                        aria-label="delete"
-                                        onClick={() => deleteOrder(tableItem.id)}
-                                    >
-                                        <DeleteIcon/>
-                                    </IconButton>
-                                    <IconButton
-                                        aria-label="delete"
-                                        onClick={() => deleteOrder(tableItem.id)}
-                                    >
-                                        <AssessmentIcon/>
-                                    </IconButton>
-                                </td>
+                                {
+                                    props.hasActionButtons &&
+                                    <td>
+                                        <IconButton
+                                            aria-label="edit"
+                                            onClick={() => {
+                                                editOrder(tableItem);
+                                            }}
+                                        >
+                                            <EditIcon/>
+                                        </IconButton>
+                                        <IconButton
+                                            aria-label="delete"
+                                            onClick={() => deleteOrder(tableItem.id)}
+                                        >
+                                            <DeleteIcon/>
+                                        </IconButton>
+                                        <IconButton
+                                            aria-label="delete"
+                                            onClick={() => deleteOrder(tableItem.id)}
+                                        >
+                                            <AssessmentIcon/>
+                                        </IconButton>
+                                    </td>
+                                }
                             </tr>
                         ))
                     ) : (

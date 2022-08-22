@@ -56,7 +56,6 @@ function ProtectedRoutes() {
         return protectedRoutes;
     } else {
         removeAllUserData();
-        // @ts-ignore
         return <Navigate to={'/panel/login'}></Navigate>;
     }
 

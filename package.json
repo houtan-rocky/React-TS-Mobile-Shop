@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-redux": "7.1.24",
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "draft-js": "^0.11.7",
     "eslint-scope": "^7.1.1",
     "react": "^18.2.0",
@@ -29,16 +30,17 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently --kill-others  \"npm run backend\" \"npm run dev\"",
+    "backend": "nodemon ./server.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "json": "json-server --watch db.json",
-    "dev": "concurrently \"npm start\" \"json-server --watch db.json --port 3001\"",
     "backend:dev": "nodemon server --port 3001",
     "custom-start": "env-cmd -f ./src/environment/.env.development env-cmd -f ./src/environment/.env.local react-scripts start",
     "backend:prod": "nodemon server",
-    "concurrently": "concurrently \"npm start\" \"nodemon ./server.js\""
+    "concurrently": "concurrently \"npm run dev\" \"nodemon ./server.js\""
   },
   "eslintConfig": {
     "extends": [

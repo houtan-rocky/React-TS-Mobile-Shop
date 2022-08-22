@@ -32,7 +32,7 @@ export const PanelOrdersPage: React.FC = () => {
 
     return <main className={'main'}>
         <Helmet title={'مدیریت سفارشات'}>
-            <OrdersTable getTableItems={getOrders} tableHeads={tableHeads} filter={true} searchTableItems={searchOrder}/>
+            <OrdersTable getTableItems={getOrders} tableHeads={tableHeads} filter={true} searchTableItems={searchOrder} hasActionButtons={true}/>
         </Helmet>
     </main>
 }

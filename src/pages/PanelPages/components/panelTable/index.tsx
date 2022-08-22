@@ -5,6 +5,7 @@ import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 import useModal from "./components/Hooks/useModal";
+import {DeleteProducts} from "../../../../api/product";
 
 const ProductsTable = (props: any) => {
     const getTableItems = props.getTableItems
@@ -69,6 +70,8 @@ const ProductsTable = (props: any) => {
     };
 
     const deleteTableItem = (id: string) => {
+        // setTableItems(tableItems.filter((user: any) => user.id !== id));
+        DeleteProducts(id)
         setTableItems(tableItems.filter((user: any) => user.id !== id));
     };
 
@@ -119,6 +122,7 @@ const ProductsTable = (props: any) => {
                     deleteOrder={deleteTableItem}
                     filter={props.filter}
                     searchTableItems={props.searchTableItems}
+                    hasActionButtons={props.hasActionButtons}
                 />
                 <Pagination
                     usersPerPage={ordersPerPage}

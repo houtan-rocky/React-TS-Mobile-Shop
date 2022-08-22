@@ -19,7 +19,7 @@ export const PanelProductsPage = () => {
 
     return <main className={'main'} >
         <Helmet title={'مدیریت محصولات'}>
-            <PanelTable getTableItems={GetProducts} searchTableItems={searchProduct} tableHeads={tableHeads}/>
+            <PanelTable getTableItems={GetProducts} searchTableItems={searchProduct} tableHeads={tableHeads} hasActionButtons={true}/>
         </Helmet>
     </main>
 }
