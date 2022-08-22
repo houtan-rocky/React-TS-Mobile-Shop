@@ -4,6 +4,7 @@ import {NotFoundPage, PanelOrdersPage, PanelProductsPage, PanelQuantityPage} fro
 import {CheckUserExpired, removeAllUserData} from "../utils/functions.util";
 import {PATHS} from "../configs/routes.config";
 import PanelLayout from "../layouts/panelLayout";
+import UserLayout from "../layouts/UserLayout";
 
 
 const useAuth = () => {
@@ -55,7 +56,8 @@ function ProtectedRoutes() {
         return protectedRoutes;
     } else {
         removeAllUserData();
-        return <div>You're not authenticated!</div>;
+        // @ts-ignore
+        return <Navigate to={'/panel/login'}></Navigate>;
     }
 
 }
