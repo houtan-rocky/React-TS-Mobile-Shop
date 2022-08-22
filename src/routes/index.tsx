@@ -21,7 +21,6 @@ function ProjectRoutes() {
         },
         {
             path: '/panel/*',
-            element: <PanelLayout/>,
             children: [
                 {
                     path: '*',

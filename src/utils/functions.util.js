@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, IS_LOGGED_IN, REFRESH_TOKEN } from "configs/variables.config";
+import { ACCESS_TOKEN, IS_LOGGED_IN, REFRESH_TOKEN } from "../configs/variables.config";
 import Navigate from 'universal-navigate';
 
 export const getAppTitle = () => {

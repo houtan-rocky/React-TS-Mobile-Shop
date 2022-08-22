@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useRoutes} from "react-router-dom";
+import { CheckUserExpired } from 'utils/functions.util';
+
 
 import {
     CartPage,
@@ -13,6 +15,9 @@ import {
 
 
 function PublicRoutes() {
+
+
+
     const publicRoutes = useRoutes([
         {
             path: '',
@@ -58,6 +63,10 @@ function PublicRoutes() {
         },
 
     ])
+
+    useEffect(() => {
+        CheckUserExpired("public")
+    },[])
 
 
     return (
