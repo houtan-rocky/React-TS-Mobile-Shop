@@ -73,7 +73,7 @@ export const HomePage: React.FC = () => {
                             {
                                 showRandomProducts(products, 8).map((item: any, index) => (
                                     <ProductCard key={index} img01={item.thumbnail} img02={item.images[1]} name={item['product-name-fa']}
-                                                 price={item.price.amount} slug={item.slug}>
+                                                 price={item.price.amount} slug={item.id}>
 
                                     </ProductCard>
                                 ))

@@ -131,14 +131,14 @@ const ProductView = (props: any) => {
                     <div className="product-description__toggle">
                         <Button size="sm" onClick={() => setDescriptionExpand(!descriptionExpand)}>
                             {
-                                descriptionExpand ? 'حذف' : 'بیشتر ببین'
+                                descriptionExpand ? 'بستن' : 'بیشتر'
                             }
                         </Button>
                     </div>
                 </div>
             </div>
             <div className="product__info">
-                <h1 className="product__info__title">{product.title}</h1>
+                <h1 className="product__info__title">{product.product_name_en}</h1>
                 <div className="product__info__item">
                     <span className="product__info__item__price">
                         {numberWithCommas(product.price.amount)}
@@ -192,7 +192,7 @@ const ProductView = (props: any) => {
                 </div>
                 <div className="product__info__item">
                     <Button onClick={() => addToCart()}>به سبد اضافه کن</Button>
-                    <Button onClick={() => goToCart()}>هم اکنون بخرید</Button>
+                    <Button onClick={() => goToCart()}>خرید آنی</Button>
                 </div>
             </div>
             <div className={`product-description mobile ${descriptionExpand ? 'expand' : ''}`}>
@@ -204,7 +204,7 @@ const ProductView = (props: any) => {
                 <div className="product-description__toggle">
                     <Button size="sm" onClick={() => setDescriptionExpand(!descriptionExpand)}>
                         {
-                            descriptionExpand ? 'حذف' : 'بیشتر ببین'
+                            descriptionExpand ? 'بستن' : 'بیشتر'
                         }
                     </Button>
                 </div>

@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import Helmet from "../../components/Helmet";
-import {GetProduct, showRandomProducts} from "../../api/product";
+import {GetProduct, GetProducts, showRandomProducts} from "../../api/product";
 import Section, {SectionBody, SectionTitle} from "../../components/Section";
 import ProductCard from "../../components/ProductCard";
 import Grid from "../../components/ui/Grid";
@@ -17,11 +17,18 @@ interface IProduct {
 
 export const SingleProductPage: React.FC = (props: any) => {
     const {id} = useParams();
+    console.log(id)
     const [product, setProduct] = useState<IProduct>();
+    const [products, setProducts] = useState([]);
+
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    })
 
     useEffect(() => {
         getProduct(id as string);
-    }, [])
+        GetProducts().then((data => setProducts(data.data)))
+    }, [id])
 
     const getProduct = (id: string) => {
         GetProduct(id)
@@ -52,14 +59,14 @@ export const SingleProductPage: React.FC = (props: any) => {
                             gap={20}
                         >
                             {
-                                showRandomProducts([], 2).map((item, index) => (
+                                showRandomProducts(products, 4).map((item, index) => (
                                     <ProductCard
                                         key={index}
-                                        img01={item.image01}
-                                        img02={item.image02}
-                                        name={item.title}
-                                        price={Number(item.price)}
-                                        slug={item.slug}
+                                        img01={item.images[0]}
+                                        img02={item.images[1]}
+                                        name={item.product_name_en}
+                                        price={Number(item.price.amount)}
+                                        slug={item.id}
                                     />
                                 ))
                             }
