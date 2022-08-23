@@ -9,6 +9,7 @@ import { remove } from '../../redux/product-modal/productModalSlice'
 
 import Button from '../Button'
 import numberWithCommas from '../../utils/numberWithCommas'
+import swal from "sweetalert";
 
 const ProductView = (props: any) => {
 
@@ -62,7 +63,15 @@ const ProductView = (props: any) => {
 
     const check = () => {
         if (color === undefined) {
-            alert('لطفا رنگ را انتخاب کنید')
+            swal({
+                title: "لطفا رنگ را انتخاب کنید",
+                text: "برای ادامه ی عملیات رنگ محصول را انتخاب کنید",
+                icon: "warning",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            })
             return false
         }
 
@@ -84,7 +93,15 @@ const ProductView = (props: any) => {
                 quantity: quantity
             }
             if (dispatch(addItem(newItem))) {
-                alert('به سبد اضافه شد')
+                swal({
+                    title: "به سبد اضافه شد",
+                    text: "محصول مورد نظر شما به سبد خرید اضافه شد",
+                    icon: "success",
+                    dangerMode: true,
+                    buttons: [
+                        'باشه'
+                    ]
+                })
             } else {
                 alert('انجام نشد')
             }

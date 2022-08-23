@@ -3,9 +3,10 @@ import DirectoryTable from "./components/DirectoryTable";
 import AddForm from "./components/AddForm";
 import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
-import Modal from "./components/Modal";
+import AddEditModal from "./components/AddEditModal";
 import useModal from "./components/Hooks/useModal";
 import {DeleteProducts} from "../../../../api/product";
+import swal from "sweetalert";
 
 const ProductsTable = (props: any) => {
     const getTableItems = props.getTableItems
@@ -71,8 +72,30 @@ const ProductsTable = (props: any) => {
 
     const deleteTableItem = (id: string) => {
         // setTableItems(tableItems.filter((user: any) => user.id !== id));
-        DeleteProducts(id)
-        setTableItems(tableItems.filter((user: any) => user.id !== id));
+        swal({
+            title: "حذف کردن؟",
+            text: "شما در حال حذف کردن داده هستید",
+            icon: "warning",
+            buttons: [
+                'توقف عملیات',
+                'حذف کن'
+            ],
+            dangerMode: true,
+        }).then(function(isConfirm) {
+            if (isConfirm) {
+                swal({
+                    title: 'حذف شد',
+                    text: 'داده با موفقیت حذف شد',
+                    icon: 'success'
+                }).then(function() {
+                    DeleteProducts(id)
+                    setTableItems(tableItems.filter((user: any) => user.id !== id));
+                });
+            } else {
+                swal("رد شد", "داده حذف نشد", "error");
+            }
+        })
+
     };
 
     // pagination
@@ -95,7 +118,7 @@ const ProductsTable = (props: any) => {
             <div className="page-control">
 
                 {editing ? (
-                    <Modal
+                    <AddEditModal
                         isShowing={isShowing}
                         hide={toggle}
                         setEditing={setEditing}
@@ -107,7 +130,7 @@ const ProductsTable = (props: any) => {
                         }
                     />
                 ) : (
-                    <Modal
+                    <AddEditModal
                         isShowing={isShowing}
                         hide={toggle}
                         setEditing={setEditing}
