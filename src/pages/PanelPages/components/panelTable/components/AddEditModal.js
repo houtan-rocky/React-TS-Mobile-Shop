@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const Modal = ({isShowing, hide, content, setEditing}) =>
+const AddEditModal = ({isShowing, hide, content, setEditing}) =>
     isShowing
         ? ReactDOM.createPortal(
             <>
@@ -36,4 +36,4 @@ const Modal = ({isShowing, hide, content, setEditing}) =>
         )
         : null;
 
-export default Modal;
+export default AddEditModal;

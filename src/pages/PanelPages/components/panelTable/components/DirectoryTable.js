@@ -47,6 +47,7 @@ const DirectoryTable = (props) => {
     const [updateTableItems, setUpdateTableItems] = useState(tableItems)
     const {editOrder, deleteOrder} = props;
     const [searchValue, setSearchValue] = useState("");
+    const location = window.location.pathname
 
 
     useEffect(() => {
@@ -60,7 +61,7 @@ const DirectoryTable = (props) => {
                 }
             }), 400
         )
-        if (updateFlag){
+        if (updateFlag) {
 
             setUpdateTableItems(tableItems)
 
@@ -89,7 +90,9 @@ const DirectoryTable = (props) => {
         setSearchValue(value)
     }
 
-    function objectGet(obj, path) { return new Function('_', 'return _.' + path)(obj); };
+    function objectGet(obj, path) {
+        return new Function('_', 'return _.' + path)(obj);
+    };
 
 
     return (
@@ -138,32 +141,42 @@ const DirectoryTable = (props) => {
                         updateTableItems.map((tableItem) => (
                             <tr key={tableItem.id}>
                                 {
-                                    props.tableHeader.map((headerItem) =>  <td key={headerItem.id}>{tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
+                                    props.tableHeader.map((headerItem) => <td
+                                        key={headerItem.id}>{tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
                                 }
                                 {
-                                    props.hasActionButtons &&
-                                    <td>
-                                        <IconButton
-                                            aria-label="edit"
-                                            onClick={() => {
-                                                editOrder(tableItem);
-                                            }}
-                                        >
-                                            <EditIcon/>
-                                        </IconButton>
-                                        <IconButton
-                                            aria-label="delete"
-                                            onClick={() => deleteOrder(tableItem.id)}
-                                        >
-                                            <DeleteIcon/>
-                                        </IconButton>
-                                        <IconButton
-                                            aria-label="delete"
-                                            onClick={() => deleteOrder(tableItem.id)}
-                                        >
-                                            <AssessmentIcon/>
-                                        </IconButton>
-                                    </td>
+                                    // eslint-disable-next-line no-restricted-globals
+                                    location === "/panel/products" || location === "/panel/orders" ?
+                                        <td>
+                                            {
+                                                location === "/panel/products" &&
+                                                <>
+                                                    <IconButton
+                                                        aria-label="edit"
+                                                        onClick={() => {
+                                                            editOrder(tableItem);
+                                                        }}
+                                                    >
+                                                        <EditIcon/>
+                                                    </IconButton>
+                                                    <IconButton
+                                                        aria-label="delete"
+                                                        onClick={() => deleteOrder(tableItem.id)}
+                                                    >
+                                                        <DeleteIcon/>
+                                                    </IconButton>
+                                                </>
+                                            }
+                                            {
+                                                location === "/panel/orders" &&
+                                                <IconButton
+                                                    aria-label="delete"
+                                                    onClick={() => deleteOrder(tableItem.id)}
+                                                >
+                                                    <AssessmentIcon/>
+                                                </IconButton>
+                                            }
+                                        </td> : null
                                 }
                             </tr>
                         ))
