@@ -3,34 +3,25 @@ import CustomInput from "./CustomInput";
 import {updateOrder} from "../../../../../api/updateOrder";
 import {GetCategories} from "../../../../../api/getCategory.api";
 import { Editor } from 'react-draft-wysiwyg';
-import {EditorState, convertToRaw, ContentState, convertFromHTML} from 'draft-js';
+import {EditorState, convertToRaw, ContentState} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import {Button} from "@mui/material";
 
 const EditForm = (props) => {
-  const [content, setContent] = useState('');
-  const [tableItem, setTableItem] = useState(props.currentUser);
-  const [categories, setCategories] = useState([]);
   const x = React.useState(
       () => {
         return EditorState.createWithContent(
             ContentState.createFromBlockArray(
-                convertFromHTML(props.currentUser.description.fa)
+                htmlToDraft(props.currentUser.description.fa)
             )
         );
       },
   );
 
-  useEffect(() => {
-    // setTableItem(props.currentUser);
-    fetchCategories()
-  }, [props]);
 
-  const fetchCategories = () => {
-    GetCategories().then(data => setCategories(data.data))
-  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -46,7 +37,6 @@ const EditForm = (props) => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        props.updateTableItem(tableItem.id, tableItem);
         props.updateCurrentTableItem();
       }}
     >
@@ -78,7 +68,7 @@ const EditForm = (props) => {
           onChange={handleInputChange}
           required
         >
-          {categories.map((category)=>
+          {props.categories.map((category)=>
             <option key={category.id} value={category.id} >
               {category['name-en']}
             </option>
@@ -101,7 +91,7 @@ const EditForm = (props) => {
         />
         </div>
       </div>
-      <button className="modal-button">Update user</button>
+      <Button type={'submit'} className="modal-button" variant="outlined">به روز رسانی</Button>
     </form>
 
       </>

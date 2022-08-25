@@ -12,7 +12,7 @@ export const PanelProductsPage = () => {
             display: 'نام محصول',
         }, {
             id: 2,
-            name: 'category-name-en',
+            name: 'category-id',
             display: 'دسته بندی محصول',
         }
     ]

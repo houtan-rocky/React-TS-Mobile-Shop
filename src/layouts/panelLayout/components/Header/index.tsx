@@ -13,11 +13,11 @@ const PanelHeader = (props: any) => {
     const handleScroll = () => {
         window.addEventListener("scroll", () => {
             if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                if (headerRef)
-                    headerRef.current!.classList.add('shrink')
+                if (headerRef.current)
+                    headerRef.current.classList.add('shrink')
             } else {
-                if (headerRef)
-                    headerRef.current!.classList.remove('shrink')
+                if (headerRef.current)
+                    headerRef.current.classList.remove('shrink')
             }
         })
         return () => {

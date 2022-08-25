@@ -7,11 +7,12 @@ import AddEditModal from "./components/AddEditModal";
 import useModal from "./components/Hooks/useModal";
 import {DeleteProducts, UpdateProduct} from "../../../../api/product";
 import swal from "sweetalert";
+import {GetCategories} from "../../../../api/getCategory.api";
 
 const ProductsTable = (props: any) => {
     const getTableItems = props.getTableItems
 
-
+    const [categories, setCategories] = useState([]);
     const [tableItems, setTableItems] = useState([]);
     const [editing, setEditing] = useState(false);
     const initialFormState = {
@@ -29,7 +30,39 @@ const ProductsTable = (props: any) => {
     const {isShowing, toggle} = useModal();
 
     const updateCurrentTableItem = () => {
-        UpdateProduct(currentTableItem.id, currentTableItem)
+        UpdateProduct(currentTableItem.id, currentTableItem).then(() => {
+            fetchTableItems();
+            swal({
+                title: "کالا با موفقیت ویرایش شد",
+                text: "کالای مورد نظر با موفقیت ویرایش شد",
+                icon: "success",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            })
+        }).catch(() =>
+            swal({
+                title: "مشکلی پیش آمد",
+                text: "در به روز رسانی کالا مشکلی وجود دارد",
+                icon: "error",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            }))
+
+        toggle();
+        setEditing(false);
+    }
+
+    useEffect(() => {
+        // setTableItem(props.currentUser);
+        fetchCategories()
+    }, [props]);
+
+    const fetchCategories = () => {
+        GetCategories().then(res => setCategories(res.data))
     }
 
     function fetchTableItems() {
@@ -68,10 +101,7 @@ const ProductsTable = (props: any) => {
     };
 
     const updateTableItem = (id: string, updatedUser: any) => {
-        setEditing(false);
-        // @ts-ignore
-        setTableItems(tableItems.map((user: any) => (user.id === id ? updatedUser : user)));
-        toggle();
+
     };
 
     const deleteTableItem = (id: string) => {
@@ -85,13 +115,13 @@ const ProductsTable = (props: any) => {
                 'حذف کن'
             ],
             dangerMode: true,
-        }).then(function(isConfirm) {
+        }).then(function (isConfirm) {
             if (isConfirm) {
                 swal({
                     title: 'حذف شد',
                     text: 'داده با موفقیت حذف شد',
                     icon: 'success'
-                }).then(function() {
+                }).then(function () {
                     DeleteProducts(id)
                     setTableItems(tableItems.filter((user: any) => user.id !== id));
                 });
@@ -114,7 +144,6 @@ const ProductsTable = (props: any) => {
     console.count('panel-listItems')
 
 
-
     // @ts-ignore
     return (
         <React.Fragment>
@@ -133,6 +162,7 @@ const ProductsTable = (props: any) => {
                                 setCurrentTableItem={setCurrentTableItem}
                                 currentTableItem={currentTableItem}
                                 updateCurrentTableItem={updateCurrentTableItem}
+                                categories={categories}
                             />
                         }
                     />
@@ -153,6 +183,7 @@ const ProductsTable = (props: any) => {
                     filter={props.filter}
                     searchTableItems={props.searchTableItems}
                     hasActionButtons={props.hasActionButtons}
+                    categories={categories}
                 />
                 <Pagination
                     usersPerPage={ordersPerPage}
