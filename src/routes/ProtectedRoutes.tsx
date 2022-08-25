@@ -48,7 +48,6 @@ function ProtectedRoutes() {
     const location = useLocation();
     useEffect(() => {
         CheckUserExpired("Protected");
-        console.log('use')
     }, [location]);
 
     const isAuth = useAuth();

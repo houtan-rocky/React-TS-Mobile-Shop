@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CustomInput from "./CustomInput";
-import {updateOrder} from "../../../../../api/updateOrder";
-import {GetCategories} from "../../../../../api/getCategory.api";
+import 'filepond/dist/filepond.css';
 import { Editor } from 'react-draft-wysiwyg';
 import {EditorState, convertToRaw, ContentState} from 'draft-js';
 import 'draft-js/dist/Draft.css';
@@ -10,8 +9,14 @@ import htmlToDraft from 'html-to-draftjs';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import {Button} from "@mui/material";
 
+
+
+import ImageUpload from "../../ImageUpload";
+
+
+
 const EditForm = (props) => {
-  const x = React.useState(
+  const productDescription = React.useState(
       () => {
         return EditorState.createWithContent(
             ContentState.createFromBlockArray(
@@ -29,7 +34,8 @@ const EditForm = (props) => {
     props.setCurrentTableItem({ ...props.currentTableItem, [name]: value });
   };
 
-  console.log('editor state', x[0])
+
+
 
   // @ts-ignore
   return (
@@ -43,11 +49,7 @@ const EditForm = (props) => {
       <div className="form-group">
         <h2>ویرایش</h2>
         <label>تصویر کالا</label>
-        <input
-          type="file"
-          name="product-image"
-          required
-        />
+        <ImageUpload className={'edit'}/>
       </div>
       <div className="form-group">
         <label>نام کالا</label>
@@ -80,12 +82,12 @@ const EditForm = (props) => {
         <label>توضیحات</label>
         <div dir={'ltr'}  className={'edit'}>
         <Editor
-            editorState={x[0]}
+            editorState={productDescription[0]}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName"
             onEditorStateChange={newState => {
-              x[1](newState);
+              productDescription[1](newState);
               props.setCurrentTableItem((prevState) => ({...prevState, description: {...prevState.description, fa:  (draftToHtml(convertToRaw(newState.getCurrentContent()))) }}))
             }}
         />

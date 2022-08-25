@@ -141,7 +141,7 @@ const ProductsTable = (props: any) => {
 
     // turn strings to path
 
-    console.count('panel-listItems')
+    console.count('PanelTable')
 
 
     // @ts-ignore
