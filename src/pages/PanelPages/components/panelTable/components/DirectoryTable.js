@@ -52,7 +52,7 @@ const DirectoryTable = (props) => {
 
     useEffect(() => {
         let updateFlag = true
-        console.log('filter')
+
         var timeoutId = setTimeout(() => props.searchTableItems(searchValue).then((data) => {
                 if (searchValue) {
                     updateFlag = true;

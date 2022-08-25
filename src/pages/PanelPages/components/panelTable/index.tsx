@@ -5,7 +5,7 @@ import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import AddEditModal from "./components/AddEditModal";
 import useModal from "./components/Hooks/useModal";
-import {DeleteProducts} from "../../../../api/product";
+import {DeleteProducts, UpdateProduct} from "../../../../api/product";
 import swal from "sweetalert";
 
 const ProductsTable = (props: any) => {
@@ -15,7 +15,7 @@ const ProductsTable = (props: any) => {
     const [tableItems, setTableItems] = useState([]);
     const [editing, setEditing] = useState(false);
     const initialFormState = {
-        id: null,
+        id: '',
         first_name: "",
         last_name: "",
         total_bill: "",
@@ -27,6 +27,10 @@ const ProductsTable = (props: any) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [ordersPerPage] = useState(10);
     const {isShowing, toggle} = useModal();
+
+    const updateCurrentTableItem = () => {
+        UpdateProduct(currentTableItem.id, currentTableItem)
+    }
 
     function fetchTableItems() {
         getTableItems()
@@ -126,6 +130,9 @@ const ProductsTable = (props: any) => {
                             <EditForm
                                 currentUser={currentTableItem}
                                 updateTableItem={updateTableItem}
+                                setCurrentTableItem={setCurrentTableItem}
+                                currentTableItem={currentTableItem}
+                                updateCurrentTableItem={updateCurrentTableItem}
                             />
                         }
                     />

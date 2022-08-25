@@ -8,11 +8,11 @@ export const PanelProductsPage = () => {
     const tableHeads = [
         {
             id: 1,
-            name: 'product_name_en',
+            name: 'product-name-en',
             display: 'نام محصول',
         }, {
             id: 2,
-            name: 'category_name_en',
+            name: 'category-name-en',
             display: 'دسته بندی محصول',
         }
     ]

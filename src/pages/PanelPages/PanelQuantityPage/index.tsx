@@ -8,7 +8,7 @@ export const PanelQuantityPage = () => {
     const tableHeads = [
         {
             id: 1,
-            name: 'product_name_en',
+            name: 'product-name-en',
             display: 'نام محصول',
         }, {
             id: 2,

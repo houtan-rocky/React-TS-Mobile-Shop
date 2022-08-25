@@ -106,7 +106,7 @@ thead button.descending::after {
   position: relative;
   margin: 1.75rem auto;
   border-radius: 3px;
-  max-width: 500px;
+  max-width: 900px;
   padding: 1rem 2rem 2rem 2rem;
 }
 
@@ -131,6 +131,9 @@ thead button.descending::after {
 }
 
 .search input,
+.form-group select,
+.form-group .edit,
+.form-group textarea,
 .form-group input {
   display: block;
   width: 95%;
@@ -195,3 +198,4 @@ button {
 .input-invalid {
   color: crimson;
 }
+
