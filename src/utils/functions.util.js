@@ -39,7 +39,7 @@ export const CheckUserExpired = (pageStatus) => {
 
         if(pageStatus != "public") {
             Navigate.push({
-                url: '/login?expired=true',
+                url: '/panel/login?expired=true',
                 animated: true
             });
         }

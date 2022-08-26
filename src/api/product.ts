@@ -33,9 +33,14 @@ export async function GetRandomProducts(products: any[], count: number) {
 
 }
 
-export async function AddProduct(data: string) {
+export async function AddProduct(data: object) {
+    let config = {
+        headers: {
+            token: localStorage.getItem("ACCESS_TOKEN"),
+        },
+    }
     try {
-        const response = await http.post(GET_PRODUCTS, data);
+        const response = await http.post(GET_PRODUCTS, data, config);
         return response;
     } catch (e) {
         return Promise.reject(e);

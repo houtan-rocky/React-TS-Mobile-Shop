@@ -1,83 +1,104 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import CustomInput from "./CustomInput";
 import {addOrder} from "../../../../../api/updateOrder";
+import ImageUpload from "../../ImageUpload";
+import {Editor} from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
+import {ContentState, convertToRaw, EditorState} from "draft-js";
+import {Button} from "@mui/material";
+import htmlToDraft from "html-to-draftjs";
 
 
 const AddForm = (props) => {
-  const initialFormState = {
-    id: null,
-    first_name: "",
-    last_name: "",
-    total_bill: "",
-    order_registration_date: "",
-    image: "",
-  };
-  const [order, setOrder] = useState(initialFormState);
+    const productDescription = React.useState(
+        () => {
+            return EditorState.createEmpty(
+            );
+        },
+    );
 
-  const handleInputChange = (event, inputValue) => {
-    const { name } = event.target;
+    const initialFormState = {
+        id: null,
+        "product-name-en": "",
+        last_name: "",
+        total_bill: "",
+        order_registration_date: "",
+        image: "",
+    };
+    const [order, setOrder] = useState(initialFormState);
 
-    setOrder({ ...order, [name]: inputValue });
-  };
+    const handleInputChange = (event) => {
+        const {name, value} = event.target;
 
-  return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        if (!order.first_name || !order.last_name) return;
-        props.addUser(order);
-        addOrder(order)
-        setOrder(initialFormState);
-      }}
-    >
-      <h2>اضافه کردن سفارش</h2>
-      <div className="form-group">
-        <label>نام کاربر</label>
-        <CustomInput
-          type="text"
-          name="first_name"
-          value={order.first_name}
-          onChange={handleInputChange}
-          pattern="^[a-zA-Z]+$"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>نام خانوادگی کاربر</label>
-        <CustomInput
-          type="text"
-          name="last_name"
-          value={order.last_name}
-          onChange={handleInputChange}
-          pattern="[آ-ی]"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>مجموع مبلغ</label>
-        <CustomInput
-          type="number"
-          name="total_bill"
-          value={order.total_bill}
-          onChange={handleInputChange}
-          pattern="^[a-zA-Z0-9-]+$"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>زمان ثبت سفارش</label>
-        <CustomInput
-          type="date"
-          name="order_registration_date"
-          value={order.order_registration_date}
-          onChange={handleInputChange}
-          pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
-          required
-        />
-      </div>
-      <button className="modal-button">Add</button>
-    </form>
-  );
+        props.setCurrentTableItem({...props.currentTableItem, [name]: value});
+    };
+
+    return (
+        <form
+            onSubmit={(event) => {
+                event.preventDefault();
+                props.addCurrentTableItem();
+            }}
+        >
+            <div className="form-group">
+                <h2>ویرایش</h2>
+                <label>تصویر کالا</label>
+                <ImageUpload className={'edit'}
+                             files={[props.currentTableItem.thumbnail, ...props.currentTableItem.images]}/>
+            </div>
+            <div className="form-group">
+                <label>نام کالا</label>
+                <CustomInput
+                    type="text"
+                    name="product-name-en"
+                    value={props.currentTableItem && props.currentTableItem['product-name-en']}
+                    onChange={handleInputChange}
+                    required
+                />
+            </div>
+            <div className="form-group">
+                <label>دسته بندی</label>
+                <select
+                    type="number"
+                    name={'category-id'}
+                    value={props.currentTableItem["category-id"]}
+                    onChange={handleInputChange}
+                    required
+                >
+                    <option key={-1}  selected>
+                        لطفا یک دسته بندی انتخاب کنید
+                    </option>
+                    {props.categories.map((category) =>
+                        <option key={category.id} value={category.id}>
+                            {category['name-en']}
+                        </option>
+                    )}
+                </select>
+
+            </div>
+            <div className="form-group">
+                <label>توضیحات</label>
+                <div dir={'ltr'} className={'edit'}>
+                    <Editor
+                        editorState={productDescription[0]}
+                        toolbarClassName="toolbarClassName"
+                        wrapperClassName="wrapperClassName"
+                        editorClassName="editorClassName"
+                        onEditorStateChange={newState => {
+                            productDescription[1](newState);
+                            props.setCurrentTableItem((prevState) => ({...prevState,
+                                description: {
+                                    ...prevState.description,
+                                    fa: (draftToHtml(convertToRaw(newState.getCurrentContent())))
+                                }
+                            }))
+                        }}
+                    />
+                </div>
+            </div>
+            <Button type={'submit'} className="modal-button" variant="outlined">ارسال</Button>
+        </form>
+    );
 };
 
 export default AddForm;

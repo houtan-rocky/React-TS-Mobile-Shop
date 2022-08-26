@@ -5,28 +5,94 @@ import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import AddEditModal from "./components/AddEditModal";
 import useModal from "./components/Hooks/useModal";
-import {DeleteProducts} from "../../../../api/product";
+import {AddProduct, DeleteProducts, UpdateProduct} from "../../../../api/product";
 import swal from "sweetalert";
+import {GetCategories} from "../../../../api/getCategory.api";
+import {Button} from "@mui/material";
 
 const ProductsTable = (props: any) => {
     const getTableItems = props.getTableItems
 
-
+    const [categories, setCategories] = useState([]);
     const [tableItems, setTableItems] = useState([]);
     const [editing, setEditing] = useState(false);
     const initialFormState = {
-        id: null,
-        first_name: "",
-        last_name: "",
-        total_bill: "",
-        order_registration_date: "",
-        image: "",
-        status: ""
+        id: '',
+        "product-name-en": "",
+        "category-id": "",
+        thumbnail: "",
+        images: [],
     };
+    const [isRefreshButtonDisabled, setIsRefreshButtonDisabled] = useState(true)
     const [currentTableItem, setCurrentTableItem] = useState(initialFormState);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [ordersPerPage] = useState(10);
     const {isShowing, toggle} = useModal();
+    const location = window.location.pathname
+
+
+    const updateCurrentTableItem = () => {
+        UpdateProduct(currentTableItem.id, currentTableItem).then(() => {
+            fetchTableItems();
+            swal({
+                title: "کالا با موفقیت ویرایش شد",
+                text: "کالای مورد نظر با موفقیت ویرایش شد",
+                icon: "success",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            })
+        }).catch(() =>
+            swal({
+                title: "مشکلی پیش آمد",
+                text: "در به روز رسانی کالا مشکلی وجود دارد",
+                icon: "error",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            }))
+
+        toggle();
+        setEditing(false);
+    }
+
+    const addCurrentTableItem = () => {
+        AddProduct(currentTableItem).then(() => {
+            fetchTableItems();
+            swal({
+                title: "کالا با موفقیت اضافه شد",
+                text: "کالای مورد نظر با موفقیت اضافه شد",
+                icon: "success",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            })
+        }).catch(() =>
+            swal({
+                title: "مشکلی پیش آمد",
+                text: "در اضافه کردن کالا مشکلی وجود دارد",
+                icon: "error",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            }))
+
+        toggle();
+        setEditing(false);
+    }
+
+    useEffect(() => {
+        // setTableItem(props.currentUser);
+        fetchCategories()
+    }, [props]);
+
+    const fetchCategories = () => {
+        GetCategories().then(res => setCategories(res.data))
+    }
 
     function fetchTableItems() {
         getTableItems()
@@ -64,10 +130,7 @@ const ProductsTable = (props: any) => {
     };
 
     const updateTableItem = (id: string, updatedUser: any) => {
-        setEditing(false);
-        // @ts-ignore
-        setTableItems(tableItems.map((user: any) => (user.id === id ? updatedUser : user)));
-        toggle();
+
     };
 
     const deleteTableItem = (id: string) => {
@@ -81,13 +144,13 @@ const ProductsTable = (props: any) => {
                 'حذف کن'
             ],
             dangerMode: true,
-        }).then(function(isConfirm) {
+        }).then(function (isConfirm) {
             if (isConfirm) {
                 swal({
                     title: 'حذف شد',
                     text: 'داده با موفقیت حذف شد',
                     icon: 'success'
-                }).then(function() {
+                }).then(function () {
                     DeleteProducts(id)
                     setTableItems(tableItems.filter((user: any) => user.id !== id));
                 });
@@ -107,8 +170,7 @@ const ProductsTable = (props: any) => {
 
     // turn strings to path
 
-    console.count('panel-listItems')
-
+    console.count('PanelTable')
 
 
     // @ts-ignore
@@ -116,6 +178,28 @@ const ProductsTable = (props: any) => {
         <React.Fragment>
 
             <div className="page-control">
+                {
+                    location === "/panel/products" &&
+                    <div className={'container'}>
+                        <Button size="large"  className="button-add" onClick={ ()=> {
+                            toggle()
+                            setCurrentTableItem(initialFormState)
+                        } } variant="contained" color={'error'}>
+                            اضافه کردن
+                        </Button>
+                    </div>
+                }
+                {
+                    location === "/panel/quantity" &&
+                    <div className={'container'}>
+                        <Button size="large" className="button-add" disabled={isRefreshButtonDisabled} onClick={ ()=> {
+                            toggle()
+                            setCurrentTableItem(initialFormState)
+                        } } variant="contained" color={'error'}>
+                            به روز رسانی
+                        </Button>
+                    </div>
+                }
 
                 {editing ? (
                     <AddEditModal
@@ -126,6 +210,10 @@ const ProductsTable = (props: any) => {
                             <EditForm
                                 currentUser={currentTableItem}
                                 updateTableItem={updateTableItem}
+                                setCurrentTableItem={setCurrentTableItem}
+                                currentTableItem={currentTableItem}
+                                updateCurrentTableItem={updateCurrentTableItem}
+                                categories={categories}
                             />
                         }
                     />
@@ -134,8 +222,19 @@ const ProductsTable = (props: any) => {
                         isShowing={isShowing}
                         hide={toggle}
                         setEditing={setEditing}
-                        content={<AddForm addUser={addTableItem}
-                        />}
+                        content={
+                            <AddForm
+                                addUser={addTableItem}
+                                currentUser={currentTableItem}
+                                updateTableItem={updateTableItem}
+                                setCurrentTableItem={setCurrentTableItem}
+                                currentTableItem={currentTableItem}
+                                updateCurrentTableItem={updateCurrentTableItem}
+                                addCurrentTableItem={addCurrentTableItem}
+                                categories={categories}
+
+                            />
+                        }
                     />
                 )}
                 <DirectoryTable
@@ -146,6 +245,7 @@ const ProductsTable = (props: any) => {
                     filter={props.filter}
                     searchTableItems={props.searchTableItems}
                     hasActionButtons={props.hasActionButtons}
+                    categories={categories}
                 />
                 <Pagination
                     usersPerPage={ordersPerPage}

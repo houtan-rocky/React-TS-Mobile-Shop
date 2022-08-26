@@ -8,19 +8,19 @@ export const PanelOrdersPage: React.FC = () => {
     const tableHeads = [
         {
             id: 1,
-            name: 'first_name',
+            name: 'first-name',
             display: 'نام',
         }, {
             id: 2,
-            name: 'last_name',
+            name: 'last-name',
             display: 'نام خانوادگی',
         }, {
             id: 3,
-            name: 'total_bill',
+            name: 'total-bill',
             display: 'مجموع رسید'
         }, {
             id: 4,
-            name: 'order_registration_date',
+            name: 'order-registration-date',
             display: 'زمان ثبت',
         }, {
             id: 5,

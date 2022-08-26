@@ -5,7 +5,7 @@ const AddEditModal = ({isShowing, hide, content, setEditing}) =>
     isShowing
         ? ReactDOM.createPortal(
             <>
-                <div className="modal-overlay"/>
+                <div className="modal-overlay"  />
                 <div
                     className="modal-wrapper"
                     aria-modal
