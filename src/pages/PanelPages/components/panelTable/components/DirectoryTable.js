@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useEffect, useLayoutEffect, useRef} from "react";
+import React, {useState, useMemo, useEffect, useLayoutEffect, useRef, useCallback} from "react";
 import SearchBox from "./SearchBox";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -9,7 +9,6 @@ import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/
 
 const useSortableData = (orders, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
-
 
     const sortedUsers = useMemo(() => {
         let sortableUsers = [...orders];
@@ -43,6 +42,7 @@ const useSortableData = (orders, config = null) => {
 };
 
 const DirectoryTable = (props) => {
+    const [isEditable, setIsEditable] = useState(false)
     let {tableItems, requestSort, sortConfig} = useSortableData(props.tableItems);
     const [updateTableItems, setUpdateTableItems] = useState(tableItems)
     const {editOrder, deleteOrder} = props;
@@ -94,6 +94,23 @@ const DirectoryTable = (props) => {
         return new Function('_', 'return _.' + path)(obj);
     };
 
+    const memoizedHandleClick = useCallback(
+        () => {
+            setIsEditable((prevState) => !prevState)
+            console.log('hi')
+        },
+        [], // Tells React to memoize regardless of arguments.
+    );
+
+    const onInputChange = (event) => {
+        const {name, value} = event.target;
+        setIsEditable(true)
+        setUpdateTableItems((prevState)=>  updateTableItems.map((tableItem)=>{
+            if (tableItem.id !== event['data-id']) {
+                return tableItem
+            }
+        }))
+    }
 
     return (
         <>
@@ -141,8 +158,30 @@ const DirectoryTable = (props) => {
                         updateTableItems.map((tableItem) => (
                             <tr key={tableItem.id}>
                                 {
-                                    props.tableHeader.map((headerItem) => <td
-                                        key={headerItem.id}>{headerItem.name==='category-id'? props.categories[tableItem[headerItem.name] - 1]['name-en'] :tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
+                                    location === '/panel/quantity' ?
+                                        props.tableHeader.map((headerItem, index) =>
+                                            index > 0 ?
+                                                < td contentEditable={isEditable} onDoubleClick={memoizedHandleClick}
+                                                     onChange={props.setIsContentChanged(true)}
+                                                     key={headerItem.id}>
+
+                                                    <input data-id={tableItem.id} className={'num-input'} type="number" onChange={onInputChange} value={headerItem.name === 'category-id' ? props.categories[tableItem[headerItem.name] - 1]['name-en'] : tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}/>
+
+                                                </td>
+                                                :
+                                                <td contentEditable={isEditable} onDoubleClick={memoizedHandleClick}
+                                                    onChange={props.setIsContentChanged(true)}
+                                                    key={headerItem.id}>
+
+                                                    {headerItem.name === 'category-id' ? props.categories[tableItem[headerItem.name] - 1]['name-en'] : tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}
+
+                                                </td>
+                                        )
+                                        :
+
+                                        props.tableHeader.map((headerItem) => <td
+                                            key={headerItem.id}>{headerItem.name === 'category-id' ? props.categories[tableItem[headerItem.name] - 1]['name-en'] : tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
+
                                 }
                                 {
                                     // eslint-disable-next-line no-restricted-globals

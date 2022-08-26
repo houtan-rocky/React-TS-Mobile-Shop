@@ -23,7 +23,7 @@ const ProductsTable = (props: any) => {
         thumbnail: "",
         images: [],
     };
-    const [isRefreshButtonDisabled, setIsRefreshButtonDisabled] = useState(true)
+    const [isContentChanged, setIsContentChanged] = useState(true)
     const [currentTableItem, setCurrentTableItem] = useState(initialFormState);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [ordersPerPage] = useState(10);
@@ -192,9 +192,7 @@ const ProductsTable = (props: any) => {
                 {
                     location === "/panel/quantity" &&
                     <div className={'container'}>
-                        <Button size="large" className="button-add" disabled={isRefreshButtonDisabled} onClick={ ()=> {
-                            toggle()
-                            setCurrentTableItem(initialFormState)
+                        <Button size="large" className="button-add" disabled={isContentChanged} onClick={ ()=> {
                         } } variant="contained" color={'error'}>
                             به روز رسانی
                         </Button>
@@ -238,6 +236,7 @@ const ProductsTable = (props: any) => {
                     />
                 )}
                 <DirectoryTable
+                    setIsContentChanged={setIsContentChanged}
                     tableHeader={props.tableHeads}
                     tableItems={currentTableItems}
                     editOrder={editTableItem}
