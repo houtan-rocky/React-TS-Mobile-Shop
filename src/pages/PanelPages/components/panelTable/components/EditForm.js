@@ -26,8 +26,6 @@ const EditForm = (props) => {
       },
   );
 
-
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
@@ -49,7 +47,7 @@ const EditForm = (props) => {
       <div className="form-group">
         <h2>ویرایش</h2>
         <label>تصویر کالا</label>
-        <ImageUpload className={'edit'}/>
+        <ImageUpload className={'edit'} files={[props.currentTableItem.thumbnail, ...props.currentTableItem.images]}/>
       </div>
       <div className="form-group">
         <label>نام کالا</label>

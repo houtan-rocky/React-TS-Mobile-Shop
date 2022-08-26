@@ -5,9 +5,10 @@ import EditForm from "./components/EditForm";
 import Pagination from "./components/Pagination";
 import AddEditModal from "./components/AddEditModal";
 import useModal from "./components/Hooks/useModal";
-import {DeleteProducts, UpdateProduct} from "../../../../api/product";
+import {AddProduct, DeleteProducts, UpdateProduct} from "../../../../api/product";
 import swal from "sweetalert";
 import {GetCategories} from "../../../../api/getCategory.api";
+import {Button} from "@mui/material";
 
 const ProductsTable = (props: any) => {
     const getTableItems = props.getTableItems
@@ -17,17 +18,18 @@ const ProductsTable = (props: any) => {
     const [editing, setEditing] = useState(false);
     const initialFormState = {
         id: '',
-        first_name: "",
-        last_name: "",
-        total_bill: "",
-        order_registration_date: "",
-        image: "",
-        status: ""
+        "product-name-en": "",
+        "category-id": "",
+        thumbnail: "",
+        images: [],
     };
+    const [isRefreshButtonDisabled, setIsRefreshButtonDisabled] = useState(true)
     const [currentTableItem, setCurrentTableItem] = useState(initialFormState);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [ordersPerPage] = useState(10);
     const {isShowing, toggle} = useModal();
+    const location = window.location.pathname
+
 
     const updateCurrentTableItem = () => {
         UpdateProduct(currentTableItem.id, currentTableItem).then(() => {
@@ -45,6 +47,33 @@ const ProductsTable = (props: any) => {
             swal({
                 title: "مشکلی پیش آمد",
                 text: "در به روز رسانی کالا مشکلی وجود دارد",
+                icon: "error",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            }))
+
+        toggle();
+        setEditing(false);
+    }
+
+    const addCurrentTableItem = () => {
+        AddProduct(currentTableItem).then(() => {
+            fetchTableItems();
+            swal({
+                title: "کالا با موفقیت اضافه شد",
+                text: "کالای مورد نظر با موفقیت اضافه شد",
+                icon: "success",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            })
+        }).catch(() =>
+            swal({
+                title: "مشکلی پیش آمد",
+                text: "در اضافه کردن کالا مشکلی وجود دارد",
                 icon: "error",
                 dangerMode: true,
                 buttons: [
@@ -149,6 +178,28 @@ const ProductsTable = (props: any) => {
         <React.Fragment>
 
             <div className="page-control">
+                {
+                    location === "/panel/products" &&
+                    <div className={'container'}>
+                        <Button size="large"  className="button-add" onClick={ ()=> {
+                            toggle()
+                            setCurrentTableItem(initialFormState)
+                        } } variant="contained" color={'error'}>
+                            اضافه کردن
+                        </Button>
+                    </div>
+                }
+                {
+                    location === "/panel/quantity" &&
+                    <div className={'container'}>
+                        <Button size="large" className="button-add" disabled={isRefreshButtonDisabled} onClick={ ()=> {
+                            toggle()
+                            setCurrentTableItem(initialFormState)
+                        } } variant="contained" color={'error'}>
+                            به روز رسانی
+                        </Button>
+                    </div>
+                }
 
                 {editing ? (
                     <AddEditModal
@@ -171,8 +222,19 @@ const ProductsTable = (props: any) => {
                         isShowing={isShowing}
                         hide={toggle}
                         setEditing={setEditing}
-                        content={<AddForm addUser={addTableItem}
-                        />}
+                        content={
+                            <AddForm
+                                addUser={addTableItem}
+                                currentUser={currentTableItem}
+                                updateTableItem={updateTableItem}
+                                setCurrentTableItem={setCurrentTableItem}
+                                currentTableItem={currentTableItem}
+                                updateCurrentTableItem={updateCurrentTableItem}
+                                addCurrentTableItem={addCurrentTableItem}
+                                categories={categories}
+
+                            />
+                        }
                     />
                 )}
                 <DirectoryTable

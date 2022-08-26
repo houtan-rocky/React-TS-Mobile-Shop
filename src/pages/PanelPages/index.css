@@ -168,6 +168,7 @@ button {
 }
 
 .button-add {
+  font-size: medium!important;
   background: #247ba0;
   color: #fff;
   float: right;
