@@ -34,10 +34,11 @@ export const Header = (props: any) => {
     return (
         <div className="header" ref={headerRef}>
             <div className="container">
-                <div className="header__logo">
-                    <Link to="/">
-                        <img src={logo} alt=""/>
-                    </Link>
+                <div className="header__logo"  onClick={menuToggle}>
+
+                        <Link to={"/"}>
+                            <img src={logo} alt="website logo"/>
+                        </Link>
                 </div>
                 <div className="header__menu ">
                     <div className="header__menu__mobile-toggle" onClick={menuToggle}>
