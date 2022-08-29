@@ -86,9 +86,8 @@ const ProductView = (props: any) => {
     const addToCart = () => {
         if (check()) {
             let newItem = {
-                slug: product.slug,
+                id: product.id,
                 color: color,
-                size: size,
                 price: product.price,
                 quantity: quantity
             }
@@ -111,9 +110,8 @@ const ProductView = (props: any) => {
     const goToCart = () => {
         if (check()) {
             let newItem = {
-                slug: product.slug,
+                id: product.id,
                 color: color,
-                size: size,
                 price: product.price,
                 quantity: quantity
             }
