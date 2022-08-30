@@ -58,9 +58,11 @@ export const CartPage: React.FC = () => {
                         </div>
                     </div>
                     <div className="cart__info__btn">
-                        <Button size="block">
-                            نهایی سازی
-                        </Button>
+                        <Link to={'checkout'}>
+                            <Button size="block">
+                                نهایی سازی
+                            </Button>
+                        </Link>
                         <Link to="/products">
                             <Button size="block">
                                 ادامه خرید
@@ -71,25 +73,25 @@ export const CartPage: React.FC = () => {
                 </div>
                 {
                     cartProducts.length ?
-                    <div className="cart__list">
-                        {
+                        <div className="cart__list">
+                            {
                                 cartProducts.map((item: any, index: any) => (
                                     <CartItem item={item} key={index}/>
                                 ))
-                        }
-                    </div>
+                            }
+                        </div>
                         :
                         <div className="cart__empty">
 
                             <Player
 
-                            autoplay
-                            loop
-                            src="https://assets9.lottiefiles.com/temp/lf20_BnhDqb.json"
-                            style={{height: '400px', width: '400px'}}
-                        >
-                            <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
-                        </Player>
+                                autoplay
+                                loop
+                                src="https://assets9.lottiefiles.com/temp/lf20_BnhDqb.json"
+                                style={{height: '400px', width: '400px'}}
+                            >
+                                <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
+                            </Player>
                             <h2> سبد خرید شما خالی است</h2>
 
                         </div>

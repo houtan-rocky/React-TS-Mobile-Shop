@@ -10,7 +10,7 @@ const mainNav = [
     },
     {
         display: 'سبد خرید',
-        path: '/checkout/cart'
+        path: '/cart'
     },
     {
         display: 'محصولات',

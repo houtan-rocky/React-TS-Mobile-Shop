@@ -32,8 +32,12 @@ function PublicRoutes() {
             element: <SingleProductPage/>,
         },
         {
-            path: 'checkout/cart',
+            path: 'cart',
             element: <CartPage/>,
+        },
+        {
+          path: 'cart/checkout',
+          element: <CheckoutPage/>
         },
         {
             path: 'checkout/finalize',
