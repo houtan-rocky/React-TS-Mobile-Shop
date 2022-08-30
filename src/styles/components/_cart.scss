@@ -111,4 +111,13 @@
       }
     }
   }
+
+  &__empty {
+    //text-align: center;
+    @include flex(center, center);
+    flex-direction: column;
+    color: rgba(38, 12, 2, 0.63);
+  }
+
+
 }

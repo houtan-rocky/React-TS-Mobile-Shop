@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import CartItem from '../../components/CartItem'
 import productData from "../../assets/fake-data/products";
 import {GetProduct} from "../../api/product";
+import {Controls, Player} from "@lottiefiles/react-lottie-player";
 
 export const CartPage: React.FC = () => {
 
@@ -32,6 +33,7 @@ export const CartPage: React.FC = () => {
                         quantity: cartItems[i].quantity
                     }]
         }
+        console.log(typeof cartProducts)
         setCartProducts(cartProducts);
     }
 
@@ -42,6 +44,7 @@ export const CartPage: React.FC = () => {
     }, [cartItems])
 
 
+    console.log('c', cartProducts)
     return (
         <main className={'main'}>
             <Helmet title={'سبد خرید'}>
@@ -66,13 +69,31 @@ export const CartPage: React.FC = () => {
 
                     </div>
                 </div>
-                <div className="cart__list">
-                    {
-                        cartProducts.map((item: any, index: any) => (
-                            <CartItem item={item} key={index}/>
-                        ))
-                    }
-                </div>
+                {
+                    cartProducts.length ?
+                    <div className="cart__list">
+                        {
+                                cartProducts.map((item: any, index: any) => (
+                                    <CartItem item={item} key={index}/>
+                                ))
+                        }
+                    </div>
+                        :
+                        <div className="cart__empty">
+
+                            <Player
+
+                            autoplay
+                            loop
+                            src="https://assets9.lottiefiles.com/temp/lf20_BnhDqb.json"
+                            style={{height: '400px', width: '400px'}}
+                        >
+                            <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
+                        </Player>
+                            <h2> سبد خرید شما خالی است</h2>
+
+                        </div>
+                }
 
             </Helmet>
         </main>
