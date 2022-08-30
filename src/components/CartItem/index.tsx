@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-import { useDispatch } from 'react-redux'
-import { updateItem, removeItem } from '../../redux/shopping-cart/cartItemsSlide'
+import {useDispatch} from 'react-redux'
+import {updateItem, removeItem} from '../../redux/shopping-cart/cartItemsSlide'
 
 import numberWithCommas from '../../utils/numberWithCommas'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const CartItem = (props: any) => {
 
@@ -43,7 +43,7 @@ const CartItem = (props: any) => {
     return (
         <div className="cart__item" ref={itemRef}>
             <div className="cart__item__image">
-                <img src={'http://localhost:3001' + "/files/" + props.item.thumbnail} alt="" />
+                <img src={'http://localhost:3001' + "/files/" + props.item.thumbnail} alt=""/>
             </div>
             <div className="cart__item__info">
                 <div className="cart__item__info__name">
@@ -56,27 +56,31 @@ const CartItem = (props: any) => {
                 </div>
                 <div className="cart__item__info__quantity">
                     <div className="product__info__item__quantity">
-                        <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('-')}>
-                            <i className="bx bx-minus"></i>
-                        </div>
+                        {props.actions &&
+                            <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('-')}>
+                                <i className="bx bx-minus"></i>
+                            </div>
+                        }
                         <div className="product__info__item__quantity__input">
                             {quantity}
                         </div>
-                        <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('+')}>
-                            <i className="bx bx-plus"></i>
-                        </div>
+                        {props.actions &&
+                            <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('+')}>
+                                <i className="bx bx-plus"></i>
+                            </div>
+                        }
                     </div>
                 </div>
-                <div className="cart__item__del">
-                    <i className='bx bx-trash' onClick={() => removeCartItem()}></i>
-                </div>
+                {props.actions &&
+                    <div className="cart__item__del">
+                        <i className='bx bx-trash' onClick={() => removeCartItem()}></i>
+                    </div>
+                }
             </div>
         </div>
     )
 }
 
-CartItem.propTypes = {
-    item: PropTypes.object
-}
+
 
 export default CartItem

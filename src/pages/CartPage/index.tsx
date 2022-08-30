@@ -48,41 +48,42 @@ export const CartPage: React.FC = () => {
     return (
         <main className={'main'}>
             <Helmet title={'سبد خرید'}>
-                <div className="cart__info">
-                    <div className="cart__info__txt">
-                        <p>
-                            شما {totalProducts} محصول در سبد دارید
-                        </p>
-                        <div className="cart__info__txt__price">
-                            <span>مبلغ کل:</span> <span>{numberWithCommas(Number(totalPrice))} تومان</span>
-                        </div>
-                    </div>
-                    <div className="cart__info__btn">
-                        <Link to={'checkout'}>
-                            <Button size="block">
-                                نهایی سازی
-                            </Button>
-                        </Link>
-                        <Link to="/products">
-                            <Button size="block">
-                                ادامه خرید
-                            </Button>
-                        </Link>
-
-                    </div>
-                </div>
                 {
                     cartProducts.length ?
-                        <div className="cart__list">
-                            {
-                                cartProducts.map((item: any, index: any) => (
-                                    <CartItem item={item} key={index}/>
-                                ))
-                            }
-                        </div>
+                        <React.Fragment>
+                            <div className="cart__info">
+                                <div className="cart__info__txt">
+                                    <p>
+                                        شما {totalProducts} محصول در سبد دارید
+                                    </p>
+                                    <div className="cart__info__txt__price">
+                                        <span>مبلغ کل:</span> <span>{numberWithCommas(Number(totalPrice))} تومان</span>
+                                    </div>
+                                </div>
+                                <div className="cart__info__btn">
+                                    <Link to={'checkout'}>
+                                        <Button size="block">
+                                            نهایی سازی
+                                        </Button>
+                                    </Link>
+                                    <Link to="/products">
+                                        <Button size="block">
+                                            ادامه خرید
+                                        </Button>
+                                    </Link>
+
+                                </div>
+                            </div>
+                            <div className="cart__list">
+                                {
+                                    cartProducts.map((item: any, index: any) => (
+                                        <CartItem item={item} key={index} actions={true}/>
+                                    ))
+                                }
+                            </div>
+                        </React.Fragment>
                         :
                         <div className="cart__empty">
-
                             <Player
 
                                 autoplay
@@ -96,6 +97,7 @@ export const CartPage: React.FC = () => {
 
                         </div>
                 }
+
 
             </Helmet>
         </main>
