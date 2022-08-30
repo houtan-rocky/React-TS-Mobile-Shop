@@ -91,7 +91,7 @@
                     }
 
                     &.active {
-                        border-color: $main-color;
+                        border: 5px groove $main-color;
                     }
 
                     &:hover {
