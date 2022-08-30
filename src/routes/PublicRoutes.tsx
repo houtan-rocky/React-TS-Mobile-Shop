@@ -6,9 +6,9 @@ import { CheckUserExpired } from 'utils/functions.util';
 import {
     CartPage,
     CheckoutPage,
-    HomePage, NotFoundPage, PaymentFailPage,
+    HomePage, NotFoundPage, PaymentFailedPage,
     PaymentPage,
-    PaymentSuccessPage,
+    PaymentSuccessfulPage,
     CatalogPage,
     SingleProductPage,
 } from "../pages";
@@ -32,8 +32,12 @@ function PublicRoutes() {
             element: <SingleProductPage/>,
         },
         {
-            path: 'checkout/cart',
+            path: 'cart',
             element: <CartPage/>,
+        },
+        {
+          path: 'cart/checkout',
+          element: <CheckoutPage/>
         },
         {
             path: 'checkout/finalize',
@@ -44,16 +48,16 @@ function PublicRoutes() {
             element: <PaymentPage/>,
         },
         {
-            path: 'payment',
-            element: '',
+            path: 'cart/checkout/payment/',
+            element: <PaymentPage/>,
             children: [
                 {
-                    path: 'success',
-                    element: <PaymentSuccessPage/>,
+                    path: 'successful',
+                    element: <PaymentSuccessfulPage/>,
                 },
                 {
-                    path: 'fail',
-                    element: <PaymentFailPage/>,
+                    path: 'failed',
+                    element: <PaymentFailedPage/>,
                 },
             ]
         },

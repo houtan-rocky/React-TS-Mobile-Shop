@@ -1,0 +1,14 @@
+.payment {
+  &__failed{
+  @include flex(center, center);
+    flex-direction: column;
+    &__image{
+      margin-top: 3rem !important;
+    }
+  }
+
+  &__successful {
+    @include flex(center, center);
+    flex-direction: column;
+  }
+}
