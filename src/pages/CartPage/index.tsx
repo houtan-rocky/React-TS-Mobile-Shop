@@ -88,7 +88,7 @@ export const CartPage: React.FC = () => {
 
                                 autoplay
                                 loop
-                                src="https://assets9.lottiefiles.com/temp/lf20_BnhDqb.json"
+                                src="https://assets10.lottiefiles.com/packages/lf20_edzccurz.json"
                                 style={{height: '400px', width: '400px'}}
                             >
                                 <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
