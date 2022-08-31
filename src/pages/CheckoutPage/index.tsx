@@ -11,7 +11,10 @@ import {Controls, Player} from "@lottiefiles/react-lottie-player";
 import CustomInput from "../../components/CustomFormElements/CustomInput";
 import CustomTextArea from "../../components/CustomFormElements/CustomTextArea";
 import {addOrder} from "../../api/updateOrder";
+import emailjs from 'emailjs-com';
 import products from "../../assets/fake-data/products";
+import ReCAPTCHA from "react-google-recaptcha";
+import {LoadingButton} from "@mui/lab";
 
 export const CheckoutPage: React.FC = () => {
     const Navigate = useNavigate();
@@ -29,6 +32,7 @@ export const CheckoutPage: React.FC = () => {
     const [totalProducts, setTotalProducts] = useState(0)
 
     const [totalBill, setTotalBill] = useState(null)
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
 
 
@@ -42,6 +46,8 @@ export const CheckoutPage: React.FC = () => {
         status: "pending",
         "total-bill": 1,
         "products": [],
+        "email": "",
+        "delivery-date":""
     }));
 
 
@@ -99,10 +105,28 @@ export const CheckoutPage: React.FC = () => {
         addOrder(orderInfo).then((res) => {
             console.log(res)
         })
+        sendEmail(event)
         Navigate('payment/successful')
+
+        localStorage.removeItem('cartItems');
 
     }
 
+
+    function sendEmail(event: any) {
+        event.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+
+        emailjs.sendForm('service_m7ltivo', 'template_iffp16n', event.target, 'rZ_e1ZcTcNaT56K6_')
+            .then((result) => {
+                window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior)
+            }, (error) => {
+                console.log(error.text);
+            });
+    }
+
+    const onRecaptchaChange = (value: any) => {
+        value ? setIsCaptchaVerified(true) : setIsCaptchaVerified(false);
+    }
 
     return (
         <main className={'main'}>
@@ -155,6 +179,14 @@ export const CheckoutPage: React.FC = () => {
                                                      dir={'rtl'} doValidation={validateInput}/>
                                     </div>
                                     <div className="form-group">
+                                        <label>ایمیل</label>
+                                        <CustomInput name="email" value={orderInfo["email"]}
+                                                     onChange={handleInputChange} type="email" required={true}
+                                                     placeholder={'ایمیل'}
+                                                     pattern={'^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$'}
+                                                     dir={'rtl'} doValidation={validateInput}/>
+                                    </div>
+                                    <div className="form-group">
                                         <label>آدرس</label>
                                         <CustomTextArea name="address" value={orderInfo["address"]}
                                                         onChange={handleInputChange} required={true}
@@ -163,16 +195,26 @@ export const CheckoutPage: React.FC = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>تاریخ تحویل</label>
-                                        <CustomInput name="deliveryDate" type={'date'} value={orderInfo["deliveryDate"]}
+                                        <CustomInput name="delivery-date" type={'date'} value={orderInfo["delivery-date"]}
                                                      pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" onChange={handleInputChange}
                                                      required={true} placeholder={'نام کاربری'} dir={'rtl'}
                                                      doValidation={validateInput}/>
                                     </div>
 
                                     <div className="checkout__info__btn">
-                                        <Button size="block" type="submit">
+
+                                        <LoadingButton size={'large'} color={'primary'}
+                                                       className={'login-form__btn'} type={"submit"} variant="contained"
+                                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
                                             پرداخت
-                                        </Button>
+                                        </LoadingButton>
+                                        <ReCAPTCHA
+                                            sitekey="6LfCwIQhAAAAAElkdJNHknZSF-iSZCHfC4egSc1o"
+                                            onChange={onRecaptchaChange}
+                                            theme={'light'}
+                                            size={'normal'}
+                                            hl={'fa'}
+                                        />
                                     </div>
                                 </form>
 

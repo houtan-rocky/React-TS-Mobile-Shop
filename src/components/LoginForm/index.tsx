@@ -31,9 +31,10 @@ function LoginForm() {
     };
 
     const onRecaptchaChange = (value: any) => {
-        console.log(value)
         value ? setIsCaptchaVerified(true) : setIsCaptchaVerified(false);
     }
+
+
 
     const onFormSubmit = async (event: React.SyntheticEvent) => {
         setValidateInput(true);
