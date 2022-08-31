@@ -15,6 +15,11 @@ import emailjs from 'emailjs-com';
 import products from "../../assets/fake-data/products";
 import ReCAPTCHA from "react-google-recaptcha";
 import {LoadingButton} from "@mui/lab";
+import DatePicker, {DateObject} from "react-multi-date-picker"
+
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+
 
 export const CheckoutPage: React.FC = () => {
     const Navigate = useNavigate();
@@ -36,6 +41,8 @@ export const CheckoutPage: React.FC = () => {
 
 
 
+
+
     const [orderInfo, setOrderInfo] = useState<any>(({
         "first-name": "",
         "last-name": "",
@@ -47,7 +54,7 @@ export const CheckoutPage: React.FC = () => {
         "total-bill": 1,
         "products": [],
         "email": "",
-        "delivery-date":""
+        "delivery-date": new Date(),
     }));
 
 
@@ -87,8 +94,17 @@ export const CheckoutPage: React.FC = () => {
     }, [cartItems])
 
     const handleInputChange = (event: any) => {
+        if (event instanceof DateObject) {
+            const date = event;
+            console.log('date', date.toDate())
+            setOrderInfo((prevState: any) => ({...prevState, "delivery-date": date.toDate()}))
+            return;
+        }
         event.preventDefault();
-        const {name, value} = event.target;
+        const {name, value}: {name:any, value: any} = event.target;
+        console.log(event,name,value);
+        // @ts-ignore
+
         setOrderInfo((prevState: any) => ({...prevState, [name]: value}))
     }
 
@@ -195,26 +211,27 @@ export const CheckoutPage: React.FC = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>تاریخ تحویل</label>
-                                        <CustomInput name="delivery-date" type={'date'} value={orderInfo["delivery-date"]}
-                                                     pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" onChange={handleInputChange}
-                                                     required={true} placeholder={'نام کاربری'} dir={'rtl'}
-                                                     doValidation={validateInput}/>
+                                        <DatePicker name={"delivery-date"} value={orderInfo["delivery-date"]} inputClass={"date-picker"} minDate={new DateObject({ calendar: persian })} calendarPosition="bottom-right" weekPicker={false} onChange={handleInputChange} calendar={persian} locale={persian_fa} />
+
                                     </div>
 
-                                    <div className="checkout__info__btn">
 
-                                        <LoadingButton size={'large'} color={'primary'}
-                                                       className={'login-form__btn'} type={"submit"} variant="contained"
-                                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
-                                            پرداخت
-                                        </LoadingButton>
+                                    <div className="checkout__info__btn">
                                         <ReCAPTCHA
                                             sitekey="6LfCwIQhAAAAAElkdJNHknZSF-iSZCHfC4egSc1o"
                                             onChange={onRecaptchaChange}
                                             theme={'light'}
                                             size={'normal'}
                                             hl={'fa'}
+                                            className={"recaptcha"}
                                         />
+
+                                        <LoadingButton size={'large'} color={'primary'}
+                                                        type={"submit"} variant="contained"
+                                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
+                                            پرداخت
+                                        </LoadingButton>
+
                                     </div>
                                 </form>
 
