@@ -114,7 +114,6 @@ export const CheckoutPage: React.FC = () => {
                             autoplay
                             loop
                             src="https://assets9.lottiefiles.com/temp/lf20_BnhDqb.json"
-                            style={{height: '400px', width: '400px'}}
                         >
                             <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
                         </Player>

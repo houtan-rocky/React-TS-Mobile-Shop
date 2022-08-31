@@ -40,15 +40,19 @@
     inset: 0;
     pointer-events: none;
 
+    a {
+      @include flex(center, center);
+    }
+
     img {
       pointer-events: auto;
 
-      height: 128px;
+      height: 50px;
     }
 
     @include mobile {
       img {
-        height: 88px;
+        height: 30px;
 
       }
 

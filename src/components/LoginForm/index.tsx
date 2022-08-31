@@ -81,7 +81,7 @@ function LoginForm() {
     }
 
     return (
-        <div>
+        <div className={'login__page-control'}>
             <div className={'login-form'}>
                 <form className={'login-form__form'} onSubmit={onFormSubmit}>
                     <div className="form-group">
@@ -102,7 +102,7 @@ function LoginForm() {
                                      dir={'ltr'}
                         />
                     </div>
-                    <LoadingButton loading={isLoading} size={'medium'} color={'error'}
+                    <LoadingButton loading={isLoading} size={'medium'} color={'primary'}
                                    className={'login-form__btn'} type={"submit"} variant="contained"
                                    disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
                         ورود به پروفایل

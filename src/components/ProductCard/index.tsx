@@ -13,6 +13,10 @@ interface IProductCardProps {
     children?: React.ReactNode
 }
 
+const toast = function() {
+    window.alert("You have been successfully updated.")
+
+}
 
 const ProductCard = (props: IProductCardProps) => {
     return (

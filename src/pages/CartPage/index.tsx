@@ -83,13 +83,13 @@ export const CartPage: React.FC = () => {
                             </div>
                         </React.Fragment>
                         :
-                        <div className="cart__empty">
+                        <div className="cart--empty">
                             <Player
-
+                                className="player"
                                 autoplay
                                 loop
                                 src="https://assets10.lottiefiles.com/packages/lf20_edzccurz.json"
-                                style={{height: '400px', width: '400px'}}
+
                             >
                                 <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
                             </Player>

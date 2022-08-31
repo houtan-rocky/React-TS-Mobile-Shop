@@ -5,7 +5,7 @@ import LoginForm from "../../../components/LoginForm";
 
 export const PanelLoginPage: React.FC = () => {
     return <Helmet className={'main'} title={'ورود ادمین'}>
-        <div className={'container'}>
+        <div className={'login__page-control'}>
             <LoginForm/>
         </div>
     </Helmet>

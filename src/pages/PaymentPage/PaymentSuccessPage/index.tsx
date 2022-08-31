@@ -16,7 +16,7 @@ export const PaymentSuccessfulPage: React.FC = () => {
                         autoplay
                         loop
                         src="https://assets9.lottiefiles.com/packages/lf20_gaxn5gzy.json"
-                        style={{height: '400px', width: '400px'}}
+                        style={{height: '300px', width: '300px'}}
                     >
                         <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
                     </Player>

@@ -16,6 +16,7 @@ const CartItem = (props: any) => {
     const [item, setItem] = useState(props.item)
     const [quantity, setQuantity] = useState(props.item.quantity)
 
+    useEffect(() => {})
     useEffect(() => {
         setItem(props.item)
         setQuantity(props.item.quantity)

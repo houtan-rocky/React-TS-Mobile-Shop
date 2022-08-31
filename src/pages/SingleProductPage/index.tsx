@@ -10,7 +10,7 @@ import ProductView from "../../components/ProductView";
 
 interface IProduct {
     id: string;
-    product_name_en: string;
+    "product-name-en": string;
     colors: [];
     size: [];
 }
@@ -41,7 +41,7 @@ export const SingleProductPage: React.FC = (props: any) => {
 
     return (
         <main className={'main'}>
-            <Helmet title={product?.product_name_en}>
+            <Helmet title={"" || product?.["product-name-en"]}>
                 <Section>
                     <SectionBody>
                         <ProductView product={product}/>
