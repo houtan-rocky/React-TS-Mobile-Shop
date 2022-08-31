@@ -17,11 +17,14 @@
 
   &__checkmark {
     margin-right: 10px;
-    height: 15px;
-    width: 15px;
+    margin-left: 10px;
+    height: 19.5px;
+    width: 18px;
     border: 1px solid $txt-second-color;
 
     i {
+      hight: 100%;
+      width: 100%;
       transform: scale(0);
       transition: transform 0.3s ease;
     }
