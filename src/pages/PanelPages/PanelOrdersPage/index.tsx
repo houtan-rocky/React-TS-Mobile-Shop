@@ -20,7 +20,7 @@ export const PanelOrdersPage: React.FC = () => {
             display: 'مجموع رسید'
         }, {
             id: 4,
-            name: 'order-registration-date',
+            name: 'createdAt',
             display: 'زمان ثبت',
         }, {
             id: 5,

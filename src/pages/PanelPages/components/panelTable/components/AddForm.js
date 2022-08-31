@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import CustomInput from "./CustomInput";
+import CustomInput from "../../../../../components/CustomFormElements/CustomInput";
 import {addOrder} from "../../../../../api/updateOrder";
 import ImageUpload from "../../ImageUpload";
 import {Editor} from "react-draft-wysiwyg";

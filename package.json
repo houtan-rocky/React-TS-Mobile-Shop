@@ -18,6 +18,7 @@
     "cors": "^2.8.5",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
+    "emailjs-com": "^3.2.0",
     "eslint-scope": "^7.1.1",
     "filepond": "^4.30.4",
     "filepond-plugin-image-preview": "^4.6.11",

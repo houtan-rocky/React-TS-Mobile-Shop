@@ -4,7 +4,7 @@ import {Button, Link} from "@mui/material";
 import {LoadingButton} from '@mui/lab';
 import {Login} from 'api/userLogin.api';
 
-import CustomInput from "../../pages/PanelPages/components/panelTable/components/CustomInput";
+import CustomInput from "../CustomFormElements/CustomInput";
 import ReCAPTCHA from "react-google-recaptcha";
 import {Navigate, useNavigate} from "react-router-dom";
 import swal from "sweetalert";
@@ -31,9 +31,10 @@ function LoginForm() {
     };
 
     const onRecaptchaChange = (value: any) => {
-        console.log(value)
         value ? setIsCaptchaVerified(true) : setIsCaptchaVerified(false);
     }
+
+
 
     const onFormSubmit = async (event: React.SyntheticEvent) => {
         setValidateInput(true);
