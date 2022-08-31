@@ -180,7 +180,7 @@ const DirectoryTable = (props) => {
                                         :
 
                                         props.tableHeader.map((headerItem) => <td
-                                            key={headerItem.id}>{headerItem.name === 'category-id' ? props.categories[tableItem[headerItem.name] - 1]['name-en'] : tableItem[headerItem.name] || objectGet(tableItem, headerItem.name)}</td>)
+                                            key={headerItem.id}>{headerItem.name === 'category-id' ? props.categories[tableItem[headerItem.name] - 1]['name-en'] : tableItem[headerItem.name] || objectGet(tableItem, headerItem.name) || "ناموجود"}</td>)
 
                                 }
                                 {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CustomInput from "./CustomInput";
+import CustomInput from "../../../../../components/CustomFormElements/CustomInput";
 import 'filepond/dist/filepond.css';
 import { Editor } from 'react-draft-wysiwyg';
 import {EditorState, convertToRaw, ContentState} from 'draft-js';

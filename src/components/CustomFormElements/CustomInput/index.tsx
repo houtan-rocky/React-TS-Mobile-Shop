@@ -7,7 +7,7 @@ interface ICustomInputProps {
     pattern: string
     value: string
     required?: boolean
-    className: any
+    className?: any
     placeholder: string
     doValidation: boolean
     dir: string;
@@ -15,7 +15,10 @@ interface ICustomInputProps {
 }
 
 function CustomInput(props: ICustomInputProps) {
-    const [inputValue, setInputValue] = useState<string>();
+
+
+    const [inputValue, setInputValue] = useState<any>();
+    const [isValid, setIsValid] = useState<boolean>();
 
 
     // const encodeImageFileAsURL = (file) => {
@@ -68,7 +71,7 @@ function CustomInput(props: ICustomInputProps) {
 
     return (
         <React.Fragment>
-            <input type={props.type} name={props.name} {...props.name !== 'image' && ({value: `${props.value}`})}
+            <input formNoValidate={true}   type={props.type} name={props.name} {...props.name !== 'image' && ({value: `${props.value}`})}
                    onChange={handleInputChange} pattern={props.pattern} required={props.required} dir={props.dir}/>
     {/*// @ts-ignore*/}
             <ValidationStatus name={props.name} value={inputValue} pattern={props.pattern} doValidation={props.doValidation}/>
