@@ -38,18 +38,35 @@
         font-weight: 600;
         text-transform: capitalize;
         margin-bottom: 16px;
+        @include mobile {
+          color: lighten($txt-second-color, 50);
+        }
+        @include tablet {
+          color: lighten($txt-second-color, 50);
+
+        }
       }
 
       &__content {
-        color: $txt-second-color;
+        color: $txt-second-color, 30;
 
         &__item {
           margin-bottom: 13px;
+        }
+
+        @include mobile {
+          color: lighten($txt-second-color, 30);
+
+        }
+        @include tablet {
+          color: lighten($txt-second-color, 30);
+
         }
       }
     }
 
     &__close {
+      color: lighten($txt-second-color, 30);
       display: none;
       @include tablet {
         display: block;
