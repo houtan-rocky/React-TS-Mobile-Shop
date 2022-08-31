@@ -2471,7 +2471,7 @@
     "products.get": false,
     "products.post": true,
     "products.put": false,
-    "orders.post": true,
+    "orders.post": false,
     "orders.get": true,
     "upload": true,
     "upload.get": false,
