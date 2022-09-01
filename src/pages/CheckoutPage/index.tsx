@@ -204,7 +204,7 @@ export const CheckoutPage: React.FC = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>تلفن همراه</label>
-                                        <CustomInput name="phone" value={orderInfo["phone"]}
+                                        <CustomInput  name="phone" value={orderInfo["phone"]}
                                                      onChange={handleInputChange} type="text" required={true}
                                                      placeholder={'تلفن همراه'}
                                                      pattern={'(0|\\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}'}
@@ -219,13 +219,6 @@ export const CheckoutPage: React.FC = () => {
                                                      dir={'rtl'} doValidation={validateInput}/>
                                     </div>
                                     <div className="form-group">
-                                        <label>آدرس</label>
-                                        <CustomTextArea name="address" value={orderInfo["address"]}
-                                                        onChange={handleInputChange} required={true}
-                                                        placeholder={'نام کاربری'} dir={'rtl'}
-                                                        doValidation={validateInput} rows={10}/>
-                                    </div>
-                                    <div className="form-group">
                                         <label>تاریخ تحویل</label>
                                         <DatePicker name={"delivery-date"} value={orderInfo["delivery-date"]}
                                                     inputClass={"date-picker"}
@@ -236,8 +229,16 @@ export const CheckoutPage: React.FC = () => {
 
                                     </div>
                                     <div className="form-group">
+                                        <label>آدرس</label>
+                                        <CustomTextArea name="address" value={orderInfo["address"]}
+                                                        onChange={handleInputChange} required={true}
+                                                        placeholder={'نام کاربری'} dir={'rtl'}
+                                                        doValidation={validateInput} rows={10}/>
+                                    </div>
+
+                                    <div className="form-group">
                                         <label>آدرس روی نقشه</label>
-                                        <CustomMap setUserBbox={setUserLocation}/>
+                                        <CustomMap dir={'rtl'} setUserBbox={setUserLocation}/>
                                     </div>
 
 
