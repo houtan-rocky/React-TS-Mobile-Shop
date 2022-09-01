@@ -1,0 +1,14 @@
+.leaflet-container {
+  width: 80%;
+  height: 38vh;
+  margin-top: 20px;
+  z-index: 1;
+
+  @include tablet {
+    width: 100%;
+
+  }
+   @include mobile {
+     width: 100%;
+   }
+}

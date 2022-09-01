@@ -77,7 +77,7 @@ export const Header = (props: any) => {
                         </div>
 
                         <div className="header__menu__item header__menu__right__item">
-                            <Link to="/checkout/cart">
+                            <Link to="/cart">
                                 <i className="bx bx-shopping-bag"></i>
                             </Link>
                         </div>

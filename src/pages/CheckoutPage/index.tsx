@@ -17,13 +17,23 @@ import ReCAPTCHA from "react-google-recaptcha";
 import {LoadingButton} from "@mui/lab";
 import DatePicker, {DateObject} from "react-multi-date-picker"
 
+// persian multiple date picker
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
+import CustomMap from "../../components/CustomMap";
+import {LatLng} from "leaflet";
 
 
 export const CheckoutPage: React.FC = () => {
     const Navigate = useNavigate();
 
+    const initialUserLocation = {
+        lat: 0,
+        lng: 0
+    }
+
+    const [userLocation, setUserLocation] = useState(initialUserLocation);
+    console.log(userLocation)
     const [isFormValid, setIsFormValid] = useState(false);
 
 
@@ -40,9 +50,6 @@ export const CheckoutPage: React.FC = () => {
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
 
-
-
-
     const [orderInfo, setOrderInfo] = useState<any>(({
         "first-name": "",
         "last-name": "",
@@ -55,6 +62,7 @@ export const CheckoutPage: React.FC = () => {
         "products": [],
         "email": "",
         "delivery-date": new Date(),
+        "map": {lat: 0, lng: 0},
     }));
 
 
@@ -89,9 +97,17 @@ export const CheckoutPage: React.FC = () => {
     useEffect(() => {
         getCartItemsInfo(cartItems)
         setTotalBill(cartItems.reduce((total: any, item: any) => total + (Number(item.quantity) * Number(item.price.amount)), 0))
-        setOrderInfo((prevState: any[]) => ({...prevState, "total-bill":cartItems.reduce((total: any, item: any) => total + (Number(item.quantity) * Number(item.price.amount)), 0)}))
+        setOrderInfo((prevState: any[]) => ({
+            ...prevState,
+            "total-bill": cartItems.reduce((total: any, item: any) => total + (Number(item.quantity) * Number(item.price.amount)), 0)
+        }))
         setTotalProducts(cartItems.reduce((total: number, item: any) => total + Number(item.quantity), 0))
     }, [cartItems])
+
+    useEffect(() => {
+        const {lat, lng} = userLocation;
+        setOrderInfo((prevState: any[]) => ({...prevState, "map": {lat, lng}}))
+    }, [userLocation])
 
     const handleInputChange = (event: any) => {
         if (event instanceof DateObject) {
@@ -101,8 +117,8 @@ export const CheckoutPage: React.FC = () => {
             return;
         }
         event.preventDefault();
-        const {name, value}: {name:any, value: any} = event.target;
-        console.log(event,name,value);
+        const {name, value}: { name: any, value: any } = event.target;
+        console.log(event, name, value);
         // @ts-ignore
 
         setOrderInfo((prevState: any) => ({...prevState, [name]: value}))
@@ -188,7 +204,7 @@ export const CheckoutPage: React.FC = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>تلفن همراه</label>
-                                        <CustomInput name="phone" value={orderInfo["phone"]}
+                                        <CustomInput  name="phone" value={orderInfo["phone"]}
                                                      onChange={handleInputChange} type="text" required={true}
                                                      placeholder={'تلفن همراه'}
                                                      pattern={'(0|\\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}'}
@@ -203,16 +219,26 @@ export const CheckoutPage: React.FC = () => {
                                                      dir={'rtl'} doValidation={validateInput}/>
                                     </div>
                                     <div className="form-group">
+                                        <label>تاریخ تحویل</label>
+                                        <DatePicker name={"delivery-date"} value={orderInfo["delivery-date"]}
+                                                    inputClass={"date-picker"}
+                                                    minDate={new DateObject({calendar: persian})}
+                                                    calendarPosition="bottom-right" weekPicker={false}
+                                                    onChange={handleInputChange} calendar={persian}
+                                                    locale={persian_fa}/>
+
+                                    </div>
+                                    <div className="form-group">
                                         <label>آدرس</label>
                                         <CustomTextArea name="address" value={orderInfo["address"]}
                                                         onChange={handleInputChange} required={true}
                                                         placeholder={'نام کاربری'} dir={'rtl'}
                                                         doValidation={validateInput} rows={10}/>
                                     </div>
-                                    <div className="form-group">
-                                        <label>تاریخ تحویل</label>
-                                        <DatePicker name={"delivery-date"} value={orderInfo["delivery-date"]} inputClass={"date-picker"} minDate={new DateObject({ calendar: persian })} calendarPosition="bottom-right" weekPicker={false} onChange={handleInputChange} calendar={persian} locale={persian_fa} />
 
+                                    <div className="form-group">
+                                        <label>آدرس روی نقشه</label>
+                                        <CustomMap dir={'rtl'} setUserBbox={setUserLocation}/>
                                     </div>
 
 
@@ -227,7 +253,7 @@ export const CheckoutPage: React.FC = () => {
                                         />
 
                                         <LoadingButton size={'large'} color={'primary'}
-                                                        type={"submit"} variant="contained"
+                                                       type={"submit"} variant="contained"
                                                        disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
                                             پرداخت
                                         </LoadingButton>
