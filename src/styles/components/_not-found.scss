@@ -1,0 +1,15 @@
+.not-found {
+  @include flex(center, center);
+  flex-direction: column;
+  @include mobile {
+    font-size: 1.2rem;
+  }
+
+  &__player {
+
+    height:100%;
+    width: 50%;
+
+
+  }
+}
