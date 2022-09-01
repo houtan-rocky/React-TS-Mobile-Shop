@@ -17,6 +17,8 @@
 
 html {
     font-size: 85%;
+    @include scrollbars(10px, $main-color, $main-bg);
+
 }
 
 body {

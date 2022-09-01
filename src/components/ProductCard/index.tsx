@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Button from "../Button";
+
 
 import numberWithCommas from 'utils/numberWithCommas'
+import {Button} from "@mui/material";
 
 interface IProductCardProps {
     img01: string
@@ -37,13 +38,7 @@ const ProductCard = (props: IProductCardProps) => {
             <div className="product-card__btn">
                 <Link to={`/products/${props.slug}`}>
 
-                    <Button
-                        size="sm"
-                        icon="bx bx-cart"
-                        animate={true}
-                    >
-                        خرید
-                    </Button>
+                    <Button variant="contained" style={{ backgroundColor: "#DE4A78EF" }}>خرید</Button>
                 </Link>
 
             </div>
