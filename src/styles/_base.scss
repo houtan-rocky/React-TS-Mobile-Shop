@@ -6,6 +6,14 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'iranYekan';
+    src: url('../assets/fonts/Yekan.woff') format('woff');
+    font-weight: 125 950;
+    font-stretch: 75% 125%;
+    font-style: normal;
+}
+
 
 * {
     padding: 0;
@@ -22,7 +30,7 @@ html {
 }
 
 body {
-    font-family: "Vazir", sans-serif;
+    font-family: "iranYekan", "Vazir", sans-serif;
     font-size: 1.4rem;
 }
 
