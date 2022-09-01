@@ -45,7 +45,7 @@ const DirectoryTable = (props) => {
     const [isEditable, setIsEditable] = useState(false)
     let {tableItems, requestSort, sortConfig} = useSortableData(props.tableItems);
     const [updateTableItems, setUpdateTableItems] = useState(tableItems)
-    const {editOrder, deleteOrder} = props;
+    const {editOrder,editProduct, deleteOrder} = props;
     const [searchValue, setSearchValue] = useState("");
     const location = window.location.pathname
 
@@ -111,6 +111,9 @@ const DirectoryTable = (props) => {
             }
         }))
     }
+
+
+    console.log(props.currentTableItem)
 
     return (
         <>
@@ -193,7 +196,7 @@ const DirectoryTable = (props) => {
                                                     <IconButton
                                                         aria-label="edit"
                                                         onClick={() => {
-                                                            editOrder(tableItem);
+                                                            editProduct(tableItem);
                                                         }}
                                                     >
                                                         <EditIcon/>
@@ -209,8 +212,8 @@ const DirectoryTable = (props) => {
                                             {
                                                 location === "/panel/orders" &&
                                                 <IconButton
-                                                    aria-label="delete"
-                                                    onClick={() => deleteOrder(tableItem.id)}
+                                                    aria-label="edit"
+                                                    onClick={() => editOrder(tableItem)}
                                                 >
                                                     <AssessmentIcon/>
                                                 </IconButton>

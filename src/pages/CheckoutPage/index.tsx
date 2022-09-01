@@ -59,7 +59,12 @@ export const CheckoutPage: React.FC = () => {
         "delivered-at": null,
         status: "pending",
         "total-bill": 1,
-        "products": [],
+        "products": [{
+            "id": 0,
+            "price": 0,
+            "quantity": 0,
+            "name": "",
+        }],
         "email": "",
         "delivery-date": new Date(),
         "map": {lat: 0, lng: 0},
@@ -86,7 +91,9 @@ export const CheckoutPage: React.FC = () => {
                 {
                     colorId: cartItems[i].color.id,
                     productId: cartItems[i].id,
-                    quantity: cartItems[i].quantity
+                    quantity: cartItems[i].quantity,
+                    price: cartItems[i].price.amount,
+                    name: cartItems[i]['product-name-en']
                 }
             ]
         }
