@@ -2,10 +2,11 @@ import {MapContainer, Marker, Popup, TileLayer, useMapEvents} from 'react-leafle
 import React from "react";
 import SearchControl from "./SearchControl";
 import 'leaflet/dist/leaflet.css'
-
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import LocationMarker from "./LocationMarker";
 import { useState} from "react";
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import {Icon} from "leaflet";
 
 const CustomMap = (props) => {
     const prov = new OpenStreetMapProvider();
@@ -13,7 +14,7 @@ const CustomMap = (props) => {
 
     return (
         <div dir={props.dir}>
-        <MapContainer center={[35.68544030556811, 51.41376614561773]} zoom={13} scrollWheelZoom={true}>
+        <MapContainer center={[35.68544030556811, 51.41376614561773]} zoom={13} scrollWheelZoom={true} >
             <TileLayer
                 attribution='&copy; <a href="https://www.figikala.ir/copyright">FIGIKALA</a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

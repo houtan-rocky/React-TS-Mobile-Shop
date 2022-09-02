@@ -34,7 +34,7 @@ function LocationMarker(props) {
     }, [map]);
 
     return position === null ? null : (
-        <Marker position={position} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+        <Marker position={position} icon={new Icon({iconUrl: markerIconPng,iconRetinaUrl:markerIconPng,  popupAnchor: [10, -44], iconSize: [25, 41], iconAnchor: [12, 41]})}>
             <Popup>
                 <span>
                     محل تحویل مرسوله
