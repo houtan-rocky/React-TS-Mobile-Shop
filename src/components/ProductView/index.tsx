@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {BASE_URL} from "../../configs/variables.config"
 
 // import { withRouter } from 'react-router'
 
@@ -54,7 +55,7 @@ const ProductView = (props: any) => {
     }
 
     useEffect(() => {
-        setPreviewImg('http://localhost:3001' + "/files/" + product.thumbnail)
+        setPreviewImg(BASE_URL + "/files/" + product.thumbnail)
         setQuantity(1)
         setColor(undefined)
         setSize(undefined)
@@ -144,8 +145,8 @@ const ProductView = (props: any) => {
                     {
                         product.images.map((item: any, index: any) =>
                             <div className="product__images__list__item"
-                                 onClick={() => setPreviewImg('http://localhost:3001' + "/files/" + item)}>
-                                <img src={'http://localhost:3001' + "/files/" + item} alt=""/>
+                                 onClick={() => setPreviewImg(BASE_URL + "/files/" + item)}>
+                                <img src={BASE_URL + "/files/" + item} alt=""/>
                             </div>)
                     }
 

@@ -1,5 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
+import {BASE_URL} from "../../configs/variables.config"
+
 
 import swal from 'sweetalert'
 import {useDispatch} from 'react-redux'
@@ -54,7 +56,7 @@ const CartItem = (props: any) => {
     return (
         <div className="cart__item" ref={itemRef}>
             <div className="cart__item__image">
-                <img src={'http://localhost:3001' + "/files/" + props.item.thumbnail} alt=""/>
+                <img src={BASE_URL + "/files/" + props.item.thumbnail} alt=""/>
             </div>
             <div className="cart__item__info">
                 <div className="cart__item__info__name">

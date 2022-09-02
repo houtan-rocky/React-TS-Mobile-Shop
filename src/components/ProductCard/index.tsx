@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {BASE_URL} from "../../configs/variables.config"
 
 
 import numberWithCommas from 'utils/numberWithCommas'
@@ -26,8 +27,8 @@ const ProductCard = (props: IProductCardProps) => {
         <div className={`product-card `}>
             <Link to={`/products/${props.slug}`}>
                 <div className="product-card__image">
-                    <img src={'http://localhost:3001' + "/files/" + props.img01} alt=""/>
-                    <img src={'http://localhost:3001' + "/files/" + props.img02} alt=""/>
+                    <img src={BASE_URL + "/files/" + props.img01} alt=""/>
+                    <img src={BASE_URL + "/files/" + props.img02} alt=""/>
                 </div>
                 <h2 className="product-card__name">{props.name}</h2>
                 <div className="product-card__price">
