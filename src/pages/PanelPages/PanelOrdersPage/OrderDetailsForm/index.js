@@ -117,11 +117,11 @@ function OrderDetailForm(props) {
 
                 {
                     props.currentTableItem["status"] === "shipped" ?
-                        <Button disabled type={'submit'} className="modal-button" variant="outlined">
+                        <Button disabled color="primary" type={'submit'} className="modal-button" variant="contained">
                             تحویل شده
                         </Button>
                         :
-                        <Button type={'submit'} className="modal-button" variant="outlined">
+                        <Button color="primary" type={'submit'} className="modal-button" variant="contained">
                             تغییر به تحویل شد
                         </Button>
                 }
