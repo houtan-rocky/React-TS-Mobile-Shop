@@ -34,6 +34,9 @@ function OrderDetailForm(props) {
     console.log({products})
     console.log('cur',props.currentTableItem)
 
+    const e2p = s => s.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d])
+    const inP = e2p(props.currentTableItem['delivery-date'])
+
     // @ts-ignore
     return (
         <>
@@ -76,7 +79,7 @@ function OrderDetailForm(props) {
                     <CustomInput
                         type="text"
                         name="createdAt"
-                        value={new Date(props.currentTableItem['createdAt'])}
+                        value={new Date(props.currentTableItem['createdAt']).toLocaleDateString('fa-IR')}
                         required
                     />
                 </div>
@@ -85,7 +88,7 @@ function OrderDetailForm(props) {
                     <CustomInput
                         type="text"
                         name="delivery-date"
-                        value={props.currentTableItem['delivery-date']}
+                        value={inP}
                         required
                     />
                 </div>
