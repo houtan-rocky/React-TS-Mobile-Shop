@@ -1,5 +1,5 @@
 require('dotenv').config();
-const jsonServer = require('json-server');
+const jsonServer = require('express');
 const cors = require('cors');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
