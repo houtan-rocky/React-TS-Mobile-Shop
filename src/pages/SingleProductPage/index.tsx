@@ -64,7 +64,7 @@ export const SingleProductPage: React.FC = (props: any) => {
                                         key={index}
                                         img01={item.images[0]}
                                         img02={item.images[1]}
-                                        name={item.product_name_en}
+                                        name={item['product-name-en']}
                                         price={Number(item.price.amount)}
                                         slug={item.id}
                                     />

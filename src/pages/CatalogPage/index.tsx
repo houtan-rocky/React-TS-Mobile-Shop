@@ -28,8 +28,8 @@ export const CatalogPage: React.FC = () => {
         GetProducts().then((data => {
             setProductList(data.data)
             setProducts(data.data)
-        }))
-        GetCategories().then((data => setCategories(data.data)))
+        })).catch((err) => {console.error(err)});
+        GetCategories().then((data => setCategories(data.data))).catch((err) => {console.error(err)})
     }, [])
 
 

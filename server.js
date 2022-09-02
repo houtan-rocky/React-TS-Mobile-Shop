@@ -1,3 +1,4 @@
+require('dotenv').config();
 const jsonServer = require('json-server');
 const cors = require('cors');
 const server = jsonServer.create();
@@ -163,7 +164,7 @@ server.post([
     id
   } = req.user;
   jwt.sign({username, firstName, lastName, password, email, phone, address, city, state, country, zip, role, createdAt, id}, AUTH_JWT_SECRET, AUTH_JWT_OPTIONS, (err, token) => {
-    if (err) return next(error);
+    if (err) return next(err);
     res.json({token});
   });
 });
@@ -171,6 +172,9 @@ server.post([
 // Use default router (CRUDs of db.json)
 server.use(router);
 
-server.listen(3001, () => {
-  console.log('Customized JSON-Server is running at http://localhost:3001/');
+server.listen(process.env.port || 3000, () => {
+  const port = process.env.port || 3000;
+  console.log(`Customized JSON-Server is running at http://localhost:/${port}`);
 });
+
+module.exports = server;

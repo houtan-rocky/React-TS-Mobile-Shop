@@ -16,6 +16,9 @@ function LoginForm() {
         username: "",
         password: ""
     };
+
+
+    const [doValidation, setDoValidation] = useState(false)
     const [loginInfo, setLoginInfo] = useState(initialFormState);
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
     const [isUserVerified, setIsUserVerified] = useState(false);
@@ -90,7 +93,7 @@ function LoginForm() {
                         <CustomInput className={'login-form__input'} type="text" name={'username'}
                                      placeholder={'نام کاربری'}
                                      required={false} value={loginInfo.username} pattern={'([a-zA-Z])\\w+'}
-                                     onChange={handleInputChange} doValidation={validateInput}
+                                     onChange={handleInputChange} doValidation={doValidation}
                                      dir={'ltr'}
                         />
                     </div>
@@ -99,8 +102,9 @@ function LoginForm() {
                         <CustomInput className={'login-form__input'} type="password" name={'password'}
                                      placeholder={'رمز عبور'}
                                      required={false} value={loginInfo.password} pattern={'^(?!\\s*$).+'}
-                                     onChange={handleInputChange} doValidation={validateInput}
+                                     onChange={handleInputChange}
                                      dir={'ltr'}
+                                     doValidation={doValidation}
                         />
                     </div>
                     <LoadingButton loading={isLoading} size={'medium'} color={'primary'}
