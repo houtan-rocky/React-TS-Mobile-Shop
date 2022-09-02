@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 
 // import { withRouter } from 'react-router'
 
-import { useDispatch } from 'react-redux'
+import {useDispatch} from 'react-redux'
 
-import { addItem } from '../../redux/shopping-cart/cartItemsSlide'
-import { remove } from '../../redux/product-modal/productModalSlice'
+import {addItem} from '../../redux/shopping-cart/cartItemsSlide'
+import {remove} from '../../redux/product-modal/productModalSlice'
 
 import Button from '../Button'
 import numberWithCommas from '../../utils/numberWithCommas'
@@ -128,21 +128,25 @@ const ProductView = (props: any) => {
         <div className="product">
             <div className="product__images">
                 <div className="product__images__list">
-                    <div className="product__images__list__item" onClick={() => setPreviewImg('http://localhost:3001' + "/files/" + product.images[1])}>
-                        <img src={'http://localhost:3001' + "/files/" + product.images[1]} alt="" />
-                    </div>
-                    <div className="product__images__list__item" onClick={() => setPreviewImg('http://localhost:3001' + "/files/" + product.images[2])}>
-                        <img src={'http://localhost:3001' + "/files/" + product.images[2]} alt="" />
-                    </div>
+
+                    {
+                        product.images.map((item: any, index: any) =>
+                            <div className="product__images__list__item"
+                                 onClick={() => setPreviewImg('http://localhost:3001' + "/files/" + item)}>
+                                <img src={'http://localhost:3001' + "/files/" + item} alt=""/>
+                            </div>)
+                    }
+
                 </div>
                 <div className="product__images__main">
-                    <img src={previewImg} alt="" />
+                    <img src={previewImg} alt=""/>
                 </div>
                 <div className={`product-description ${descriptionExpand ? 'expand' : ''}`}>
                     <div className="product-description__title">
                         مشخصات محصول
                     </div>
-                    <div className="product-description__content" dangerouslySetInnerHTML={{__html: product.description.fa}}></div>
+                    <div className="product-description__content"
+                         dangerouslySetInnerHTML={{__html: product.description.fa}}></div>
                     <div className="product-description__toggle">
                         <Button size="sm" onClick={() => setDescriptionExpand(!descriptionExpand)}>
                             {
@@ -166,7 +170,9 @@ const ProductView = (props: any) => {
                     <div className="product__info__item__list">
                         {
                             product.colors.map((item: any, index: any) => (
-                                <div key={index} className={`product__info__item__list__item ${color === item ? 'active' : ''}`} onClick={() => setColor(item)}>
+                                <div key={index}
+                                     className={`product__info__item__list__item ${color === item ? 'active' : ''}`}
+                                     onClick={() => setColor(item)}>
                                     <div className={`circle bg-${item['color-name-en'].toLowerCase()}`}></div>
                                 </div>
                             ))
@@ -214,7 +220,8 @@ const ProductView = (props: any) => {
                 <div className="product-description__title">
                     مشخصات محصول
                 </div>
-                <div className="product-description__content" dangerouslySetInnerHTML={{__html: product.description.fa}}>
+                <div className="product-description__content"
+                     dangerouslySetInnerHTML={{__html: product.description.fa}}>
                 </div>
                 <div className="product-description__toggle">
                     <Button size="sm" onClick={() => setDescriptionExpand(!descriptionExpand)}>
@@ -227,7 +234,6 @@ const ProductView = (props: any) => {
         </div>
     )
 }
-
 
 
 export default ProductView;

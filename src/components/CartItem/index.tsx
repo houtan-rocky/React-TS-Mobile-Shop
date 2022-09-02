@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
+import swal from 'sweetalert'
 import {useDispatch} from 'react-redux'
 import {updateItem, removeItem} from '../../redux/shopping-cart/cartItemsSlide'
 
@@ -9,6 +10,7 @@ import {Link} from 'react-router-dom'
 
 const CartItem = (props: any) => {
 
+    const count = props.count;
     const dispatch = useDispatch()
 
     const itemRef = useRef(null)
@@ -16,17 +18,25 @@ const CartItem = (props: any) => {
     const [item, setItem] = useState(props.item)
     const [quantity, setQuantity] = useState(props.item.quantity)
 
-    useEffect(() => {})
+    useEffect(() => {
+    })
     useEffect(() => {
         setItem(props.item)
         setQuantity(props.item.quantity)
     }, [props.item])
 
     const updateQuantity = (opt: any) => {
+        console.log('q', quantity, 'c', item.count)
         if (opt === '+') {
+            if (quantity + 1 > item.count ) {
+                return;
+            }
             dispatch(updateItem({...item, quantity: quantity + 1}))
         }
         if (opt === '-') {
+            if (quantity - 1 < 1 ) {
+                return;
+            }
             dispatch(updateItem({...item, quantity: quantity - 1 === 0 ? 1 : quantity - 1}))
         }
     }
@@ -81,7 +91,6 @@ const CartItem = (props: any) => {
         </div>
     )
 }
-
 
 
 export default CartItem

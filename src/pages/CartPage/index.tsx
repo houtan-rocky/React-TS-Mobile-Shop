@@ -76,9 +76,9 @@ export const CartPage: React.FC = () => {
                             </div>
                             <div className="cart__list">
                                 {
-                                    cartProducts.map((item: any, index: any) => (
-                                        <CartItem item={item} key={index} actions={true}/>
-                                    ))
+                                    cartProducts.map((item: any, index: any) => {
+                                    return <CartItem item={item} key={index} actions={true} count={cartProducts[item.id]}/>
+                                })
                                 }
                             </div>
                         </React.Fragment>
