@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, {Dispatch, SetStateAction, useRef, useState} from 'react';
 import ValidationStatus from "./ValidationStatus";
 
 interface ICustomInputProps {
@@ -16,10 +16,13 @@ interface ICustomInputProps {
 
 function CustomInput(props: ICustomInputProps) {
 
+    const [doValidation, setDoValidation] = useState(false)
+
+
 
     const [inputValue, setInputValue] = useState<any>();
     const [isValid, setIsValid] = useState<boolean>();
-
+    const ref = useRef<any>(null);
 
     // const encodeImageFileAsURL = (file) => {
     //     let document = "";
@@ -53,6 +56,7 @@ function CustomInput(props: ICustomInputProps) {
     }
 
     const handleInputChange = async (event :any) => {
+        event.preventDefault();
         if (event.target.name === "image") {
             var imgURL = "";
             await encodeImageFileAsURL(event.target, (result: any) => {
@@ -62,19 +66,23 @@ function CustomInput(props: ICustomInputProps) {
             })
             return;
         }
+        // @ts-ignore
         const target = event.target;
         const {value} = target;
         setInputValue(value);
+        setDoValidation(true);
         props.onChange(event, value);
     };
 
 
     return (
         <React.Fragment>
-            <input formNoValidate={true}   type={props.type} name={props.name} {...props.name !== 'image' && ({value: `${props.value}`})}
-                   onChange={handleInputChange} pattern={props.pattern} required={props.required} dir={props.dir}/>
+            <input ref={ ref} formNoValidate={true}   type={props.type} name={props.name} {...props.name !== 'image' && ({value: `${props.value}`})}
+                  onInvalid={(e)=> {
+                      ref.current.setCustomValidity("ورودی نامعتبر است")
+                  }} onChange={handleInputChange} pattern={props.pattern} required={props.required} dir={props.dir}/>
     {/*// @ts-ignore*/}
-            <ValidationStatus name={props.name} value={inputValue} pattern={props.pattern} doValidation={props.doValidation}/>
+            <ValidationStatus name={props.name} value={inputValue} pattern={props.pattern} doValidation={props.doValidation || doValidation}/>
         </React.Fragment>
     );
 }

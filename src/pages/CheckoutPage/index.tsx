@@ -132,8 +132,8 @@ export const CheckoutPage: React.FC = () => {
     }
 
     const handleFormSubmit = (event: any) => {
-        event.preventDefault();
         setValidateInput(true);
+        event.preventDefault();
         // if (!isFormValid)
         //     return;
         setOrderInfo((prevState: any) => ({
@@ -261,7 +261,9 @@ export const CheckoutPage: React.FC = () => {
 
                                         <LoadingButton size={'large'} color={'primary'}
                                                        type={"submit"} variant="contained"
-                                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}>
+                                                       disabled={!isCaptchaVerified} style={{fontSize: "1.5rem"}}
+                                        onClick={() => setValidateInput(true)}
+                                        >
                                             پرداخت
                                         </LoadingButton>
 

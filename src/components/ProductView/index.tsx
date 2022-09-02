@@ -16,7 +16,6 @@ const ProductView = (props: any) => {
     const dispatch = useDispatch()
 
     let product = props.product
-    console.log(product)
 
     if (product === undefined) product = {
         title: "",
@@ -84,6 +83,19 @@ const ProductView = (props: any) => {
     }
 
     const addToCart = () => {
+        console.log(quantity, product.count)
+        if (quantity > product.count) {
+            swal({
+                title: "تعداد نامعتبر است",
+                text: "تعداد انتخابی از موجودی بیشتر است موجودی",
+                icon: "warning",
+                dangerMode: true,
+                buttons: [
+                    'باشه'
+                ]
+            })
+            return;
+        }
         if (check()) {
             let newItem = {
                 id: product.id,

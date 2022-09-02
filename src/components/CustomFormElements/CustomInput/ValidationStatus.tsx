@@ -13,15 +13,17 @@ function ValidationStatus(props: IValidateStatusProps) {
 
     const getEmptyValueError = (name: string) => {
         switch (name) {
-            case "firstName":
+            case "first-name":
                 return <> نام نباید خالی باشد</>;
-            case "lastName":
+            case "last-name":
                 return <>نام خانوادگی نباید خالی باشد</>;
             case "address":
                 return <>آدرس نباید خالی باشد </>
-            case "phoneNumber":
+            case "phone":
                 return <> شماره تلفن نباید خالی باشد</>
-            case "deliveryDate":
+            case "email":
+                return <> ایمیل نباید خالی باشد</>
+            case "delivery-date":
                 return <>لطفا برای تحویل یک تاریخ انتخاب کنید </>
         }
     }
@@ -35,13 +37,14 @@ function ValidationStatus(props: IValidateStatusProps) {
             case "password":
                 return <>رمز عبور نباید خالی باشد</>;
                 break;
-            case "firstName":
-            case "lastName":
+            case "first-name":
+            case "last-name":
                 return <>لطفا از حروف فارسی استفاده کنید</>
-
+            case "email":
+                return <> ایمیل نادرست است</>
             case "address":
                 return <>آدرس نباید خالی باشد </>
-            case "phoneNumber":
+            case "phone":
                 return <>لطفا از ارقام انگلیسی و فرمت صحیح استفاده کنید</>
 
         }
