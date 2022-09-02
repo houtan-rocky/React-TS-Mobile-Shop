@@ -9,6 +9,7 @@ interface IProductCardProps {
     img01: string
     img02: string
     name: string
+    isLoading?: boolean
     price: number
     slug: string
     children?: React.ReactNode
@@ -20,14 +21,15 @@ const toast = function() {
 }
 
 const ProductCard = (props: IProductCardProps) => {
+
     return (
-        <div className="product-card">
+        <div className={`product-card `}>
             <Link to={`/products/${props.slug}`}>
                 <div className="product-card__image">
                     <img src={'http://localhost:3001' + "/files/" + props.img01} alt=""/>
                     <img src={'http://localhost:3001' + "/files/" + props.img02} alt=""/>
                 </div>
-                <h3 className="product-card__name">{props.name}</h3>
+                <h2 className="product-card__name">{props.name}</h2>
                 <div className="product-card__price">
                     {numberWithCommas(props.price)}
                     <span className="product-card__price__old">
