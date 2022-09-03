@@ -1,3 +1,5 @@
+const PORT = process.env.port || 3000;
+
 require('dotenv').config();
 const jsonServer = require('json-server');
 const cors = require('cors');
@@ -177,9 +179,8 @@ server.post([
 // Use default router (CRUDs of db.json)
 server.use(router);
 
-server.listen(process.env.port || 3000, () => {
-  const port = process.env.port || 3000;
-  console.log(`Customized JSON-Server is running at http://localhost:/${port}`);
+server.listen(PORT , () => {
+  console.log(`Customized JSON-Server is running at http://localhost:/${PORT}`);
 });
 
 module.exports = server;
