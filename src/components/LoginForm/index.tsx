@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // import Button from "../Button";
 import {Button, Link} from "@mui/material";
 import {LoadingButton} from '@mui/lab';
@@ -79,10 +79,13 @@ function LoginForm() {
         // }, 2000)
     }
 
+    useEffect(() => {
+        swal({
+            title: 'رمز ورود',
+            text: 'یوزرنیم و پسورد ادمین هر دو mastermind هست.',
+        })
+    }, [])
 
-    const loginUser = async (event: any) => {
-
-    }
 
     return (
         <div className={'login__page-control'}>

@@ -16,7 +16,10 @@ const mainNav = [
         display: 'محصولات',
         path: '/products'
     },
-
+    {
+        display: 'مدیریت',
+        path: '/panel/orders'
+    }
 ]
 
 const UserLayout = () => {
